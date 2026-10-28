@@ -1,0 +1,77 @@
+import type { Metadata, Viewport } from "next";
+import { Great_Vibes, Manrope, Playfair_Display } from "next/font/google";
+import { CartDrawer } from "@/components/cart/cart-drawer";
+import { CartProvider } from "@/components/cart/cart-provider";
+import { Footer } from "@/components/layout/footer";
+import { Header } from "@/components/layout/header";
+import { MobileBuyBar } from "@/components/layout/mobile-buy-bar";
+import { JsonLd } from "@/components/seo/json-ld";
+import { VideoLightboxProvider } from "@/components/video/video-lightbox";
+import { organizationLd, websiteLd } from "@/lib/seo";
+import { site } from "@/lib/site";
+import "./globals.css";
+
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+});
+
+const manrope = Manrope({
+  variable: "--font-manrope",
+  subsets: ["latin"],
+});
+
+const vibes = Great_Vibes({
+  variable: "--font-vibes",
+  subsets: ["latin"],
+  weight: "400",
+});
+
+export const metadata: Metadata = {
+  metadataBase: new URL(`https://${site.domain}`),
+  title: {
+    default: "My Sweet Kitty | Embrace your feminine power",
+    template: "%s | My Sweet Kitty",
+  },
+  description:
+    "Natural, secret-recipe feminine rituals. The 7-Day Sweet Kitty Kit: more glow, more energy, more confidence. Discreet packaging, order on WhatsApp.",
+  applicationName: site.name,
+  // Icons and the share image come from app/icon.png, apple-icon.png and opengraph-image.png.
+  openGraph: {
+    title: "My Sweet Kitty | Embrace your feminine power",
+    description: "The 7-day glow-up every woman is whispering about.",
+    siteName: site.name,
+    url: "/",
+    type: "website",
+    locale: "en_KE",
+  },
+  twitter: { card: "summary_large_image" },
+  formatDetection: { telephone: false },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#ff0090",
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
+
+export default function RootLayout({ children }: LayoutProps<"/">) {
+  return (
+    <html lang="en-KE" data-scroll-behavior="smooth" className={`${playfair.variable} ${manrope.variable} ${vibes.variable} antialiased`}>
+      <body className="min-h-svh">
+        <JsonLd data={[organizationLd(), websiteLd()]} />
+        <CartProvider>
+          <VideoLightboxProvider>
+            <Header />
+            {children}
+            <Footer />
+            <MobileBuyBar />
+            <CartDrawer />
+          </VideoLightboxProvider>
+        </CartProvider>
+      </body>
+    </html>
+  );
+}

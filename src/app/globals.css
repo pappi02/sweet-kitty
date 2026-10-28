@@ -1,0 +1,236 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #1c0a14;
+  --color-ink-2: #2a0f1f;
+  --color-ink-3: #3d1530;
+  --color-pink: #ff0090;
+  --color-pink-deep: #d6007a;
+  --color-pink-soft: #ff8cc8;
+  --color-blush: #ffe6f3;
+  --color-cream: #ffffff;
+  --color-sky: #ffcfe7;
+  --color-sky-light: #fff0f8;
+  --color-mist: #fff5fa;
+
+  --font-display: var(--font-playfair), ui-serif, Georgia, serif;
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-script: var(--font-vibes), cursive;
+
+  --animate-marquee: marquee var(--marquee-duration, 32s) linear infinite;
+  --animate-shimmer: shimmer 3s ease-in-out infinite;
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-float-slow: float 10s ease-in-out infinite;
+  --animate-aurora: aurora 16s ease-in-out infinite alternate;
+  --animate-twinkle: twinkle 3.2s ease-in-out infinite;
+  --animate-spin-slow: spin 22s linear infinite;
+  --animate-pulse-ring: pulse-ring 2.4s cubic-bezier(0.2, 0.7, 0.3, 1) infinite;
+  --animate-gradient-x: gradient-x 6s ease infinite;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  @keyframes shimmer {
+    0%,
+    30% {
+      transform: translateX(-120%) skewX(-20deg);
+    }
+    70%,
+    100% {
+      transform: translateX(220%) skewX(-20deg);
+    }
+  }
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-14px);
+    }
+  }
+  @keyframes aurora {
+    0% {
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+    50% {
+      transform: translate3d(8%, -6%, 0) scale(1.15);
+    }
+    100% {
+      transform: translate3d(-6%, 6%, 0) scale(0.95);
+    }
+  }
+  @keyframes twinkle {
+    0%,
+    100% {
+      opacity: 0;
+      transform: scale(0.4) rotate(0deg);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1) rotate(90deg);
+    }
+  }
+  @keyframes pulse-ring {
+    0% {
+      transform: scale(0.9);
+      opacity: 0.7;
+    }
+    100% {
+      transform: scale(1.6);
+      opacity: 0;
+    }
+  }
+  @keyframes gradient-x {
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+  html,
+  body {
+    overflow-x: clip;
+  }
+  body {
+    background: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: var(--color-pink);
+    color: white;
+  }
+  section[id] {
+    scroll-margin-top: 6.5rem;
+  }
+}
+
+@utility text-gradient-pink {
+  background-image: linear-gradient(100deg, var(--color-pink-deep) 0%, var(--color-pink) 40%, var(--grad-hi, #ff8cc8) 60%, var(--color-pink-deep) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Light-blue surfaces: "white" utilities inside render as dark ink so text stays readable. */
+@utility tone-light {
+  --color-white: var(--color-ink);
+  --color-pink-soft: var(--color-pink-deep);
+  --grad-hi: var(--color-pink);
+}
+
+/* Restores real white inside a tone-light area (pink buttons, dark product images). */
+@utility tone-dark {
+  --color-white: #fff;
+  --color-pink-soft: #ff8cc8;
+  --grad-hi: #ff8cc8;
+}
+
+/* Hot pink and white candy stripes, from the brand reference. */
+@utility candy-stripes {
+  background-image: repeating-linear-gradient(90deg, var(--color-pink) 0 16px, #fff 16px 32px);
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@utility grain {
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.07;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+
+/* ---------- Page transitions (React <ViewTransition>) ---------- */
+
+::view-transition {
+  pointer-events: none;
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+}
+::view-transition-old(.page-exit) {
+  animation: 160ms ease-in both vt-fade reverse, 160ms ease-in both vt-sink;
+}
+::view-transition-new(.page-enter) {
+  animation:
+    240ms cubic-bezier(0.22, 1, 0.36, 1) 110ms both vt-fade,
+    420ms cubic-bezier(0.22, 1, 0.36, 1) both vt-rise;
+}
+/* The header stays put while pages swap underneath it. */
+::view-transition-group(site-header) {
+  animation: none;
+  z-index: 100;
+}
+::view-transition-old(site-header) {
+  display: none;
+}
+::view-transition-new(site-header) {
+  animation: none;
+}
+/* Product artwork morphs from the shop grid into its page. */
+::view-transition-group(.morph) {
+  animation-duration: 420ms;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes vt-fade {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes vt-rise {
+  from {
+    transform: translateY(18px);
+  }
+}
+@keyframes vt-sink {
+  to {
+    transform: translateY(-10px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(*),
+  ::view-transition-new(*),
+  ::view-transition-group(*) {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
