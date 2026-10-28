@@ -80,7 +80,7 @@ export const legalPages: LegalPage[] = [
         heading: "Your rights",
         body: [
           "You can ask to see the data we hold about you, correct it, delete it, or object to how we use it. You can also withdraw any consent you gave us.",
-          "Just message us on WhatsApp. If you are not happy with our answer, you can complain to the Office of the Data Protection Commissioner (odpc.go.ke).",
+          "Message us on WhatsApp or email mysweetkittyke@gmail.com. If you are not happy with our answer, you can complain to the Office of the Data Protection Commissioner (odpc.go.ke).",
         ],
       },
       {

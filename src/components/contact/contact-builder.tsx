@@ -130,10 +130,11 @@ export function ContactBuilder() {
             <ul className="border-t border-ink/10">
               {[
                 { label: "WhatsApp", value: "Chat with us", href: whatsappLink("Hi Sweet Kitty!") },
+                { label: "Email", value: site.email, href: `mailto:${site.email}` },
                 { label: "Instagram", value: "Follow the glow", href: site.socials.instagram },
                 { label: "TikTok", value: "Watch more reels", href: site.socials.tiktok },
               ]
-                .filter((c) => c.href.startsWith("http"))
+                .filter((c) => c.href !== "#")
                 .map((c) => (
                 <li key={c.label}>
                   <a href={c.href} target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between border-b border-ink/10 py-3">

@@ -2,7 +2,7 @@
 // new clip is one entry here (later: one upload in the admin dashboard).
 // Drop new files in /public/videos and add a poster JPG next to each one.
 
-export type VideoTag = "Before" | "After" | "Ritual" | "Story" | "Glow" | "Kit";
+export type VideoTag = "Before" | "After" | "Ritual" | "Story" | "Glow" | "Kit" | "Drama";
 
 export type Video = {
   id: string;
@@ -37,6 +37,15 @@ export const videos: Video[] = [
   { id: "bath", ...clip("magic-bath"), tag: "Kit", title: "Magic Bath", caption: "A rose soak for body and soul." },
   { id: "tight", ...clip("tight-box"), tag: "Kit", title: "Sweet Kitty Tight", caption: "Feel snug, youthful and unstoppable." },
 ];
+
+// Talking mini-dramas (~20 s, with voices and burned-in captions). Kept last so the
+// story playlist above stays in order; the stories gallery shows them under "Drama".
+export const dramas: Video[] = [
+  { id: "drama-intervention", ...clip("drama-intervention"), tag: "Drama", title: "The Intervention", caption: "Kitty hasn't left the sofa. Zuri isn't having it." },
+  { id: "drama-who-is-she", ...clip("drama-who-is-she"), tag: "Drama", title: "Who Is She?", caption: "Seven days later, Imani can't believe her eyes." },
+  { id: "drama-mum", ...clip("drama-mum"), tag: "Drama", title: "Mum, Don't Open That!", caption: "A plain brown parcel. Mama has questions." },
+];
+videos.push(...dramas);
 
 // Clips made for one spot only, kept out of the reel gallery and story playlists:
 // the before/after slider pair (same framing) and the wide banners.

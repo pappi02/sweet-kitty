@@ -30,6 +30,7 @@ const columns = [
       { href: "/faq", label: "FAQ" },
       { href: "/contact", label: "Contact" },
       { href: whatsappLink("Hi Sweet Kitty!"), label: "WhatsApp", external: true },
+      { href: `mailto:${site.email}`, label: "Email us", external: true },
     ],
   },
 ];

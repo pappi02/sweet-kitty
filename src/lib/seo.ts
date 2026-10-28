@@ -25,6 +25,7 @@ export function organizationLd() {
       "@type": "ContactPoint",
       contactType: "customer service",
       telephone: `+${site.whatsapp}`,
+      email: site.email,
       areaServed: "KE",
       availableLanguage: ["English", "Swahili"],
     },

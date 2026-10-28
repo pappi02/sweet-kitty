@@ -14,7 +14,7 @@ import { Marquee } from "@/components/ui/marquee";
 import { ArrowLink, SectionHeading } from "@/components/ui/section-heading";
 import { CinemaVideo } from "@/components/video/cinema-video";
 import { ReelRail } from "@/components/video/reel-rail";
-import { getVideo, videos } from "@/lib/videos";
+import { dramas, getVideo, videos } from "@/lib/videos";
 
 export const metadata: Metadata = { alternates: { canonical: "/" } };
 
@@ -65,6 +65,13 @@ export default function Home() {
         ]}
       />
       <Ritual />
+      <section className="py-12 lg:py-16">
+        <ReelRail
+          list={dramas}
+          heading={<SectionHeading eyebrow="Kitty dramas · tap for sound" title="Girl, you" accent="need to see this." />}
+          aside={<ArrowLink href="/stories">All stories & videos</ArrowLink>}
+        />
+      </section>
       <WhyUs />
       <section className="py-12 lg:py-16">
         <ReelRail

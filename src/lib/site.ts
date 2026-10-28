@@ -3,8 +3,9 @@ export const site = {
   name: "My Sweet Kitty",
   domain: "mysweetkitty.com",
   tagline: "Embrace your feminine power",
-  // TODO: replace with the real WhatsApp business number (country code, no +)
-  whatsapp: "254700000000",
+  // WhatsApp number: country code, no + or spaces
+  whatsapp: "254719506995",
+  email: "mysweetkittyke@gmail.com",
   // Shown in the "only X kits left" bar. Keep this matched to real stock.
   kitsLeft: 5,
   kitsBatch: 20,

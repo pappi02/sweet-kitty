@@ -248,3 +248,17 @@ The instance is stopped between sessions, so waiting for your approvals costs no
   product shots close and slow, and overlay the real photo in the edit if a label must be readable.
 - **Instance availability:** if someone else rents the GPU while it's stopped, we wait or rebuild on another
   machine (about 15 minutes).
+
+## 8. Talking dramas (batch 2) — done 2026-10-28
+
+Three ~20 s mini-dramas with AI voices (Kokoro) and lip-sync (Wan 2.2 S2V), captions burned in,
+end card, title thumbnail embedded as cover art + used as poster. No hoodies.
+
+| File | Title | Cast |
+|---|---|---|
+| drama-intervention.mp4 | The Intervention | Kitty (pyjamas) + Zuri (bestie) |
+| drama-who-is-she.mp4 | Who Is She? | Kitty (after look) + Imani (frenemy) |
+| drama-mum.mp4 | Mum, Don't Open That! | Kitty (robe) + Mama Kitty |
+
+Script/shots: `~/Videos/wan22/dramas.json`; runners `scripts/dr.py`, `tts.py`, `rife.py`, `assemble.py`.
+On the site: `dramas` in `src/lib/videos.ts` ("Drama" tag), homepage "Kitty dramas" rail.
