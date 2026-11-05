@@ -12,8 +12,8 @@ type Step = { tag: string; title: string; body: string; scene: (play: boolean) =
 const steps: Step[] = [
   {
     tag: "Before",
-    title: "Tired. Moody. Invisible.",
-    body: "Her friends stopped calling. He stopped looking. Even the mirror felt cold. Something was missing, and she couldn't name it.",
+    title: "Busy. Tired. Running on empty.",
+    body: "She was looking after everyone but herself. Something was missing, and she knew it.",
     scene: (play) => <VideoScene play={play} src="/videos/kitty-before.mp4" mood="before" label="Not feeling like herself…" />,
   },
   {
@@ -48,11 +48,11 @@ function Heading() {
       <Reveal>
         <Eyebrow>Her story</Eyebrow>
       </Reveal>
-      <h2 className="mt-3 font-display text-[clamp(1.85rem,6.4vw,2.85rem)] leading-[1.04]">
-        <WordReveal text="From invisible to" /> <span className="text-gradient-pink italic">unforgettable.</span>
+      <h2 className="mt-3 font-display text-[clamp(2.1rem,6.4vw,3.6rem)] leading-[1.02]">
+        <WordReveal text="From running on empty to" /> <span className="text-accent italic">unforgettable.</span>
       </h2>
       <Reveal delay={0.1}>
-        <p className="mx-auto mt-3 max-w-md text-sm sm:text-[15px] text-ink/72">Every Sweet Kitty girl has a before. This is what happens after.</p>
+        <p className="mx-auto mt-3 max-w-md text-base text-ink/72">Every Sweet Kitty girl has a before. This is what happens after.</p>
       </Reveal>
     </div>
   );
@@ -65,13 +65,13 @@ function MobileStep({ step, index }: { step: Step; index: number }) {
   const inView = useInView(ref, { margin: "-20% 0px -20% 0px" });
   return (
     <div className="relative pl-12">
-      <span className="absolute left-0 top-0 grid size-8 place-items-center rounded-full bg-white font-display text-sm italic text-pink-deep shadow-md ring-1 ring-pink/20">
+      <span className="absolute left-0 top-0 grid size-8 place-items-center rounded-full bg-white font-display text-sm italic text-accent shadow-md ring-1 ring-accent/20">
         {index + 1}
       </span>
       <Reveal>
-        <span className={cn("text-[11px] font-bold uppercase tracking-[0.25em]", index === steps.length - 1 ? "text-pink" : "text-ink/60")}>{step.tag}</span>
+        <span className={cn("text-xs font-bold uppercase tracking-[0.16em]", index === steps.length - 1 ? "text-accent" : "text-ink/60")}>{step.tag}</span>
         <h3 className="mt-1.5 font-display text-2xl leading-tight">{step.title}</h3>
-        <p className="mt-3 text-sm sm:text-[15px] leading-relaxed text-ink/78">{step.body}</p>
+        <p className="mt-3 text-base leading-relaxed text-ink/78">{step.body}</p>
       </Reveal>
       <div ref={ref} className="mt-6">
         <PhoneFrame className="w-[min(200px,100%)]">{step.scene(inView)}</PhoneFrame>
@@ -86,7 +86,7 @@ function MobileStory() {
   return (
     <div ref={listRef} className="relative mt-8 space-y-10 lg:hidden">
       <div className="absolute bottom-0 left-[17px] top-0 w-px bg-ink/10" />
-      <motion.div style={{ scaleY: scrollYProgress }} className="absolute bottom-0 left-[17px] top-0 w-px origin-top bg-linear-to-b from-pink-soft via-pink to-pink-deep" />
+      <motion.div style={{ scaleY: scrollYProgress }} className="absolute bottom-0 left-[17px] top-0 w-px origin-top bg-linear-to-b from-rose via-burgundy to-burgundy" />
       {steps.map((s, i) => (
         <MobileStep key={s.tag} step={s} index={i} />
       ))}
@@ -102,11 +102,11 @@ function StepRow({ step, index, progress, active, onSelect }: { step: Step; inde
   return (
     <button onClick={onSelect} className="group block w-full py-2 text-left">
       <span className="relative block h-[2px] overflow-hidden rounded-full bg-ink/10">
-        <motion.span style={{ scaleX: fill }} className="absolute inset-0 origin-left bg-pink" />
+        <motion.span style={{ scaleX: fill }} className="absolute inset-0 origin-left bg-burgundy" />
       </span>
       <span className="mt-3 flex items-baseline gap-2 whitespace-nowrap">
-        <span className={cn("font-display text-sm italic transition-colors duration-200", active ? "text-pink" : "text-ink/50")}>0{index + 1}</span>
-        <span className={cn("text-[10px] font-bold uppercase tracking-[0.16em] transition-colors duration-200", active ? "text-ink" : "text-ink/55 group-hover:text-ink/75")}>
+        <span className={cn("font-display text-sm italic transition-colors duration-200", active ? "text-accent" : "text-ink/50")}>0{index + 1}</span>
+        <span className={cn("text-xs font-bold uppercase tracking-[0.16em] transition-colors duration-200", active ? "text-ink" : "text-ink/55 group-hover:text-ink/75")}>
           {step.tag}
         </span>
       </span>
@@ -135,7 +135,7 @@ function DesktopStory() {
   };
 
   return (
-    <div ref={ref} className="relative hidden lg:block" style={{ height: `${n * 42 + 80}vh` }}>
+    <div ref={ref} className="relative hidden lg:block" style={{ height: `${n * 30 + 60}vh` }}>
       <div className="sticky top-0 flex h-svh items-center pt-16">
         <div className="mx-auto grid w-full max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-20 px-8">
           <div className="max-w-xl">
@@ -148,7 +148,7 @@ function DesktopStory() {
                   exit={{ opacity: 0, y: -12 }}
                   transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
                 >
-                  <span className={cn("text-[11px] font-bold uppercase tracking-[0.25em]", active === n - 1 ? "text-pink" : "text-ink/60")}>
+                  <span className={cn("text-xs font-bold uppercase tracking-[0.16em]", active === n - 1 ? "text-accent" : "text-ink/60")}>
                     Chapter {active + 1} · {steps[active].tag}
                   </span>
                   <h3 className="mt-3 font-display text-[2.5rem] leading-[1.04]">{steps[active].title}</h3>

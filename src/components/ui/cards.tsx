@@ -5,7 +5,7 @@ import type { PointerEvent, ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
 /** Card with a pink radial glow that follows the pointer (Magic UI / Aceternity "card spotlight"). */
-export function SpotlightCard({ children, className, glow = "rgba(255,0,144,0.22)" }: { children: ReactNode; className?: string; glow?: string }) {
+export function SpotlightCard({ children, className, glow = "rgba(115,6,44,0.22)" }: { children: ReactNode; className?: string; glow?: string }) {
   const x = useMotionValue(-400);
   const y = useMotionValue(-400);
   const bg = useMotionTemplate`radial-gradient(420px circle at ${x}px ${y}px, ${glow}, transparent 70%)`;

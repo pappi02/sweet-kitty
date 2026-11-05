@@ -26,17 +26,25 @@ export const videos: Video[] = [
   { id: "delivery", ...clip("kitty-delivery"), tag: "Story", title: "Discreetly delivered", caption: "A plain parcel. Nobody needs to know." },
   { id: "reveal", ...clip("kitty-reveal"), tag: "Story", title: "The moment she opened it", caption: "Pink tissue, a gift bag, and a feeling." },
   { id: "crown", ...clip("kitty-crown"), tag: "Story", title: "Her crown is back", caption: "The 7-Day Kit, and the start of a new her." },
-  { id: "morning", ...clip("kitty-juice"), tag: "Ritual", title: "The morning ritual", caption: "Magic Juice first, then the Magic Bath." },
+  { id: "morning", ...clip("kitty-juice"), tag: "Ritual", title: "The morning ritual", caption: "Magic Kitty Juice first, then the Love Bath." },
   { id: "reset", ...clip("kitty-bath"), tag: "Ritual", title: "Day one: reset", caption: "Let go of everything heavy." },
   { id: "glow", ...clip("kitty-glow"), tag: "Glow", title: "Day three glow", caption: "Softer skin, brighter eyes. People notice." },
   { id: "after", ...clip("kitty-after"), tag: "After", title: "Main-character energy", caption: "Seven days later, she's glowing." },
   { id: "holiday", ...clip("kitty-booked"), tag: "After", title: "Booked and glowing", caption: "Business class, sunglasses on." },
   { id: "call", ...clip("kitty-call"), tag: "After", title: "“You still don't have it?”", caption: "Now she's the one telling her bestie." },
   { id: "kit", ...clip("kit-reveal"), tag: "Kit", title: "The 7-Day Kit", caption: "Everything she needs, in one pink bag." },
-  { id: "juice", ...clip("magic-juice"), tag: "Kit", title: "Magic Juice", caption: "Her morning elixir." },
-  { id: "bath", ...clip("magic-bath"), tag: "Kit", title: "Magic Bath", caption: "A rose soak for body and soul." },
+  { id: "juice", ...clip("magic-juice"), tag: "Kit", title: "Magic Kitty Juice", caption: "Her morning elixir." },
+  { id: "bath", ...clip("magic-bath"), tag: "Kit", title: "Sweet Kitty Love Bath", caption: "A rose soak for body and soul." },
   { id: "tight", ...clip("tight-box"), tag: "Kit", title: "Sweet Kitty Tight", caption: "Feel snug, youthful and unstoppable." },
 ];
+
+// 10-second product films: real-looking hands, no mascot, no sound.
+export const films: Video[] = [
+  { id: "film-scrub", ...clip("film-scrub"), tag: "Ritual", title: "Magic Kitty Body Scrub", caption: "Soft, polished skin, one slow stroke at a time." },
+  { id: "film-oil", ...clip("film-oil"), tag: "Ritual", title: "Magic Kitty Oil", caption: "A silky glow, wherever you need it." },
+  { id: "film-bath", ...clip("film-bath"), tag: "Ritual", title: "Sweet Kitty Love Bath", caption: "A few quiet minutes that are only yours." },
+];
+videos.push(...films);
 
 // Talking mini-dramas (~20 s, with voices and burned-in captions). Kept last so the
 // story playlist above stays in order; the stories gallery shows them under "Drama".

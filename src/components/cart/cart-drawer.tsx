@@ -8,7 +8,7 @@ import { formatKES } from "@/lib/utils";
 import { Star4 } from "../ui/decor";
 import { ArrowIcon, CloseIcon, MinusIcon, PlusIcon, WhatsAppIcon } from "../ui/icons";
 import { ProductVisual } from "../ui/product-visual";
-import { ShimmerButton } from "../ui/shimmer-button";
+import { Button } from "../ui/button";
 import { useCart } from "./cart-provider";
 
 export function CartDrawer() {
@@ -51,7 +51,7 @@ export function CartDrawer() {
           >
             <header className="flex items-center justify-between px-6 pb-4 pt-6">
               <p className="font-display text-3xl">
-                Your bag <span className="align-top text-sm tabular-nums text-pink">({count})</span>
+                Your bag <span className="align-top text-sm tabular-nums text-accent">({count})</span>
               </p>
               <button onClick={() => setOpen(false)} className="grid size-10 place-items-center rounded-full ring-1 ring-ink/10 transition hover:bg-ink hover:text-white" aria-label="Close">
                 <CloseIcon className="size-5" />
@@ -63,9 +63,9 @@ export function CartDrawer() {
                 <div className="flex h-full flex-col items-center justify-center text-center">
                   <p className="font-display text-3xl italic">Nothing here… yet.</p>
                   <p className="mt-2 max-w-[16rem] text-sm text-ink/72">Your glow-up is one tap away. Most women start with the 7-Day Kit.</p>
-                  <ShimmerButton onClick={() => add(kit.id)} className="mt-6">
+                  <Button onClick={() => add(kit.id)} className="mt-6">
                     Add the 7-Day Kit
-                  </ShimmerButton>
+                  </Button>
                 </div>
               ) : (
                 <ul className="divide-y divide-ink/10 border-y border-ink/10">
@@ -80,7 +80,7 @@ export function CartDrawer() {
                         transition={{ duration: 0.25 }}
                         className="flex gap-4 py-4"
                       >
-                        <ProductVisual product={product} label={false} className="h-24 w-20 shrink-0 rounded-xl" />
+                        <ProductVisual product={product} className="h-24 w-20 shrink-0 rounded-sm" />
                         <div className="flex min-w-0 flex-1 flex-col">
                           <p className="font-display text-lg leading-tight">{product.name}</p>
                           <p className="mt-0.5 text-xs text-ink/70">{formatKES(product.price!)}</p>
@@ -96,7 +96,7 @@ export function CartDrawer() {
                             </div>
                             <div className="text-right">
                               <p className="text-sm font-semibold tabular-nums">{formatKES(lineTotal)}</p>
-                              <button onClick={() => remove(product.id)} className="text-[11px] text-ink/60 underline-offset-2 transition hover:text-pink hover:underline">
+                              <button onClick={() => remove(product.id)} className="text-xs text-ink/60 underline-offset-2 transition hover:text-accent hover:underline">
                                 Remove
                               </button>
                             </div>
@@ -109,14 +109,14 @@ export function CartDrawer() {
               )}
 
               {items.length > 0 && !hasKit && (
-                <button onClick={() => add(kit.id)} className="group mt-3 flex w-full items-center justify-between gap-4 rounded-2xl bg-ink p-5 text-left text-white">
+                <button onClick={() => add(kit.id)} className="group mt-3 flex w-full items-center justify-between gap-4 rounded-sm bg-ink p-5 text-left text-white">
                   <span>
-                    <span className="block text-[10px] font-bold uppercase tracking-[0.22em] text-pink-soft">Upgrade your glow</span>
+                    <span className="block text-xs font-bold uppercase tracking-[0.16em] text-accent-soft">Upgrade your glow</span>
                     <span className="mt-1 block text-sm text-white/75">
-                      The full collection in the <span className="text-white">7-Day Kit</span>, {formatKES(kit.price!)}.
+                      Four signature rituals in the <span className="text-white">7-Day Kit</span>, {formatKES(kit.price!)}.
                     </span>
                   </span>
-                  <ArrowIcon className="w-7 shrink-0 text-pink transition-transform group-hover:translate-x-1" />
+                  <ArrowIcon className="w-7 shrink-0 text-accent transition-transform group-hover:translate-x-1" />
                 </button>
               )}
             </div>
@@ -124,14 +124,14 @@ export function CartDrawer() {
             {items.length > 0 && (
               <footer className="space-y-4 px-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-5">
                 <div className="flex items-baseline justify-between">
-                  <span className="text-xs font-semibold uppercase tracking-[0.2em] text-ink/70">Subtotal</span>
+                  <span className="text-xs font-semibold uppercase tracking-[0.16em] text-ink/70">Subtotal</span>
                   <span className="font-display text-3xl tabular-nums">{formatKES(subtotal)}</span>
                 </div>
-                <ShimmerButton href={whatsappLink(message)} target="_blank" rel="noopener noreferrer" size="lg" className="w-full">
+                <Button href={whatsappLink(message)} target="_blank" rel="noopener noreferrer" size="lg" className="w-full">
                   <WhatsAppIcon className="size-4" /> Checkout on WhatsApp
-                </ShimmerButton>
-                <p className="flex items-center justify-center gap-3 text-[11px] uppercase tracking-[0.18em] text-ink/65">
-                  Discreet packaging <Star4 className="size-2 text-pink" /> Fast delivery
+                </Button>
+                <p className="flex items-center justify-center gap-3 text-xs uppercase tracking-[0.16em] text-ink/65">
+                  Discreet packaging <Star4 className="size-2 text-accent" /> Order on WhatsApp
                 </p>
               </footer>
             )}

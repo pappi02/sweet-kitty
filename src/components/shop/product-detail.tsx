@@ -9,12 +9,12 @@ import { whatsappLink } from "@/lib/site";
 import { getVideo, type Video } from "@/lib/videos";
 import { cn, formatKES } from "@/lib/utils";
 import { useCart } from "../cart/cart-provider";
-import { Sparkles, Star4 } from "../ui/decor";
+import { Star4 } from "../ui/decor";
 import { BagIcon, CheckIcon, MinusIcon, PlayIcon, PlusIcon, WhatsAppIcon } from "../ui/icons";
 import { ProductVisual } from "../ui/product-visual";
 import { ease, Reveal, stagger } from "../ui/reveal";
 import { ArrowLink, SectionHeading } from "../ui/section-heading";
-import { ShimmerButton } from "../ui/shimmer-button";
+import { Button } from "../ui/button";
 import { AmbientVideo } from "../video/ambient-video";
 import { useVideoLightbox } from "../video/video-lightbox";
 import { morphName, ProductTile } from "./product-tile";
@@ -23,18 +23,18 @@ type Media = { kind: "art" } | { kind: "video"; video: Video };
 
 /* ---------- Media: artwork + videos with thumbnails ---------- */
 
-function Gallery({ product, index }: { product: Product; index: number }) {
+function Gallery({ product }: { product: Product }) {
   const { open } = useVideoLightbox();
-  const media: Media[] = [{ kind: "art" }, { kind: "video", video: getVideo("morning") }, { kind: "video", video: getVideo("glow") }];
+  const media: Media[] = [{ kind: "art" }, ...(product.videos ?? []).map((id): Media => ({ kind: "video", video: getVideo(id) }))];
   const [active, setActive] = useState(0);
   const current = media[active];
   const videoList = media.flatMap((m) => (m.kind === "video" ? [m.video] : []));
 
   return (
     <div className="lg:sticky lg:top-24">
-      <div className="relative mx-auto aspect-4/5 max-w-[360px] overflow-hidden rounded-[1.5rem] bg-ink lg:max-w-none">
+      <div className="relative mx-auto aspect-4/5 max-w-[360px] overflow-hidden rounded-sm bg-ink lg:max-w-none">
         <ViewTransition name={morphName(product)} share="morph" default="none">
-          <ProductVisual product={product} seed={index + 5} className="absolute inset-0" />
+          <ProductVisual product={product} className="absolute inset-0" />
         </ViewTransition>
         <AnimatePresence>
           {current.kind === "video" && (
@@ -52,12 +52,12 @@ function Gallery({ product, index }: { product: Product; index: number }) {
                 onClick={() => open(videoList, videoList.indexOf(current.video))}
                 className="group absolute inset-x-0 bottom-0 flex items-center gap-2.5 p-4 text-left text-white"
               >
-                <span className="grid size-10 shrink-0 place-items-center rounded-full bg-white text-pink-deep transition-transform duration-300 group-hover:scale-110">
+                <span className="grid size-10 shrink-0 place-items-center rounded-full bg-white text-accent transition-transform duration-300 group-hover:scale-110">
                   <PlayIcon className="ml-0.5 size-5" />
                 </span>
                 <span>
                   <span className="block font-display text-lg italic leading-tight">{current.video.title}</span>
-                  <span className="text-xs text-white/75">Watch with sound</span>
+                  <span className="text-xs text-white/75">Watch full screen</span>
                 </span>
               </button>
             </motion.div>
@@ -72,12 +72,12 @@ function Gallery({ product, index }: { product: Product; index: number }) {
             onClick={() => setActive(i)}
             className={cn(
               "relative h-14 w-11 overflow-hidden rounded-lg transition-all duration-200",
-              active === i ? "ring-2 ring-pink ring-offset-2 ring-offset-cream" : "opacity-70 ring-1 ring-ink/10 hover:opacity-100",
+              active === i ? "ring-2 ring-accent ring-offset-2 ring-offset-cream" : "opacity-70 ring-1 ring-ink/10 hover:opacity-100",
             )}
             aria-label={m.kind === "art" ? "Show product" : `Play ${m.video.title}`}
           >
             {m.kind === "art" ? (
-              <ProductVisual product={product} seed={index + 5} label={false} className="h-full w-full" />
+              <ProductVisual product={product} className="h-full w-full" />
             ) : (
               <>
                 <Image src={m.video.poster} alt="" fill sizes="64px" className="object-cover" />
@@ -88,7 +88,7 @@ function Gallery({ product, index }: { product: Product; index: number }) {
             )}
           </button>
         ))}
-        <p className="ml-auto self-end text-[10px] font-bold uppercase tracking-[0.22em] text-ink/50">
+        <p className="ml-auto self-end text-xs font-bold uppercase tracking-[0.16em] text-ink/50">
           {String(active + 1).padStart(2, "0")} / {String(media.length).padStart(2, "0")}
         </p>
       </div>
@@ -106,7 +106,7 @@ function Details({ product }: { product: Product }) {
         <ol className="space-y-2">
           {product.howToUse.map((h, i) => (
             <li key={h} className="flex gap-3">
-              <span className="font-display italic text-pink">{i + 1}.</span>
+              <span className="font-display italic text-accent">{i + 1}.</span>
               {h}
             </li>
           ))}
@@ -126,7 +126,7 @@ function Details({ product }: { product: Product }) {
           <div key={r.title} className="border-b border-ink/10">
             <button onClick={() => setOpen(isOpen ? null : i)} className="group flex w-full items-center justify-between py-3.5 text-left" aria-expanded={isOpen}>
               <span className="font-display text-lg">{r.title}</span>
-              <motion.span animate={{ rotate: isOpen ? 45 : 0 }} transition={{ duration: 0.2 }} className="grid size-8 place-items-center rounded-full ring-1 ring-ink/15 group-hover:ring-pink">
+              <motion.span animate={{ rotate: isOpen ? 45 : 0 }} transition={{ duration: 0.2 }} className="grid size-8 place-items-center rounded-full ring-1 ring-ink/15 group-hover:ring-accent">
                 <PlusIcon className="size-4" />
               </motion.span>
             </button>
@@ -165,26 +165,27 @@ export function ProductDetail({ product }: { product: Product }) {
   const category = categories.find((c) => c.id === product.category)?.label;
   const related = singles.filter((p) => p.id !== product.id).slice(0, 3);
   const askLink = whatsappLink(`Hi Sweet Kitty! I'm interested in the ${product.name}.`);
+  const inKit = kit.includes!.includes(product.name);
 
   return (
     <>
       <section className="pb-10 pt-24 lg:pb-14 lg:pt-28">
         <div className="mx-auto max-w-6xl px-5 lg:px-8">
-          <nav aria-label="Breadcrumb" className="mb-6 flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.25em] text-ink/55">
-            <Link href="/" className="hover:text-pink-deep">Home</Link>
+          <nav aria-label="Breadcrumb" className="mb-6 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-ink/55">
+            <Link href="/" className="hover:text-accent">Home</Link>
             <span aria-hidden>/</span>
-            <Link href="/shop" transitionTypes={["product"]} className="hover:text-pink-deep">Shop</Link>
+            <Link href="/shop" transitionTypes={["product"]} className="hover:text-accent">Shop</Link>
             <span aria-hidden>/</span>
             <span className="text-ink">{product.shortName}</span>
           </nav>
 
           <div className="grid gap-7 lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1fr)] lg:gap-10">
-            <Gallery product={product} index={index} />
+            <Gallery product={product} />
 
             <div>
               <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.45, ease }}>
-                <p className="flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.25em] text-ink/60">
-                  <span className="font-display text-base normal-case italic tracking-normal text-pink">N°{String(index + 1).padStart(2, "0")}</span>
+                <p className="flex items-center gap-3 text-xs font-bold uppercase tracking-[0.16em] text-ink/60">
+                  <span className="font-display text-base normal-case italic tracking-normal text-accent">N°{String(index + 1).padStart(2, "0")}</span>
                   {category}
                 </p>
                 <h1 className="mt-4 font-display text-[clamp(2.1rem,5.5vw,3.4rem)] leading-[0.98]">{product.name}</h1>
@@ -203,43 +204,43 @@ export function ProductDetail({ product }: { product: Product }) {
                   {product.price != null ? (
                     <p className="font-display text-3xl tabular-nums">{formatKES(product.price * qty)}</p>
                   ) : (
-                    <p className="text-xs font-bold uppercase tracking-[0.22em] text-pink-deep">Price coming soon</p>
+                    <p className="text-xs font-bold uppercase tracking-[0.16em] text-accent">Price coming soon</p>
                   )}
-                  {product.size && <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-ink/60">{product.size}</p>}
+                  {product.size && <p className="text-xs font-bold uppercase tracking-[0.16em] text-ink/60">{product.size}</p>}
                 </div>
 
                 {product.price != null ? (
                   <div className="mt-3 flex gap-3">
                     <div className="flex h-11 items-center rounded-full ring-1 ring-ink/15 sm:h-12">
-                      <button onClick={() => setQty((q) => Math.max(1, q - 1))} className="grid size-11 place-items-center rounded-full transition hover:text-pink-deep sm:size-12" aria-label="One less">
+                      <button onClick={() => setQty((q) => Math.max(1, q - 1))} className="grid size-11 place-items-center rounded-full transition hover:text-accent sm:size-12" aria-label="One less">
                         <MinusIcon className="size-4" />
                       </button>
                       <span className="w-5 text-center font-display text-base tabular-nums" aria-live="polite">
                         {qty}
                       </span>
-                      <button onClick={() => setQty((q) => Math.min(9, q + 1))} className="grid size-11 place-items-center rounded-full transition hover:text-pink-deep sm:size-12" aria-label="One more">
+                      <button onClick={() => setQty((q) => Math.min(9, q + 1))} className="grid size-11 place-items-center rounded-full transition hover:text-accent sm:size-12" aria-label="One more">
                         <PlusIcon className="size-4" />
                       </button>
                     </div>
-                    <ShimmerButton size="lg" onClick={() => add(product.id, qty)} className="flex-1">
+                    <Button size="lg" onClick={() => add(product.id, qty)} className="flex-1">
                       <BagIcon className="size-4" /> Add to bag
-                    </ShimmerButton>
+                    </Button>
                   </div>
                 ) : (
                   <div className="mt-4 flex gap-2.5">
-                    <ShimmerButton size="lg" href={askLink} target="_blank" rel="noopener noreferrer" className="flex-1">
+                    <Button size="lg" href={askLink} target="_blank" rel="noopener noreferrer" className="flex-1">
                       <WhatsAppIcon className="size-4" /> Ask about price
-                    </ShimmerButton>
-                    <ShimmerButton size="lg" variant="dark" href="/the-kit" className="flex-1">
+                    </Button>
+                    <Button size="lg" variant="dark" href="/the-kit" className="flex-1">
                       In the 7-Day Kit
-                    </ShimmerButton>
+                    </Button>
                   </div>
                 )}
 
-                <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-1.5 text-[11px] font-medium text-ink/70">
+                <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-1.5 text-xs font-medium text-ink/70">
                   {["Discreet packaging", "Natural, secret recipe", "Order on WhatsApp"].map((t) => (
                     <li key={t} className="inline-flex items-center gap-2">
-                      <Star4 className="size-2.5 text-pink" />
+                      <Star4 className="size-2.5 text-accent" />
                       {t}
                     </li>
                   ))}
@@ -247,11 +248,11 @@ export function ProductDetail({ product }: { product: Product }) {
               </motion.div>
 
               <div className="mt-6">
-                <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-ink/60">What it does</p>
+                <p className="text-xs font-bold uppercase tracking-[0.16em] text-ink/60">What it does</p>
                 <motion.ul initial="hidden" whileInView="show" viewport={stagger.viewport} variants={stagger.parent(0, 0.05)} className="mt-4 grid gap-x-6 sm:grid-cols-2">
                   {product.benefits.map((b) => (
                     <motion.li key={b} variants={stagger.child} className="flex items-start gap-2.5 border-b border-ink/10 py-2.5 text-sm">
-                      <CheckIcon className="mt-0.5 size-4 shrink-0 text-pink" />
+                      <CheckIcon className="mt-0.5 size-4 shrink-0 text-accent" />
                       {b}
                     </motion.li>
                   ))}
@@ -268,25 +269,24 @@ export function ProductDetail({ product }: { product: Product }) {
 
       {/* Better together */}
       <section className="px-3 sm:px-5">
-        <Reveal className="grain tone-light relative isolate mx-auto grid max-w-6xl items-center gap-8 overflow-hidden rounded-4xl bg-sky px-6 py-9 text-white sm:px-12 lg:grid-cols-[auto_1fr_auto] lg:gap-12 lg:py-10">
-          <Sparkles count={10} seed={77} className="opacity-70" />
-          <div className="relative mx-auto aspect-square w-32 overflow-hidden rounded-2xl shadow-[0_20px_40px_-15px_rgba(214,0,122,0.5)] ring-4 ring-white/70 lg:w-40">
-            <Image src="/products/sweet-kitty-7-day-kit.png" alt="The 7-Day Sweet Kitty Kit" fill sizes="160px" className="object-cover object-[55%_50%]" />
+        <Reveal className="tone-light relative isolate mx-auto grid max-w-6xl items-center gap-8 overflow-hidden rounded-sm bg-rose px-6 py-9 text-white sm:px-12 lg:grid-cols-[auto_1fr_auto] lg:gap-12 lg:py-10">
+          <div className="relative mx-auto aspect-square w-32 overflow-hidden rounded-sm shadow-[0_20px_40px_-15px_rgba(115,6,44,0.5)] ring-4 ring-white/70 lg:w-40">
+            <Image src="/products/sweet-kitty-7-day-kit.jpg" alt="The 7-Day Sweet Kitty Kit" fill sizes="160px" className="object-cover object-[55%_50%]" />
           </div>
           <div className="relative text-center lg:text-left">
-            <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-pink-deep">Better together</p>
+            <p className="text-xs font-bold uppercase tracking-[0.16em] text-accent">Better together</p>
             <h2 className="mt-3 font-display text-[clamp(2rem,5vw,3rem)] leading-[1.02]">
-              Get {product.shortName} <span className="text-gradient-pink italic">in the 7-Day Kit.</span>
+              {inKit ? `Get ${product.shortName}` : "Go further"} <span className="text-accent italic">{inKit ? "in" : "with"} the 7-Day Kit.</span>
             </h2>
-            <p className="mx-auto mt-3 max-w-md text-sm sm:text-[15px] text-white/80 lg:mx-0">All four rituals, one guided week, the biggest transformation. {formatKES(kit.price!)} for everything.</p>
+            <p className="mx-auto mt-3 max-w-md text-base text-white/80 lg:mx-0">Four signature rituals, one guided week, the biggest transformation. {formatKES(kit.price!)} for everything.</p>
           </div>
           <div className="relative flex gap-2.5 lg:flex-col">
-            <ShimmerButton size="lg" onClick={() => add(kit.id)} className="flex-1 lg:flex-none">
+            <Button size="lg" onClick={() => add(kit.id)} className="flex-1 lg:flex-none">
               <BagIcon className="size-4" /> Add the kit
-            </ShimmerButton>
-            <ShimmerButton size="lg" variant="ghost" href="/the-kit" className="flex-1 lg:flex-none">
+            </Button>
+            <Button size="lg" variant="ghost" href="/the-kit" className="flex-1 lg:flex-none">
               What&apos;s inside
-            </ShimmerButton>
+            </Button>
           </div>
         </Reveal>
       </section>
@@ -300,7 +300,7 @@ export function ProductDetail({ product }: { product: Product }) {
           </div>
           <div className="mt-6 grid grid-cols-2 gap-x-3 gap-y-6 sm:gap-x-4 lg:max-w-[52rem] lg:grid-cols-3 lg:gap-x-5">
             {related.map((p, i) => (
-              <ProductTile key={p.id} product={p} index={singles.indexOf(p)} className={i === 2 ? "hidden lg:block" : undefined} />
+              <ProductTile key={p.id} product={p} className={i === 2 ? "hidden lg:block" : undefined} />
             ))}
           </div>
         </div>
@@ -316,19 +316,19 @@ export function ProductDetail({ product }: { product: Product }) {
             transition={{ type: "spring", stiffness: 420, damping: 34 }}
             className="fixed inset-x-3 bottom-[max(0.75rem,env(safe-area-inset-bottom))] z-40 lg:hidden"
           >
-            <div className="tone-light flex items-center gap-2 rounded-full bg-sky-light/90 p-1 pl-4 shadow-[0_20px_50px_-15px_rgba(255,0,144,0.6)] ring-1 ring-white/10 backdrop-blur-xl">
+            <div className="tone-light flex items-center gap-2 rounded-[2px] bg-cream p-1.5 pl-4 shadow-[0_18px_40px_-16px_rgba(51,4,18,0.55)] ring-1 ring-burgundy/20">
               <div className="min-w-0 flex-1">
-                <p className="truncate text-[10px] font-bold uppercase tracking-[0.2em] text-pink-soft">{product.shortName}</p>
+                <p className="truncate text-xs font-bold uppercase tracking-[0.16em] text-accent-soft">{product.shortName}</p>
                 <p className="font-display text-base text-white">{product.price != null ? formatKES(product.price) : "Price soon"}</p>
               </div>
               {product.price != null ? (
-                <ShimmerButton onClick={() => add(product.id, qty)} className="h-10 px-4">
+                <Button onClick={() => add(product.id, qty)} className="h-11 px-4">
                   Add to bag
-                </ShimmerButton>
+                </Button>
               ) : (
-                <ShimmerButton href={askLink} target="_blank" rel="noopener noreferrer" className="h-10 px-4">
+                <Button href={askLink} target="_blank" rel="noopener noreferrer" className="h-11 px-4">
                   Ask us
-                </ShimmerButton>
+                </Button>
               )}
             </div>
           </motion.div>

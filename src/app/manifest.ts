@@ -8,8 +8,8 @@ export default function manifest(): MetadataRoute.Manifest {
     description: "Natural, secret-recipe feminine rituals. The 7-Day Sweet Kitty Kit.",
     start_url: "/",
     display: "standalone",
-    background_color: "#ffffff",
-    theme_color: "#ff0090",
+    background_color: "#FDCDE7",
+    theme_color: "#73062C",
     lang: "en-KE",
     icons: [
       { src: "/icons/icon-192.png", sizes: "192x192", type: "image/png", purpose: "any" },

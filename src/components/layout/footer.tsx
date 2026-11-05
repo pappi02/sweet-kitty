@@ -3,9 +3,7 @@ import Link from "next/link";
 import { healthNote, legalPages } from "@/lib/legal";
 import { singles } from "@/lib/products";
 import { site, whatsappLink } from "@/lib/site";
-import { Star4 } from "../ui/decor";
 import { ArrowIcon } from "../ui/icons";
-import { Marquee } from "../ui/marquee";
 
 const columns = [
   {
@@ -44,37 +42,28 @@ const socials = [
 
 export function Footer() {
   return (
-    <footer className="tone-light relative overflow-hidden bg-sky-light pb-24 pt-10 text-white lg:pb-8">
-      <div aria-hidden className="candy-stripes absolute inset-x-0 top-0 h-2" />
-      <Marquee duration={40} fade={false} className="border-y border-white/10 py-3.5">
-        {["Confidence", "Glow", "Energy", "Self-love", "Feminine power", "Abundance"].map((w) => (
-          <span key={w} className="flex items-center gap-8 px-8 font-display text-3xl italic text-white/90 sm:text-[2.75rem]">
-            {w}
-            <Star4 className="size-4 text-pink" />
-          </span>
-        ))}
-      </Marquee>
+    <footer className="tone-dark bg-burgundy pb-24 pt-14 text-white lg:pb-8">
 
       <div className="mx-auto max-w-6xl px-5 lg:px-8">
         <Link href="/the-kit" className="group mt-8 flex items-end justify-between gap-6 border-b border-white/15 pb-10">
           <span className="font-display text-[clamp(1.75rem,5vw,3.25rem)] leading-[0.98]">
-            Ready for your <span className="text-gradient-pink italic">glow-up?</span>
+            Ready for your <span className="text-accent italic">glow-up?</span>
           </span>
-          <span className="grid size-11 shrink-0 place-items-center rounded-full bg-pink text-white transition-transform duration-300 group-hover:-rotate-45 sm:size-14 tone-dark">
+          <span className="grid size-11 shrink-0 place-items-center rounded-full bg-rose text-burgundy transition-transform duration-300 group-hover:translate-x-1 sm:size-14">
             <ArrowIcon className="w-5 sm:w-7" />
           </span>
         </Link>
 
         <div className="mt-8 grid grid-cols-2 gap-x-6 gap-y-7 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div className="col-span-2 lg:col-span-1">
-            <Image src="/brand/my-sweet-kitty-512.png" alt="My Sweet Kitty" width={510} height={512} className="h-16 w-auto" />
+            <Image src="/brand/my-sweet-kitty-512.png" alt="My Sweet Kitty" width={510} height={512} className="h-28 w-auto" />
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/75">
               Natural, secret-recipe rituals that help every woman embrace her feminine power. Glow from the inside out.
             </p>
             {socials.length > 0 && (
-              <div className="mt-3 flex gap-4 text-xs font-semibold uppercase tracking-[0.18em] text-white/75">
+              <div className="mt-3 flex gap-4 text-xs font-semibold uppercase tracking-[0.16em] text-white/75">
                 {socials.map((s) => (
-                  <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-pink-deep">
+                  <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-rose">
                     {s.label}
                   </a>
                 ))}
@@ -83,16 +72,16 @@ export function Footer() {
           </div>
           {columns.map((c) => (
             <div key={c.title}>
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-pink-soft">{c.title}</p>
-              <ul className="mt-3 space-y-1.5 text-[13px] text-white/82">
+              <p className="text-xs font-bold uppercase tracking-[0.16em] text-accent-soft">{c.title}</p>
+              <ul className="mt-3 space-y-1.5 text-sm text-white/82">
                 {c.links.map((l) => (
                   <li key={l.href}>
                     {"external" in l ? (
-                      <a href={l.href} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-pink-deep">
+                      <a href={l.href} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-rose">
                         {l.label}
                       </a>
                     ) : (
-                      <Link href={l.href} className="transition-colors hover:text-pink-deep">
+                      <Link href={l.href} className="transition-colors hover:text-rose">
                         {l.label}
                       </Link>
                     )}
@@ -108,7 +97,7 @@ export function Footer() {
             <ul className="flex flex-wrap gap-x-5 gap-y-2 font-semibold uppercase tracking-[0.16em] text-white/75">
               {legalPages.map((p) => (
                 <li key={p.slug}>
-                  <Link href={`/${p.slug}`} className="transition-colors hover:text-pink-deep">
+                  <Link href={`/${p.slug}`} className="transition-colors hover:text-rose">
                     {p.label}
                   </Link>
                 </li>

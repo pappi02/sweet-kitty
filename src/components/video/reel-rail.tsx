@@ -50,7 +50,7 @@ export function ReelRail({ list, heading, aside }: { list: Video[]; heading: Rea
 
       <div className="mx-auto mt-4 max-w-6xl px-5 lg:px-8">
         <div className="h-px overflow-hidden bg-ink/10">
-          <motion.div style={{ scaleX: scrollXProgress }} className="h-full origin-left bg-pink" />
+          <motion.div style={{ scaleX: scrollXProgress }} className="h-full origin-left bg-burgundy" />
         </div>
       </div>
     </div>

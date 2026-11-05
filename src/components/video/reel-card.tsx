@@ -14,7 +14,7 @@ export function ReelCard({ video, index, onOpen, className }: { video: Video; in
   return (
     <button
       onClick={onOpen}
-      className={cn("tone-dark group relative isolate block aspect-9/16 w-full overflow-hidden rounded-[1.1rem] bg-ink text-left outline-none ring-pink/50 focus-visible:ring-2", className)}
+      className={cn("tone-dark group relative isolate block aspect-9/16 w-full overflow-hidden rounded-sm bg-ink text-left outline-none ring-accent/50 focus-visible:ring-2", className)}
       aria-label={`Watch: ${video.title}`}
     >
       <video
@@ -31,16 +31,16 @@ export function ReelCard({ video, index, onOpen, className }: { video: Video; in
 
       <span className="absolute inset-x-3 top-3 flex items-center justify-between">
         <span className="font-display text-xs italic text-white/90">N°{String(index + 1).padStart(2, "0")}</span>
-        <span className="rounded-full bg-white/15 px-2 py-0.5 text-[8px] font-bold uppercase tracking-[0.2em] text-white ring-1 ring-white/25 backdrop-blur-md">
+        <span className="rounded-full bg-white/15 px-2 py-0.5 text-[8px] font-bold uppercase tracking-[0.16em] text-white ring-1 ring-white/25 backdrop-blur-md">
           {video.tag}
         </span>
       </span>
 
       <span className="absolute inset-x-3 bottom-3 block">
         <span className="block font-display text-[15px] italic leading-tight text-white sm:text-base">{video.title}</span>
-        <span className="mt-0.5 line-clamp-2 hidden text-[11px] leading-snug text-white/75 sm:block">{video.caption}</span>
-        <span className="mt-2 inline-flex h-7 items-center gap-1.5 rounded-full bg-white/15 pl-0.5 pr-2.5 text-[10px] font-semibold text-white ring-1 ring-white/25 backdrop-blur-md transition-colors duration-300 group-hover:bg-pink group-hover:ring-pink">
-          <span className="grid size-6 place-items-center rounded-full bg-white text-pink-deep">
+        <span className="mt-0.5 line-clamp-2 hidden text-xs leading-snug text-white/75 sm:block">{video.caption}</span>
+        <span className="mt-2 inline-flex h-7 items-center gap-1.5 rounded-full bg-white/15 pl-0.5 pr-2.5 text-xs font-semibold text-white ring-1 ring-white/25 backdrop-blur-md transition-colors duration-300 group-hover:bg-burgundy group-hover:ring-accent">
+          <span className="grid size-6 place-items-center rounded-full bg-white text-accent">
             <PlayIcon className="ml-0.5 size-3" />
           </span>
           Watch

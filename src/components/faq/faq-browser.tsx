@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 import { FaqAccordion } from "../home/faq";
 import { WhatsAppIcon } from "../ui/icons";
 import { Reveal } from "../ui/reveal";
-import { ShimmerButton } from "../ui/shimmer-button";
+import { Button } from "../ui/button";
 
 export function FaqBrowser() {
   const [query, setQuery] = useState("");
@@ -50,10 +50,10 @@ export function FaqBrowser() {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search questions"
-              className="w-full border-b border-ink/20 bg-transparent py-2.5 pl-8 font-display text-lg outline-none transition-colors placeholder:text-ink/40 focus:border-pink"
+              className="w-full border-b border-ink/20 bg-transparent py-2.5 pl-8 font-display text-lg outline-none transition-colors placeholder:text-ink/40 focus:border-accent"
             />
           </label>
-          <p className="mt-3 text-[10px] font-bold uppercase tracking-[0.25em] text-ink/50">
+          <p className="mt-3 text-xs font-bold uppercase tracking-[0.16em] text-ink/50">
             {total} {total === 1 ? "answer" : "answers"}
           </p>
 
@@ -68,11 +68,11 @@ export function FaqBrowser() {
                 )}
               >
                 {active === g.id && (
-                  <motion.span layoutId="faq-active" transition={{ type: "spring", stiffness: 500, damping: 40 }} className="absolute inset-0 -z-10 rounded-full bg-blush lg:inset-y-0 lg:-left-4 lg:right-auto lg:w-[3px] lg:rounded-full lg:bg-pink" />
+                  <motion.span layoutId="faq-active" transition={{ type: "spring", stiffness: 500, damping: 40 }} className="absolute inset-0 -z-10 rounded-full bg-blush lg:inset-y-0 lg:-left-4 lg:right-auto lg:w-[3px] lg:rounded-full lg:bg-burgundy" />
                 )}
-                <span className="hidden font-display text-xs italic text-pink lg:inline">0{i + 1}</span>
+                <span className="hidden font-display text-xs italic text-accent lg:inline">0{i + 1}</span>
                 {g.title}
-                <span className="ml-auto hidden text-[10px] tabular-nums text-ink/45 lg:inline">{g.items.length}</span>
+                <span className="ml-auto hidden text-xs tabular-nums text-ink/45 lg:inline">{g.items.length}</span>
               </a>
             ))}
           </nav>
@@ -91,7 +91,7 @@ export function FaqBrowser() {
                 counter += g.items.length;
                 return (
                   <motion.div key={g.id + query} id={g.id} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.25 }} className="scroll-mt-28 pb-14 last:pb-0">
-                    <h2 className="mb-2 font-display text-2xl italic text-pink-deep">{g.title}</h2>
+                    <h2 className="mb-2 font-display text-2xl italic text-accent">{g.title}</h2>
                     <FaqAccordion items={g.items} startOpen={query ? 0 : null} numberFrom={from} />
                   </motion.div>
                 );
@@ -102,11 +102,11 @@ export function FaqBrowser() {
           <Reveal className="mt-16 flex flex-col items-start gap-5 border-t border-ink/10 pt-10 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <p className="font-display text-2xl">Still wondering?</p>
-              <p className="mt-1 text-sm sm:text-[15px] text-ink/70">Message us. A real person answers, privately.</p>
+              <p className="mt-1 text-base text-ink/70">Message us. A real person answers, privately.</p>
             </div>
-            <ShimmerButton href={whatsappLink("Hi Sweet Kitty! I have a question.")} target="_blank" rel="noopener noreferrer" size="lg">
+            <Button href={whatsappLink("Hi Sweet Kitty! I have a question.")} target="_blank" rel="noopener noreferrer" size="lg">
               <WhatsAppIcon className="size-4" /> Ask on WhatsApp
-            </ShimmerButton>
+            </Button>
           </Reveal>
         </div>
       </div>

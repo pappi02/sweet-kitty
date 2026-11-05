@@ -30,19 +30,19 @@ function Step({ step, index, onActive }: { step: (typeof morningSteps)[number]; 
       <span
         className={cn(
           "absolute left-0 top-0 grid size-8 place-items-center rounded-full font-display text-xs italic transition-colors duration-300 lg:top-1/2 lg:size-10 lg:-translate-y-1/2",
-          inView ? "bg-pink text-white" : "bg-white text-pink-deep ring-1 ring-pink/25",
+          inView ? "bg-burgundy text-white" : "bg-white text-accent ring-1 ring-accent/25",
         )}
       >
         {index + 1}
       </span>
       <Reveal>
-        <p className="font-display text-sm italic text-pink">{step.time}</p>
+        <p className="font-display text-sm italic text-accent">{step.time}</p>
         <h3 className="mt-1 font-display text-[clamp(1.6rem,4vw,2.4rem)] leading-none">{step.title}</h3>
         <p className="mt-2.5 max-w-md text-sm leading-relaxed text-ink/75">{step.text}</p>
         {product && (
           <Link href={productHref(product)} className="group mt-3 inline-flex items-center gap-2 text-sm font-semibold text-ink">
-            <span className="border-b border-ink/25 pb-0.5 group-hover:border-pink">{product.name}</span>
-            <ArrowIcon className="w-5 text-pink transition-transform group-hover:translate-x-1" />
+            <span className="border-b border-ink/25 pb-0.5 group-hover:border-accent">{product.name}</span>
+            <ArrowIcon className="w-5 text-accent transition-transform group-hover:translate-x-1" />
           </Link>
         )}
       </Reveal>
@@ -64,15 +64,15 @@ export function MorningRitual() {
           <Reveal>
             <Eyebrow>Every morning</Eyebrow>
           </Reveal>
-          <h2 className="mt-3 font-display text-[clamp(1.85rem,6.4vw,2.85rem)] leading-[1.04]">
-            <WordReveal text="Your morning," /> <span className="text-gradient-pink italic">step by step.</span>
+          <h2 className="mt-3 font-display text-[clamp(2.1rem,6.4vw,3.6rem)] leading-[1.02]">
+            <WordReveal text="Your morning," /> <span className="text-accent italic">step by step.</span>
           </h2>
         </div>
 
         <div className="mt-8 grid gap-8 lg:mt-10 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1fr)] lg:gap-12">
           {/* Sticky video panel */}
           <div className="lg:sticky lg:top-24 lg:h-[min(calc(100svh-8rem),520px)] lg:self-start">
-            <div className="tone-dark relative mx-auto aspect-4/5 w-full max-w-[300px] overflow-hidden rounded-[1.5rem] bg-ink lg:aspect-auto lg:h-full lg:max-w-[340px]">
+            <div className="tone-dark relative mx-auto aspect-4/5 w-full max-w-[300px] overflow-hidden rounded-sm bg-ink lg:aspect-auto lg:h-full lg:max-w-[340px]">
               <AmbientVideo video={video} />
               <span className="absolute inset-0 bg-linear-to-b from-ink/50 via-transparent to-ink/80" />
               <div className="absolute inset-x-5 top-5 flex items-start justify-between">
@@ -88,7 +88,7 @@ export function MorningRitual() {
                     {morningSteps[active].time}
                   </motion.p>
                 </AnimatePresence>
-                <span className="rounded-full bg-white/15 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-white ring-1 ring-white/25 backdrop-blur-md">
+                <span className="rounded-full bg-white/15 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-white ring-1 ring-white/25 backdrop-blur-md">
                   Step {active + 1}/{morningSteps.length}
                 </span>
               </div>
@@ -113,7 +113,7 @@ export function MorningRitual() {
                   </AnimatePresence>
                   <button
                     onClick={() => open(videos, videos.indexOf(video))}
-                    className="grid size-10 shrink-0 place-items-center rounded-full bg-white text-pink-deep transition-transform duration-300 hover:scale-110"
+                    className="grid size-10 shrink-0 place-items-center rounded-full bg-white text-accent transition-transform duration-300 hover:scale-110"
                     aria-label="Watch the morning ritual with sound"
                   >
                     <PlayIcon className="ml-0.5 size-5" />
@@ -126,7 +126,7 @@ export function MorningRitual() {
           {/* Steps */}
           <ol ref={listRef} className="relative space-y-10 lg:space-y-0">
             <span className="absolute bottom-0 left-[15px] top-0 w-px bg-ink/10 lg:left-[19px]" />
-            <motion.span style={{ scaleY: scrollYProgress }} className="absolute bottom-0 left-[15px] top-0 w-px origin-top bg-pink lg:left-[19px]" />
+            <motion.span style={{ scaleY: scrollYProgress }} className="absolute bottom-0 left-[15px] top-0 w-px origin-top bg-burgundy lg:left-[19px]" />
             {morningSteps.map((s, i) => (
               <Step key={s.title} step={s} index={i} onActive={setActive} />
             ))}
@@ -142,11 +142,11 @@ export function MorningRitual() {
 function DayCard({ d, i, className }: { d: (typeof days)[number]; i: number; className?: string }) {
   const dark = isDarkDay(i);
   return (
-    <div style={{ background: d.bg }} className={cn("relative flex shrink-0 flex-col overflow-hidden rounded-[1.5rem] p-7", className)}>
-      <Star4 className={cn("absolute right-6 top-6 size-5 animate-twinkle", dark ? "text-white" : "text-pink-deep")} />
-      <span className={cn("font-display text-[6rem] italic leading-[0.8]", dark ? "text-white/30" : "text-white/80")}>{i + 1}</span>
+    <div style={{ background: d.bg }} className={cn("relative flex shrink-0 flex-col overflow-hidden rounded-sm p-7", className)}>
+      <Star4 className={cn("absolute right-6 top-6 size-5 ", dark ? "text-white" : "text-accent")} />
+      <span className={cn("font-display text-[6rem] italic leading-[0.8]", dark ? "text-white/30" : "text-burgundy/45")}>{i + 1}</span>
       <div className="mt-auto">
-        <p className={cn("text-[11px] font-bold uppercase tracking-[0.3em]", dark ? "text-white/85" : "text-pink-deep")}>Day {i + 1}</p>
+        <p className={cn("text-xs font-bold uppercase tracking-[0.3em]", dark ? "text-white/85" : "text-accent")}>Day {i + 1}</p>
         <p className={cn("mt-1.5 font-display text-4xl", dark ? "text-white" : "text-ink")}>{d.name}</p>
         <p className={cn("mt-2.5 max-w-[17rem] text-sm leading-relaxed", dark ? "text-white/85" : "text-ink/80")}>{d.text}</p>
       </div>
@@ -180,12 +180,12 @@ export function DaysTrack() {
             <Reveal>
               <Eyebrow>The week</Eyebrow>
             </Reveal>
-            <h2 className="mt-3 font-display text-[clamp(1.85rem,6.4vw,2.85rem)] leading-[1.04]">
-              <WordReveal text="Seven days." /> <span className="text-gradient-pink italic">A whole new her.</span>
+            <h2 className="mt-3 font-display text-[clamp(2.1rem,6.4vw,3.6rem)] leading-[1.02]">
+              <WordReveal text="Seven days." /> <span className="text-accent italic">A whole new her.</span>
             </h2>
           </div>
           <Reveal delay={0.05}>
-            <p className="max-w-xs text-sm sm:text-[15px] text-ink/72 lg:text-right">What most women feel, day by day, when they follow the full ritual.</p>
+            <p className="max-w-xs text-base text-ink/72 lg:text-right">What most women feel, day by day, when they follow the full ritual.</p>
           </Reveal>
         </div>
       </div>
@@ -204,19 +204,19 @@ export function DaysTrack() {
             ))}
             <div className="flex h-[min(50svh,400px)] w-[300px] shrink-0 flex-col justify-center">
               <p className="font-display text-3xl leading-tight">
-                Ready to meet <span className="text-gradient-pink italic">her?</span>
+                Ready to meet <span className="text-accent italic">her?</span>
               </p>
               <Link href="/the-kit" className="group mt-6 inline-flex items-center gap-3 text-sm font-semibold">
-                <span className="border-b border-ink/25 pb-0.5 group-hover:border-pink">Start with the 7-Day Kit</span>
-                <ArrowIcon className="w-6 text-pink transition-transform group-hover:translate-x-1" />
+                <span className="border-b border-ink/25 pb-0.5 group-hover:border-accent">Start with the 7-Day Kit</span>
+                <ArrowIcon className="w-6 text-accent transition-transform group-hover:translate-x-1" />
               </Link>
             </div>
           </motion.div>
           <div className="mx-auto mt-7 w-full max-w-6xl px-8">
-            <div className="flex items-center gap-4 text-[10px] font-bold uppercase tracking-[0.25em] text-ink/55">
+            <div className="flex items-center gap-4 text-xs font-bold uppercase tracking-[0.16em] text-ink/55">
               Day 1
               <span className="h-px flex-1 overflow-hidden bg-ink/10">
-                <motion.span style={{ scaleX: bar }} className="block h-full origin-left bg-pink" />
+                <motion.span style={{ scaleX: bar }} className="block h-full origin-left bg-burgundy" />
               </span>
               Day 7
             </div>
@@ -232,7 +232,7 @@ export function DaysTrack() {
 const rules = [
   { t: "Follow all seven days", d: "The more of the ritual you follow, the bigger the transformation." },
   { t: "Water, water, water", d: "Drink plenty through the day. It carries your glow." },
-  { t: "Fruit after three hours", d: "Eat fruits and vegetables about three hours after your Magic Juice." },
+  { t: "Fruit after three hours", d: "Eat fruits and vegetables about three hours after your Magic Kitty Juice." },
   { t: "Make the morning yours", d: "Your bath is your time. Phone down, door closed." },
   { t: "Listen to your body", d: "If anything irritates you, stop and message us. We'll help personally." },
   { t: "Tell your bestie", d: "Glowing is better together. She'll thank you later." },
@@ -246,20 +246,20 @@ export function RitualRules() {
           <Reveal>
             <Eyebrow>Little rules</Eyebrow>
           </Reveal>
-          <h2 className="mt-3 font-display text-[clamp(1.85rem,6.4vw,2.85rem)] leading-[1.04]">
-            <WordReveal text="For a" /> <span className="text-gradient-pink italic">bigger glow.</span>
+          <h2 className="mt-3 font-display text-[clamp(2.1rem,6.4vw,3.6rem)] leading-[1.02]">
+            <WordReveal text="For a" /> <span className="text-accent italic">bigger glow.</span>
           </h2>
         </div>
         <motion.ul initial="hidden" whileInView="show" viewport={stagger.viewport} variants={stagger.parent(0, 0.05)} className="grid border-t border-ink/10 sm:grid-cols-2">
           {rules.map((r, i) => (
             <motion.li key={r.t} variants={stagger.child} className={cn("group border-b border-ink/10 py-4 sm:pr-6", i % 2 === 1 && "sm:border-l sm:pl-6")}>
               <p className="flex items-center gap-3">
-                <span className="grid size-6 place-items-center rounded-full bg-pink/10 text-pink-deep transition-colors duration-300 group-hover:bg-pink group-hover:text-white">
+                <span className="grid size-6 place-items-center rounded-full bg-burgundy/10 text-accent transition-colors duration-300 group-hover:bg-burgundy group-hover:text-white">
                   <CheckIcon className="size-3.5" />
                 </span>
                 <span className="font-display text-lg">{r.t}</span>
               </p>
-              <p className="mt-1 pl-9 text-[13px] leading-relaxed text-ink/70">{r.d}</p>
+              <p className="mt-1 pl-9 text-sm leading-relaxed text-ink/70">{r.d}</p>
             </motion.li>
           ))}
         </motion.ul>

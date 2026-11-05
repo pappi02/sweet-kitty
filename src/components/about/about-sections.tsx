@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform, type MotionValue } from "motion/react"
 import Image from "next/image";
 import { useRef } from "react";
 import { values } from "@/lib/content";
-import { Eyebrow, Sparkles, Star4 } from "../ui/decor";
+import { Eyebrow, Star4 } from "../ui/decor";
 import { Reveal, stagger, WordReveal } from "../ui/reveal";
 
 /* ---------- Manifesto: words light up as you scroll ---------- */
@@ -12,7 +12,7 @@ import { Reveal, stagger, WordReveal } from "../ui/reveal";
 function Word({ word, range, progress, accent }: { word: string; range: [number, number]; progress: MotionValue<number>; accent: boolean }) {
   const opacity = useTransform(progress, range, [0.14, 1]);
   return (
-    <motion.span style={{ opacity }} className={accent ? "text-gradient-pink italic" : undefined}>
+    <motion.span style={{ opacity }} className={accent ? "text-accent italic" : undefined}>
       {word}{" "}
     </motion.span>
   );
@@ -54,8 +54,8 @@ export function Values() {
             <Reveal>
               <Eyebrow>What we stand for</Eyebrow>
             </Reveal>
-            <h2 className="mt-3 font-display text-[clamp(1.85rem,6.4vw,2.85rem)] leading-[1.04]">
-              <WordReveal text="Four promises," /> <span className="text-gradient-pink italic">kept.</span>
+            <h2 className="mt-3 font-display text-[clamp(2.1rem,6.4vw,3.6rem)] leading-[1.02]">
+              <WordReveal text="Four promises," /> <span className="text-accent italic">kept.</span>
             </h2>
           </div>
         </div>
@@ -64,12 +64,12 @@ export function Values() {
           {values.map((v, i) => (
             <motion.li key={v.title} variants={stagger.child} className="group relative isolate grid gap-2 border-b border-ink/10 py-4 lg:grid-cols-[3rem_minmax(0,1.2fr)_minmax(0,0.8fr)] lg:items-center lg:gap-8 lg:py-5">
               <span className="pointer-events-none absolute inset-0 -z-10 origin-left scale-x-0 bg-linear-to-r from-blush via-blush/60 to-transparent transition-transform duration-500 ease-out group-hover:scale-x-100" />
-              <span className="font-display text-lg italic text-pink">0{i + 1}</span>
+              <span className="font-display text-lg italic text-accent">0{i + 1}</span>
               <h3 className="flex items-center gap-4 font-display text-[clamp(1.7rem,4vw,2.6rem)] leading-none transition-transform duration-300 group-hover:translate-x-2">
                 {v.title}
-                <Star4 className="size-4 text-pink opacity-0 transition-all duration-300 group-hover:rotate-90 group-hover:opacity-100" />
+                <Star4 className="size-4 text-accent opacity-0 transition-all duration-300 group-hover:rotate-90 group-hover:opacity-100" />
               </h3>
-              <p className="max-w-sm text-sm sm:text-[15px] leading-relaxed text-ink/75">{v.text}</p>
+              <p className="max-w-sm text-base leading-relaxed text-ink/75">{v.text}</p>
             </motion.li>
           ))}
         </motion.ol>
@@ -83,14 +83,13 @@ export function Values() {
 export function BrandNote() {
   return (
     <section className="px-3 sm:px-5">
-      <div className="grain tone-light relative isolate mx-auto grid max-w-6xl items-center gap-7 overflow-hidden rounded-[1.6rem] bg-sky-light px-5 py-9 text-white sm:px-10 lg:grid-cols-[0.6fr_1.4fr] lg:gap-10 lg:py-11">
-        <Sparkles count={12} seed={99} className="opacity-70" />
+      <div className="tone-light relative isolate mx-auto grid max-w-6xl items-center gap-7 overflow-hidden rounded-sm bg-blush px-5 py-9 text-white sm:px-10 lg:grid-cols-[0.6fr_1.4fr] lg:gap-10 lg:py-11">
         <Reveal className="relative mx-auto w-32 lg:w-full lg:max-w-[200px]">
-          <Image src="/brand/my-sweet-kitty.png" alt="My Sweet Kitty" width={1240} height={1244} className="h-auto w-full animate-float drop-shadow-[0_30px_50px_rgba(255,0,144,0.4)]" />
+          <Image src="/brand/my-sweet-kitty.png" alt="My Sweet Kitty" width={1240} height={1244} className="h-auto w-full drop-shadow-[0_30px_50px_rgba(115,6,44,0.4)]" />
         </Reveal>
         <div className="relative">
           <Reveal>
-            <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-pink-deep">A note from us</p>
+            <p className="text-xs font-bold uppercase tracking-[0.16em] text-accent">A note from us</p>
           </Reveal>
           <Reveal delay={0.05}>
             <blockquote className="mt-3 font-display text-[clamp(1.25rem,2.8vw,1.8rem)] italic leading-snug">
@@ -98,8 +97,8 @@ export function BrandNote() {
             </blockquote>
           </Reveal>
           <Reveal delay={0.1}>
-            <p className="mt-4 font-script text-3xl text-pink-deep">My Sweet Kitty</p>
-            <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-white/65">With love, from Kenya</p>
+            <p className="mt-4 font-script text-3xl text-accent">My Sweet Kitty</p>
+            <p className="text-xs font-bold uppercase tracking-[0.16em] text-white/65">With love, from Kenya</p>
           </Reveal>
         </div>
       </div>

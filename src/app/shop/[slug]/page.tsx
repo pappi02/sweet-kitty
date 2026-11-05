@@ -57,12 +57,12 @@ function ProductSkeleton() {
   return (
     <section className="pb-10 pt-28 sm:pt-32 lg:pt-36" aria-busy>
       <div className="mx-auto grid max-w-6xl gap-7 px-5 lg:grid-cols-[1.05fr_1fr] lg:gap-10 lg:px-8">
-        <div className="aspect-4/5 animate-pulse rounded-4xl bg-blush" />
+        <div className="aspect-4/5 animate-pulse rounded-sm bg-blush" />
         <div className="space-y-5 pt-6">
           <div className="h-3 w-28 rounded-full bg-blush" />
-          <div className="h-14 w-4/5 rounded-2xl bg-blush" />
+          <div className="h-14 w-4/5 rounded-sm bg-blush" />
           <div className="h-5 w-2/3 rounded-full bg-blush/70" />
-          <div className="h-24 w-full rounded-2xl bg-blush/50" />
+          <div className="h-24 w-full rounded-sm bg-blush/50" />
           <div className="h-14 w-full rounded-full bg-blush" />
         </div>
       </div>

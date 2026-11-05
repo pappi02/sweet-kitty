@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Great_Vibes, Manrope, Playfair_Display } from "next/font/google";
+import { Bodoni_Moda, Great_Vibes, Instrument_Sans } from "next/font/google";
 import { CartDrawer } from "@/components/cart/cart-drawer";
 import { CartProvider } from "@/components/cart/cart-provider";
 import { Footer } from "@/components/layout/footer";
@@ -11,14 +11,14 @@ import { organizationLd, websiteLd } from "@/lib/seo";
 import { site } from "@/lib/site";
 import "./globals.css";
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
+const bodoni = Bodoni_Moda({
+  variable: "--font-bodoni",
   subsets: ["latin"],
   style: ["normal", "italic"],
 });
 
-const manrope = Manrope({
-  variable: "--font-manrope",
+const instrument = Instrument_Sans({
+  variable: "--font-instrument",
   subsets: ["latin"],
 });
 
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#ff0090",
+  themeColor: "#73062C",
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
@@ -59,7 +59,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en-KE" data-scroll-behavior="smooth" className={`${playfair.variable} ${manrope.variable} ${vibes.variable} antialiased`}>
+    <html lang="en-KE" data-scroll-behavior="smooth" className={`${bodoni.variable} ${instrument.variable} ${vibes.variable} antialiased`}>
       <body className="min-h-svh">
         <JsonLd data={[organizationLd(), websiteLd()]} />
         <CartProvider>

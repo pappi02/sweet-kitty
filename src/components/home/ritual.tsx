@@ -30,21 +30,21 @@ export function MobileRitual() {
             key={d.name}
             variants={stagger.child}
             style={{ background: d.bg }}
-            className="relative flex h-[220px] w-[56vw] max-w-[220px] shrink-0 snap-start flex-col overflow-hidden rounded-[1.25rem] p-5"
+            className="relative flex h-[220px] w-[56vw] max-w-[220px] shrink-0 snap-start flex-col overflow-hidden rounded-sm p-5"
           >
-            <Star4 className={cn("absolute right-5 top-5 size-5 animate-twinkle", isDark(i) ? "text-white" : "text-pink-deep")} />
-            <span className={cn("font-display text-[3.5rem] italic leading-none", isDark(i) ? "text-white/50" : "text-white/80")}>{i + 1}</span>
+            <Star4 className={cn("absolute right-5 top-5 size-5 ", isDark(i) ? "text-white" : "text-accent")} />
+            <span className={cn("font-display text-[3.5rem] italic leading-none", isDark(i) ? "text-white/50" : "text-burgundy/45")}>{i + 1}</span>
             <div className="mt-auto">
-              <p className={cn("text-[10px] font-bold uppercase tracking-[0.25em]", isDark(i) ? "text-white/82" : "text-pink-deep/80")}>Day {i + 1}</p>
+              <p className={cn("text-xs font-bold uppercase tracking-[0.16em]", isDark(i) ? "text-white/82" : "text-accent/80")}>Day {i + 1}</p>
               <p className={cn("mt-1 font-display text-2xl", isDark(i) ? "text-white" : "text-ink")}>{d.name}</p>
-              <p className={cn("mt-1.5 text-[13px] leading-snug", isDark(i) ? "text-white/80" : "text-ink/82")}>{d.text}</p>
+              <p className={cn("mt-1.5 text-sm leading-snug", isDark(i) ? "text-white/80" : "text-ink/82")}>{d.text}</p>
             </div>
           </motion.div>
         ))}
       </motion.div>
       <div className="mx-auto mt-3 max-w-[10rem] px-5">
         <div className="h-[3px] overflow-hidden rounded-full bg-ink/10">
-          <motion.div style={{ scaleX: scrollXProgress }} className="h-full origin-left rounded-full bg-pink" />
+          <motion.div style={{ scaleX: scrollXProgress }} className="h-full origin-left rounded-full bg-burgundy" />
         </div>
       </div>
     </div>
@@ -71,7 +71,7 @@ export function DesktopRitual() {
               animate={{ flexGrow: active ? 5 : 1 }}
               transition={{ type: "spring", stiffness: 300, damping: 34 }}
               style={{ background: d.bg, flexBasis: 0 }}
-              className="relative min-w-0 overflow-hidden rounded-[1.2rem] text-left outline-none ring-pink/40 focus-visible:ring-2"
+              className="relative min-w-0 overflow-hidden rounded-sm text-left outline-none ring-accent/40 focus-visible:ring-2"
               aria-expanded={active}
               aria-label={`Day ${i + 1}: ${d.name}`}
             >
@@ -82,7 +82,7 @@ export function DesktopRitual() {
                 className={cn("absolute inset-x-0 bottom-6 flex flex-col items-center gap-4", dark ? "text-white" : "text-ink")}
               >
                 <span className="font-display text-2xl italic">{i + 1}</span>
-                <span className="text-[10px] font-bold uppercase tracking-[0.3em] [writing-mode:vertical-rl] rotate-180">{d.name}</span>
+                <span className="text-xs font-bold uppercase tracking-[0.3em] [writing-mode:vertical-rl] rotate-180">{d.name}</span>
               </motion.span>
 
               {/* expanded content */}
@@ -92,14 +92,14 @@ export function DesktopRitual() {
                 className="absolute inset-0 flex w-[320px] flex-col p-6"
                 aria-hidden={!active}
               >
-                <span className={cn("font-display text-[5rem] italic leading-[0.8]", dark ? "text-white/25" : "text-white/80")}>{i + 1}</span>
+                <span className={cn("font-display text-[5rem] italic leading-[0.8]", dark ? "text-white/25" : "text-burgundy/45")}>{i + 1}</span>
                 <div className="mt-auto">
-                  <p className={cn("text-[10px] font-bold uppercase tracking-[0.3em]", dark ? "text-white/82" : "text-pink-deep/80")}>Day {i + 1}</p>
+                  <p className={cn("text-xs font-bold uppercase tracking-[0.3em]", dark ? "text-white/82" : "text-accent/80")}>Day {i + 1}</p>
                   <p className={cn("mt-1.5 font-display text-3xl", dark ? "text-white" : "text-ink")}>{d.name}</p>
                   <p className={cn("mt-2 max-w-[16rem] text-sm leading-relaxed", dark ? "text-white/80" : "text-ink/82")}>{d.text}</p>
                 </div>
               </motion.div>
-              <Star4 className={cn("absolute right-5 top-5 size-4 animate-twinkle", dark ? "text-white" : "text-pink-deep")} />
+              <Star4 className={cn("absolute right-5 top-5 size-4 ", dark ? "text-white" : "text-accent")} />
             </motion.button>
           );
         })}
@@ -117,16 +117,16 @@ export function Ritual({ guideLink = true }: { guideLink?: boolean }) {
             <Reveal>
               <Eyebrow>The ritual</Eyebrow>
             </Reveal>
-            <h2 className="mt-3 font-display text-[clamp(1.85rem,6.4vw,2.85rem)] leading-[1.04]">
-              <WordReveal text="Seven days." /> <span className="text-gradient-pink italic">A whole new her.</span>
+            <h2 className="mt-3 font-display text-[clamp(2.1rem,6.4vw,3.6rem)] leading-[1.02]">
+              <WordReveal text="Seven days." /> <span className="text-accent italic">A whole new her.</span>
             </h2>
           </div>
           <Reveal delay={0.05} className="flex flex-col items-center lg:items-end">
-            <p className="mt-4 max-w-xs text-sm sm:text-[15px] text-ink/72 lg:mt-0 lg:text-right">One small ritual every morning. Seven mornings to meet the woman you were always meant to be.</p>
+            <p className="mt-4 max-w-xs text-base text-ink/72 lg:mt-0 lg:text-right">One small ritual every morning. Seven mornings to meet the woman you were always meant to be.</p>
             {guideLink && (
             <Link href="/ritual" className="group mt-4 inline-flex items-center gap-3 text-sm font-semibold text-ink">
-              <span className="border-b border-ink/25 pb-0.5 transition-colors group-hover:border-pink">The full ritual guide</span>
-              <ArrowIcon className="w-6 text-pink transition-transform duration-300 group-hover:translate-x-1" />
+              <span className="border-b border-ink/25 pb-0.5 transition-colors group-hover:border-accent">The full ritual guide</span>
+              <ArrowIcon className="w-6 text-accent transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
             )}
           </Reveal>

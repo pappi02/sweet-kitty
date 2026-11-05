@@ -8,11 +8,11 @@ import { site, whatsappLink } from "@/lib/site";
 import { getVideo, videos } from "@/lib/videos";
 import { cn, formatKES } from "@/lib/utils";
 import { useCart } from "../cart/cart-provider";
-import { Aurora, Eyebrow, Sparkles, Star4 } from "../ui/decor";
+import { Eyebrow, Star4 } from "../ui/decor";
 import { ArrowIcon, BagIcon, CheckIcon, PlayIcon, WhatsAppIcon } from "../ui/icons";
 import { ProductVisual } from "../ui/product-visual";
 import { ease, Reveal, stagger, WordReveal } from "../ui/reveal";
-import { ShimmerButton } from "../ui/shimmer-button";
+import { Button } from "../ui/button";
 import { AmbientVideo } from "../video/ambient-video";
 import { CompareVideos } from "../video/compare-videos";
 import { useVideoLightbox } from "../video/video-lightbox";
@@ -28,50 +28,48 @@ export function KitHero() {
   const pct = Math.round((sold / site.kitsBatch) * 100);
 
   return (
-    <section className="grain tone-light relative isolate overflow-hidden bg-sky-light pb-9 pt-24 text-white lg:pb-10 lg:pt-28">
-      <Aurora />
-      <Sparkles count={16} seed={61} className="opacity-60" />
+    <section className="tone-light relative isolate overflow-hidden bg-blush pb-9 pt-24 text-white lg:pb-10 lg:pt-28">
       <div className="relative mx-auto grid max-w-6xl items-center gap-7 px-5 lg:grid-cols-[1.1fr_1fr] lg:gap-12 lg:px-8">
         <div>
           <motion.div {...fade(0)} className="flex items-center gap-4">
-            <span className="font-display text-lg italic text-pink">N°02</span>
+            <span className="font-display text-lg italic text-accent">N°02</span>
             <span className="h-px w-16 bg-ink/30" />
-            <span className="text-[11px] font-bold uppercase tracking-[0.28em] text-white/75">The signature</span>
+            <span className="text-xs font-bold uppercase tracking-[0.16em] text-white/75">The signature</span>
           </motion.div>
           <h1 className="mt-3 font-display text-[clamp(2.3rem,8.5vw,4.25rem)] font-medium leading-[0.92] tracking-tight">
-            <WordReveal text="The 7-Day" onLoad /> <span className="text-gradient-pink italic">Sweet Kitty</span> <WordReveal text="Kit" onLoad delay={0.1} />
+            <WordReveal text="The 7-Day" onLoad /> <span className="text-accent italic">Sweet Kitty</span> <WordReveal text="Kit" onLoad delay={0.1} />
           </h1>
-          <motion.p {...fade(0.2)} className="mt-4 max-w-md text-sm sm:text-[15px] leading-relaxed text-white/82">
+          <motion.p {...fade(0.2)} className="mt-4 max-w-md text-base leading-relaxed text-white/82">
             {kit.description}
           </motion.p>
 
           <motion.div {...fade(0.3)} className="mt-6 flex flex-wrap items-end gap-x-10 gap-y-4 border-t border-white/15 pt-5">
             <div>
-              <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-white/65">Full kit</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-white/65">Full kit</p>
               <p className="font-display text-3xl tabular-nums sm:text-4xl">{formatKES(kit.price!)}</p>
             </div>
             <div className="min-w-[12rem] flex-1">
               <div className="flex items-center justify-between text-xs">
                 <span className="inline-flex items-center gap-2 font-semibold">
                   <span className="relative flex size-2">
-                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-pink opacity-75" />
-                    <span className="relative inline-flex size-2 rounded-full bg-pink" />
+                    <span className="absolute inline-flex h-full w-full rounded-full bg-burgundy opacity-75" />
+                    <span className="relative inline-flex size-2 rounded-full bg-burgundy" />
                   </span>
                   Only {site.kitsLeft} left
                 </span>
                 <span className="tabular-nums text-white/65">{pct}% claimed</span>
               </div>
               <div className="mt-2 h-[3px] overflow-hidden rounded-full bg-white/10">
-                <motion.div className="h-full rounded-full bg-linear-to-r from-pink-soft to-pink" initial={{ width: 0 }} animate={{ width: `${pct}%` }} transition={{ duration: 0.9, delay: 0.4, ease }} />
+                <motion.div className="h-full rounded-full bg-linear-to-r from-rose to-burgundy" initial={{ width: 0 }} animate={{ width: `${pct}%` }} transition={{ duration: 0.9, delay: 0.4, ease }} />
               </div>
             </div>
           </motion.div>
 
           <motion.div {...fade(0.4)} className="mt-3 flex gap-2.5 sm:gap-3">
-            <ShimmerButton size="lg" onClick={() => add(kit.id)} className="flex-1">
+            <Button size="lg" onClick={() => add(kit.id)} className="flex-1">
               <BagIcon className="size-4" /> Add to bag
-            </ShimmerButton>
-            <ShimmerButton
+            </Button>
+            <Button
               size="lg"
               variant="ghost"
               href={whatsappLink(`Hi Sweet Kitty! I'd like to order the ${kit.name} (${formatKES(kit.price!)}).`)}
@@ -80,18 +78,18 @@ export function KitHero() {
               className="flex-1"
             >
               <WhatsAppIcon className="size-4" /> WhatsApp
-            </ShimmerButton>
+            </Button>
           </motion.div>
         </div>
 
         {/* Arched video */}
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1, ease }} className="relative mx-auto w-[min(48vw,190px)] lg:w-[280px]">
-          <div className="absolute -inset-4 rounded-t-full border border-dashed border-pink/40" />
-          <div className="tone-dark relative aspect-[3/4.4] overflow-hidden rounded-t-full rounded-b-[2rem] bg-ink shadow-[0_40px_80px_-30px_rgba(42,15,31,0.5)]">
+          <div className="absolute -inset-4 rounded-t-full border border-dashed border-accent/40" />
+          <div className="tone-dark relative aspect-[3/4.4] overflow-hidden rounded-t-full rounded-b-[2rem] bg-ink shadow-[0_40px_80px_-30px_rgba(51,4,18,0.5)]">
             <AmbientVideo video={getVideo("crown")} />
             <span className="absolute inset-0 bg-linear-to-t from-ink/70 via-transparent to-transparent" />
             <button onClick={() => open(videos, videos.indexOf(getVideo("crown")))} className="group absolute inset-x-0 bottom-0 flex items-center justify-center gap-3 p-5 text-sm font-semibold text-white">
-              <span className="grid size-11 place-items-center rounded-full bg-white text-pink-deep transition-transform duration-300 group-hover:scale-110">
+              <span className="grid size-11 place-items-center rounded-full bg-white text-accent transition-transform duration-300 group-hover:scale-110">
                 <PlayIcon className="ml-0.5 size-4" />
               </span>
               Watch her glow-up
@@ -109,8 +107,8 @@ export function KitHero() {
               transition={{ delay: chip.d, type: "spring", stiffness: 380, damping: 22 }}
               className={cn("absolute", chip.c)}
             >
-              <span className="tone-dark flex animate-float-slow items-center gap-1.5 rounded-full bg-white/80 px-3 py-1.5 text-[11px] font-semibold text-ink shadow-lg ring-1 ring-ink/5 backdrop-blur-md">
-                <Star4 className="size-2 text-pink" />
+              <span className="tone-dark flex items-center gap-1.5 rounded-full bg-white/80 px-3 py-1.5 text-xs font-semibold text-ink shadow-lg ring-1 ring-ink/5 backdrop-blur-md">
+                <Star4 className="size-2 text-accent" />
                 {chip.t}
               </span>
             </motion.span>
@@ -138,7 +136,7 @@ function FanCard({ product, i, progress, spread }: { product: Product; i: number
   return (
     <motion.div style={{ x, y, rotate, zIndex: i === 1 || i === 2 ? 2 : 1 }} className="absolute left-1/2 top-0 -ml-[var(--card-half)] w-[calc(var(--card-half)*2)]">
       <Link href={productHref(product)} className="group block">
-        <ProductVisual product={product} seed={i + 5} className="aspect-4/5 rounded-[1.4rem] shadow-[0_30px_60px_-25px_rgba(42,15,31,0.55)] transition-transform duration-300 group-hover:-translate-y-2" />
+        <ProductVisual product={product} className="aspect-4/5 rounded-sm shadow-[0_30px_60px_-25px_rgba(51,4,18,0.55)] transition-transform duration-300 group-hover:-translate-y-2" />
       </Link>
     </motion.div>
   );
@@ -169,11 +167,11 @@ export function InsideTheBox() {
           <Reveal>
             <Eyebrow>Inside the box</Eyebrow>
           </Reveal>
-          <h2 className="mt-3 font-display text-[clamp(1.85rem,6.4vw,2.85rem)] leading-[1.04]">
-            <WordReveal text="Four rituals." /> <span className="text-gradient-pink italic">One week.</span>
+          <h2 className="mt-3 font-display text-[clamp(2.1rem,6.4vw,3.6rem)] leading-[1.02]">
+            <WordReveal text="Four rituals." /> <span className="text-accent italic">One week.</span>
           </h2>
           <Reveal delay={0.05}>
-            <p className="mx-auto mt-3 max-w-md text-sm sm:text-[15px] text-ink/72">Everything in the Sweet Kitty collection, packed together with a guided 7-day ritual.</p>
+            <p className="mx-auto mt-3 max-w-md text-base text-ink/72">Our four signature rituals, packed together with a guided 7-day ritual.</p>
           </Reveal>
         </div>
 
@@ -192,11 +190,11 @@ export function InsideTheBox() {
         >
           {items.map((p, i) => (
             <motion.li key={p.id} variants={stagger.child} className={cn("border-b border-ink/10 py-4 pr-4 lg:border-b-0 lg:pr-6", i % 2 === 1 && "border-l pl-4 lg:pl-6", i > 0 && "lg:border-l lg:pl-6")}>
-              <span className="font-display text-sm italic text-pink">0{i + 1}</span>
+              <span className="font-display text-sm italic text-accent">0{i + 1}</span>
               <h3 className="mt-1 font-display text-lg leading-tight sm:text-xl">{p.name}</h3>
               <p className="mt-2 text-sm leading-relaxed text-ink/70">{p.tagline}</p>
               <Link href={productHref(p)} className="group mt-3 inline-flex items-center gap-2 text-xs font-semibold text-ink">
-                Details <ArrowIcon className="w-5 text-pink transition-transform group-hover:translate-x-1" />
+                Details <ArrowIcon className="w-5 text-accent transition-transform group-hover:translate-x-1" />
               </Link>
             </motion.li>
           ))}
@@ -209,7 +207,7 @@ export function InsideTheBox() {
 /* ---------- Before / after ---------- */
 
 export function KitCompare() {
-  const juice = getProductBySlug("sweet-kitty-magic-juice");
+  const juice = getProductBySlug("magic-kitty-juice");
   return (
     <section className="bg-white/50 py-12 lg:py-20">
       <div className="mx-auto grid max-w-6xl items-center gap-8 px-5 lg:grid-cols-[1fr_1fr] lg:gap-12 lg:px-8">
@@ -217,23 +215,23 @@ export function KitCompare() {
           <Reveal>
             <Eyebrow>See the difference</Eyebrow>
           </Reveal>
-          <h2 className="mt-3 font-display text-[clamp(1.85rem,6.4vw,2.85rem)] leading-[1.04]">
-            <WordReveal text="Day one." /> <span className="text-gradient-pink italic">Day seven.</span>
+          <h2 className="mt-3 font-display text-[clamp(2.1rem,6.4vw,3.6rem)] leading-[1.02]">
+            <WordReveal text="Day one." /> <span className="text-accent italic">Day seven.</span>
           </h2>
           <Reveal delay={0.05}>
-            <p className="mt-4 max-w-md text-sm sm:text-[15px] leading-relaxed text-ink/72">Drag the line to see her week. Same woman, brand-new energy.</p>
+            <p className="mt-4 max-w-md text-base leading-relaxed text-ink/72">Drag the line to see her week. Same woman, brand-new energy.</p>
           </Reveal>
           <motion.ul initial="hidden" whileInView="show" viewport={stagger.viewport} variants={stagger.parent(0.05, 0.06)} className="mt-6 border-t border-ink/10">
             {[
               ["Tired and heavy", "Light and energised"],
-              ["Hiding from the mirror", "Loving what she sees"],
-              ["Invisible", "Magnetic"],
+              ["Rushing past the mirror", "Loving what she sees"],
+              ["Putting herself last", "Choosing herself"],
             ].map(([a, b]) => (
-              <motion.li key={a} variants={stagger.child} className="grid grid-cols-[1fr_auto_1fr] items-center gap-4 border-b border-ink/10 py-4 text-sm sm:text-[15px]">
+              <motion.li key={a} variants={stagger.child} className="grid grid-cols-[1fr_auto_1fr] items-center gap-4 border-b border-ink/10 py-4 text-base">
                 <span className="text-ink/55 line-through decoration-ink/25">{a}</span>
-                <ArrowIcon className="w-6 text-pink" />
+                <ArrowIcon className="w-6 text-accent" />
                 <span className="flex items-center gap-2 font-semibold">
-                  <CheckIcon className="size-4 text-pink" />
+                  <CheckIcon className="size-4 text-accent" />
                   {b}
                 </span>
               </motion.li>
@@ -243,8 +241,8 @@ export function KitCompare() {
             <Reveal delay={0.1}>
               <p className="mt-6 text-sm text-ink/65">
                 It starts each morning with the{" "}
-                <Link href={productHref(juice)} className="font-semibold text-ink underline decoration-pink decoration-2 underline-offset-4">
-                  Magic Juice
+                <Link href={productHref(juice)} className="font-semibold text-ink underline decoration-accent decoration-2 underline-offset-4">
+                  Magic Kitty Juice
                 </Link>
                 .
               </p>
@@ -252,7 +250,7 @@ export function KitCompare() {
           )}
         </div>
         <Reveal delay={0.08}>
-          <CompareVideos className="mx-auto aspect-4/5 w-full max-w-[340px] rounded-[1.6rem] lg:max-w-[380px]" />
+          <CompareVideos className="mx-auto aspect-4/5 w-full max-w-[340px] rounded-sm lg:max-w-[380px]" />
         </Reveal>
       </div>
     </section>
@@ -263,7 +261,7 @@ export function KitCompare() {
 
 export function KitPromise() {
   const items = [
-    { n: "04", t: "Rituals", d: "The complete collection in one box." },
+    { n: "04", t: "Rituals", d: "Our signature rituals in one box." },
     { n: "07", t: "Mornings", d: "A guided day-by-day ritual to follow." },
     { n: "01", t: "Message", d: "Order on WhatsApp. We handle the rest." },
   ];
@@ -278,9 +276,9 @@ export function KitPromise() {
       >
         {items.map((it, i) => (
           <motion.div key={it.t} variants={stagger.child} className={cn("flex items-end gap-5 border-ink/10 py-4 sm:block sm:px-8 sm:py-2", i > 0 && "border-t sm:border-l sm:border-t-0")}>
-            <span className="text-gradient-pink font-display text-5xl leading-none sm:text-6xl">{it.n}</span>
+            <span className="text-accent font-display text-5xl leading-none sm:text-6xl">{it.n}</span>
             <div className="sm:mt-4">
-              <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-ink">{it.t}</p>
+              <p className="text-xs font-bold uppercase tracking-[0.16em] text-ink">{it.t}</p>
               <p className="mt-1.5 text-sm text-ink/70">{it.d}</p>
             </div>
           </motion.div>

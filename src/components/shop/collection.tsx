@@ -1,17 +1,16 @@
 "use client";
 
 import { AnimatePresence, motion } from "motion/react";
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { activeProducts, categories, kit, singles } from "@/lib/products";
 import { site } from "@/lib/site";
-import { getVideo } from "@/lib/videos";
 import { cn, formatKES } from "@/lib/utils";
 import { useCart } from "../cart/cart-provider";
 import { BagIcon } from "../ui/icons";
 import { ArrowLink } from "../ui/section-heading";
-import { ShimmerButton } from "../ui/shimmer-button";
-import { AmbientVideo } from "../video/ambient-video";
+import { Button } from "../ui/button";
 import { ProductTile } from "./product-tile";
 
 type CategoryId = (typeof categories)[number]["id"];
@@ -20,38 +19,36 @@ type CategoryId = (typeof categories)[number]["id"];
 function KitFeature({ className }: { className?: string }) {
   const { add } = useCart();
   return (
-    <div className={cn("tone-dark group relative isolate min-h-[420px] overflow-hidden rounded-[1.4rem] bg-ink text-white", className)}>
-      <AmbientVideo video={getVideo("kit")} className="absolute inset-0 -z-10 transition-transform duration-700 ease-out group-hover:scale-[1.03]" />
-      <span className="absolute inset-0 -z-10 bg-linear-to-t from-ink/90 via-ink/30 to-ink/20" />
+    <div className={cn("tone-dark group flex flex-col overflow-hidden rounded-sm bg-burgundy text-white", className)}>
+      <div className="relative aspect-16/10 shrink-0 overflow-hidden bg-rose">
+        <Image src="/products/sweet-kitty-7-day-kit.jpg" alt="The 7-Day Sweet Kitty Kit" fill sizes="(min-width: 1024px) 560px, 92vw" className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]" />
+        <span className="absolute right-3 top-3 rounded-[2px] bg-burgundy px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-rose">{kit.badge}</span>
+      </div>
 
-      <div className="flex h-full flex-col p-5 sm:p-6">
-        <div className="flex items-center justify-between text-[10px] font-bold uppercase tracking-[0.25em]">
-          <span className="font-display text-sm normal-case italic tracking-normal text-pink-soft">N°00 · The signature</span>
-          <span className="rounded-full bg-pink px-3 py-1.5">{kit.badge}</span>
-        </div>
+      <div className="flex flex-1 flex-col p-5 sm:p-6">
         <div className="mt-auto">
           <h3 className="font-display text-[clamp(1.9rem,4vw,3rem)] leading-[0.95]">
-            The 7-Day <span className="italic text-pink-soft">Sweet Kitty</span> Kit
+            The 7-Day <span className="italic">Sweet Kitty</span> Kit
           </h3>
           <p className="mt-3 max-w-sm text-sm leading-relaxed text-white/80">{kit.tagline}</p>
           <ul className="mt-3 flex flex-wrap gap-2">
             {kit.includes!.map((i) => (
-              <li key={i} className="rounded-full px-2.5 py-1 text-[10px] font-medium ring-1 ring-white/25 backdrop-blur-sm">
+              <li key={i} className="rounded-full px-2.5 py-1 text-xs font-medium ring-1 ring-white/25 backdrop-blur-sm">
                 {i}
               </li>
             ))}
           </ul>
           <div className="mt-6 flex items-end justify-between gap-3 border-t border-white/15 pt-5">
             <span className="font-display text-2xl tabular-nums">{formatKES(kit.price!)}</span>
-            <span className="pb-1 text-[11px] font-semibold text-pink-soft">Only {site.kitsLeft} left in this batch</span>
+            <span className="pb-1 text-xs font-semibold text-accent-soft">Only {site.kitsLeft} left in this batch</span>
           </div>
           <div className="mt-4 flex gap-3">
-            <ShimmerButton href="/the-kit" variant="ghost" className="flex-1">
+            <Button href="/the-kit" variant="ghost" className="flex-1">
               Discover
-            </ShimmerButton>
-            <ShimmerButton onClick={() => add(kit.id)} className="flex-1">
+            </Button>
+            <Button variant="light" onClick={() => add(kit.id)} className="flex-1">
               <BagIcon className="size-4" /> Add
-            </ShimmerButton>
+            </Button>
           </div>
         </div>
       </div>
@@ -79,18 +76,18 @@ export function Collection() {
                   role="tab"
                   aria-selected={active}
                   onClick={() => setCat(c.id)}
-                  className={cn("relative shrink-0 rounded-full px-3.5 py-2 text-[13px] font-semibold transition-colors", active ? "text-white" : "text-ink/70 hover:text-ink")}
+                  className={cn("relative shrink-0 rounded-full px-3.5 py-2 text-sm font-semibold transition-colors", active ? "text-white" : "text-ink/70 hover:text-ink")}
                 >
                   {active && <motion.span layoutId="cat-pill" transition={{ type: "spring", stiffness: 500, damping: 38 }} className="absolute inset-0 -z-0 rounded-full bg-ink" />}
                   <span className="relative">
                     {c.label}
-                    <sup className={cn("ml-1 text-[9px] tabular-nums", active ? "text-pink-soft" : "text-ink/45")}>{count(c.id)}</sup>
+                    <sup className={cn("ml-1 text-xs tabular-nums", active ? "text-accent-soft" : "text-ink/45")}>{count(c.id)}</sup>
                   </span>
                 </button>
               );
             })}
           </div>
-          <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-ink/55">Natural · Discreet · Secret recipe</p>
+          <p className="text-xs font-bold uppercase tracking-[0.16em] text-ink/55">Natural · Discreet · Secret recipe</p>
         </div>
 
         {/* Grid */}
@@ -119,11 +116,11 @@ export function Collection() {
                 transition={{ duration: 0.3, delay: 0.05 }}
                 className="col-span-2 self-center lg:col-span-5 lg:col-start-8"
               >
-                <p className="font-display text-sm italic text-pink">Why the kit</p>
+                <p className="font-display text-sm italic text-accent">Why the kit</p>
                 <ol className="mt-4 border-t border-ink/10">
-                  {["The full collection in one box", "A guided ritual for all seven days", "The biggest transformation"].map((t, i) => (
+                  {["Four signature rituals in one box", "A guided ritual for all seven days", "The biggest transformation"].map((t, i) => (
                     <li key={t} className="flex items-baseline gap-4 border-b border-ink/10 py-4">
-                      <span className="font-display text-sm italic text-pink">0{i + 1}</span>
+                      <span className="font-display text-sm italic text-accent">0{i + 1}</span>
                       <span className="font-display text-xl">{t}</span>
                     </li>
                   ))}
@@ -144,7 +141,7 @@ export function Collection() {
                   transition={{ duration: 0.3, delay: i * 0.04, ease: [0.22, 1, 0.36, 1] }}
                   className="lg:col-span-3"
                 >
-                  <ProductTile product={p} index={singles.indexOf(p)} compact />
+                  <ProductTile product={p} compact />
                 </motion.div>
               );
             })}
@@ -155,7 +152,7 @@ export function Collection() {
 
         <p className="mt-8 text-center text-sm text-ink/65">
           Can&apos;t decide?{" "}
-          <Link href="/contact" className="font-semibold text-ink underline decoration-pink decoration-2 underline-offset-4">
+          <Link href="/contact" className="font-semibold text-ink underline decoration-accent decoration-2 underline-offset-4">
             Ask us on WhatsApp
           </Link>{" "}
           and we&apos;ll help you choose.

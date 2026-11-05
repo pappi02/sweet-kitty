@@ -145,7 +145,7 @@ function Player({ list, index, setIndex, onClose }: { list: Video[]; index: numb
         animate={{ scale: 1, y: 0 }}
         exit={{ scale: 0.94, y: 20 }}
         transition={{ type: "spring", stiffness: 420, damping: 36 }}
-        className="relative z-10 h-svh w-full overflow-hidden bg-ink lg:aspect-9/16 lg:h-[min(88svh,860px)] lg:w-auto lg:rounded-[1.75rem] lg:shadow-[0_40px_120px_-30px_rgba(0,0,0,0.7)]"
+        className="relative z-10 h-svh w-full overflow-hidden bg-ink lg:aspect-9/16 lg:h-[min(88svh,860px)] lg:w-auto lg:rounded-sm lg:shadow-[0_40px_120px_-30px_rgba(0,0,0,0.7)]"
       >
         <video
           ref={ref}
@@ -193,8 +193,8 @@ function Player({ list, index, setIndex, onClose }: { list: Video[]; index: numb
             ))}
           </div>
           <div className="mt-3 flex items-center gap-3">
-            <span className="rounded-full bg-pink px-2.5 py-1 text-[9px] font-bold uppercase tracking-[0.2em] text-white">{video.tag}</span>
-            <span className="min-w-0 flex-1 truncate text-[13px] font-semibold text-white">{video.title}</span>
+            <span className="rounded-full bg-burgundy px-2.5 py-1 text-xs font-bold uppercase tracking-[0.16em] text-white">{video.tag}</span>
+            <span className="min-w-0 flex-1 truncate text-sm font-semibold text-white">{video.title}</span>
             <button
               onClick={() => setMuted((m) => !m)}
               className="pointer-events-auto grid size-10 place-items-center rounded-full text-white transition hover:bg-white/10"
@@ -211,7 +211,7 @@ function Player({ list, index, setIndex, onClose }: { list: Video[]; index: numb
         {/* Bottom caption */}
         <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 bg-linear-to-t from-ink/85 via-ink/40 to-transparent px-5 pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-12">
           <p className="font-display text-2xl italic leading-tight text-white">{video.caption}</p>
-          <p className="mt-2 text-[10px] font-bold uppercase tracking-[0.25em] text-white/70">
+          <p className="mt-2 text-xs font-bold uppercase tracking-[0.16em] text-white/70">
             {String(index + 1).padStart(2, "0")} / {String(list.length).padStart(2, "0")} · My Sweet Kitty
           </p>
         </div>
@@ -228,13 +228,13 @@ function Player({ list, index, setIndex, onClose }: { list: Video[]; index: numb
       {/* Up next (desktop) */}
       {list.length > 1 && (
         <div className="absolute right-8 top-1/2 z-10 hidden -translate-y-1/2 flex-col gap-3 xl:flex">
-          <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-white/60">Up next</p>
+          <p className="text-xs font-bold uppercase tracking-[0.16em] text-white/60">Up next</p>
           {list.map((v, i) =>
             i === index ? null : (
               <button
                 key={v.id}
                 onClick={() => setIndex(i)}
-                className={cn("group relative h-24 w-[54px] overflow-hidden rounded-xl ring-1 ring-white/15 transition hover:ring-white/60")}
+                className={cn("group relative h-24 w-[54px] overflow-hidden rounded-sm ring-1 ring-white/15 transition hover:ring-white/60")}
                 aria-label={`Play ${v.title}`}
               >
                 <Image src={v.poster} alt="" fill sizes="54px" className="object-cover opacity-70 transition group-hover:opacity-100" />

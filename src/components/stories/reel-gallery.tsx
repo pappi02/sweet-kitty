@@ -49,9 +49,9 @@ export function ReelGallery() {
       <div className="mx-auto max-w-6xl px-5 lg:px-8">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div>
-            <p className="font-display text-sm italic text-pink">The reel wall</p>
-            <h2 className="mt-2 font-display text-[clamp(1.85rem,6.4vw,2.85rem)] leading-[1.04]">
-              Every glow, <span className="text-gradient-pink italic">on camera.</span>
+            <p className="font-display text-sm italic text-accent">The reel wall</p>
+            <h2 className="mt-2 font-display text-[clamp(2.1rem,6.4vw,3.6rem)] leading-[1.02]">
+              Every glow, <span className="text-accent italic">on camera.</span>
             </h2>
           </div>
           <div className="no-scrollbar -mx-5 flex gap-1 overflow-x-auto px-5 lg:mx-0 lg:px-0" role="tablist" aria-label="Filter videos">
@@ -63,7 +63,7 @@ export function ReelGallery() {
                   role="tab"
                   aria-selected={active}
                   onClick={() => setTag(t)}
-                  className={cn("relative shrink-0 rounded-full px-3.5 py-2 text-[13px] font-semibold transition-colors", active ? "text-white" : "text-ink/70 hover:text-ink")}
+                  className={cn("relative shrink-0 rounded-full px-3.5 py-2 text-sm font-semibold transition-colors", active ? "text-white" : "text-ink/70 hover:text-ink")}
                 >
                   {active && <motion.span layoutId="reel-pill" transition={{ type: "spring", stiffness: 500, damping: 38 }} className="absolute inset-0 rounded-full bg-ink" />}
                   <span className="relative">{t}</span>

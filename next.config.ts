@@ -36,6 +36,13 @@ const nextConfig: NextConfig = {
   cacheComponents: true,
   partialPrefetching: true,
   poweredByHeader: false,
+  // Old product links keep working after the 2026-11 renames.
+  redirects() {
+    return [
+      { source: "/shop/sweet-kitty-magic-juice", destination: "/shop/magic-kitty-juice", permanent: true },
+      { source: "/shop/sweet-kitty-magic-bath", destination: "/shop/sweet-kitty-love-bath", permanent: true },
+    ];
+  },
   async headers() {
     return [
       { source: "/:path*", headers: securityHeaders },

@@ -1,4 +1,6 @@
 // Shared copy used across pages. Moves into the admin dashboard later.
+import { prices, standardPrice } from "./prices";
+import { formatKES } from "./utils";
 
 export const nav = [
   { href: "/shop", label: "Shop" },
@@ -10,21 +12,21 @@ export const nav = [
 ] as const;
 
 export const days = [
-  { name: "Reset", text: "Your first Magic Juice and Magic Bath. Let go of everything heavy.", bg: "linear-gradient(160deg,#ffe8f4,#ffc2e2)" },
-  { name: "Energy", text: "You wake up lighter. More water, more fruit, more you.", bg: "linear-gradient(160deg,#ffd6ec,#ff8cc8)" },
-  { name: "Glow", text: "Skin softer, eyes brighter. People start to notice.", bg: "linear-gradient(160deg,#ffc2e2,#ff4fae)" },
-  { name: "Confidence", text: "You walk differently. Head up, shoulders back.", bg: "linear-gradient(160deg,#ff8cc8,#ff0090)" },
-  { name: "Self-love", text: "The mirror is your friend again. You choose you.", bg: "linear-gradient(160deg,#ff4fae,#d6007a)" },
-  { name: "Magnetic", text: "Your energy walks into the room before you do.", bg: "linear-gradient(160deg,#ff0090,#a3005c)" },
-  { name: "Reborn", text: "Meet the new you: glowing, booked and unstoppable.", bg: "linear-gradient(160deg,#d6007a,#a3005c)" },
+  { name: "Reset", text: "Your first Magic Kitty Juice and Love Bath. Let go of everything heavy.", bg: "linear-gradient(160deg,#FFF1F8,#FDDFF5)" },
+  { name: "Energy", text: "You wake up lighter. More water, more fruit, more you.", bg: "linear-gradient(160deg,#FDDFF5,#FDCDE7)" },
+  { name: "Glow", text: "Skin softer, eyes brighter. People start to notice.", bg: "linear-gradient(160deg,#FDCDE7,#F4C9DE)" },
+  { name: "Confidence", text: "You walk differently. Head up, shoulders back.", bg: "linear-gradient(160deg,#FDCDE7,#E9A9C5)" },
+  { name: "Self-love", text: "The mirror is your friend again. You choose you.", bg: "linear-gradient(160deg,#9D0842,#73062C)" },
+  { name: "Magnetic", text: "Your energy walks into the room before you do.", bg: "linear-gradient(160deg,#73062C,#59162B)" },
+  { name: "Reborn", text: "Meet the new you: glowing, booked and unstoppable.", bg: "linear-gradient(160deg,#59162B,#330412)" },
 ];
 
 /** Days 5–7 use deep backgrounds, so their text is white. */
 export const isDarkDay = (i: number) => i >= 4;
 
 export const morningSteps = [
-  { time: "06:30", title: "Wake & sip", text: "Start every morning with the Magic Juice, before anything else touches your lips.", product: "sweet-kitty-magic-juice" },
-  { time: "06:45", title: "Soak", text: "Run your Magic Bath first thing. A few quiet minutes that are only yours.", product: "sweet-kitty-magic-bath" },
+  { time: "06:30", title: "Wake & sip", text: "Start every morning with the Magic Kitty Juice, before anything else touches your lips.", product: "magic-kitty-juice" },
+  { time: "06:45", title: "Soak", text: "Run your Love Bath first thing. A few quiet minutes that are only yours.", product: "sweet-kitty-love-bath" },
   { time: "07:15", title: "Care", text: "Use Sweet Kitty Tight and Slippery Kitty as directed in your kit.", product: "sweet-kitty-tight" },
   { time: "All day", title: "Hydrate", text: "Drink plenty of water through the day. Your glow loves it.", product: null },
   { time: "09:30", title: "Nourish", text: "About three hours after your juice, eat fruits and vegetables.", product: null },
@@ -76,7 +78,7 @@ export const faqGroups: { id: string; title: string; items: Faq[] }[] = [
         q: "Why choose the 7-Day Kit?",
         a: "The kit brings the whole collection together in one guided ritual. The more of the ritual you follow, the bigger the transformation.",
       },
-      { q: "How much do the products cost?", a: "Every single ritual is KSh 3,000. The full 7-Day Kit, with all four, is KSh 10,000. Buy them on their own or save with the kit." },
+      { q: "How much do the products cost?", a: `Every single ritual is ${formatKES(standardPrice)}. The 7-Day Kit, with our four signature rituals, is ${formatKES(prices["kit-7-day"])}. Buy them on their own or save with the kit.` },
     ],
   },
   {

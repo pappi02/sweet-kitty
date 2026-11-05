@@ -63,10 +63,10 @@ export function CompareVideos({ className }: { className?: string }) {
 
       <span className="pointer-events-none absolute inset-0 bg-linear-to-t from-ink/60 via-transparent to-ink/30" />
 
-      <motion.span style={{ opacity: beforeLabel }} className="pointer-events-none absolute left-4 top-4 rounded-full bg-white/15 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.22em] text-white ring-1 ring-white/25 backdrop-blur-md">
+      <motion.span style={{ opacity: beforeLabel }} className="pointer-events-none absolute left-4 top-4 rounded-full bg-white/15 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-white ring-1 ring-white/25 backdrop-blur-md">
         Before
       </motion.span>
-      <motion.span style={{ opacity: afterLabel }} className="pointer-events-none absolute right-4 top-4 rounded-full bg-pink px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.22em] text-white">
+      <motion.span style={{ opacity: afterLabel }} className="pointer-events-none absolute right-4 top-4 rounded-full bg-burgundy px-3 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-white">
         After
       </motion.span>
 
@@ -81,7 +81,7 @@ export function CompareVideos({ className }: { className?: string }) {
           aria-valuemax={100}
           aria-valuenow={50}
           onKeyDown={onKey}
-          className="pointer-events-auto absolute left-0 top-1/2 grid size-11 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-white text-pink-deep shadow-[0_10px_30px_-5px_rgba(0,0,0,0.4)] outline-none ring-pink focus-visible:ring-4"
+          className="pointer-events-auto absolute left-0 top-1/2 grid size-11 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-white text-accent shadow-[0_10px_30px_-5px_rgba(0,0,0,0.4)] outline-none ring-accent focus-visible:ring-4"
         >
           <svg viewBox="0 0 32 16" className="w-6" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
             <path d="M9 3L4 8l5 5M23 3l5 5-5 5" />
@@ -90,7 +90,7 @@ export function CompareVideos({ className }: { className?: string }) {
         </div>
       </motion.div>
 
-      <p className="pointer-events-none absolute inset-x-0 bottom-4 text-center text-[10px] font-bold uppercase tracking-[0.25em] text-white/80">Drag to compare</p>
+      <p className="pointer-events-none absolute inset-x-0 bottom-4 text-center text-xs font-bold uppercase tracking-[0.16em] text-white/80">Drag to compare</p>
     </div>
   );
 }

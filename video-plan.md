@@ -1,5 +1,12 @@
 # My Sweet Kitty: video production plan
 
+> **Update 2026-11-05, from the client. These replace the matching rules below.**
+> - **Brand colours are now burgundy `#73062C` and pink `#FDCDE7`**, sampled from her reference photo. No hot pink.
+> - **New videos don't need the cat.** Natural-looking shots of hands applying the product to the relevant
+>   body part (scrub on thighs, oil on the back). Faces stay out of frame. Tasteful, not sexual.
+> - **The cat logo stays** on packaging and on the site.
+> - **Product names:** Magic Kitty Juice, Magic Kitty Body Scrub, Magic Kitty Oil, Sweet Kitty Candies, Sweet Kitty Love Bath.
+
 Plan for replacing every placeholder video on the site with our own AI-generated clips, all
 starring one consistent Sweet Kitty character, and for building the first ads from the same shots.
 

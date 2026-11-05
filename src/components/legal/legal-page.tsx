@@ -28,14 +28,14 @@ export function LegalPageView({ page }: { page: LegalPage }) {
         <div className="mx-auto grid max-w-6xl gap-8 px-5 lg:grid-cols-[minmax(0,15rem)_minmax(0,1fr)] lg:gap-16 lg:px-8">
           {/* Index */}
           <aside className="lg:sticky lg:top-28 lg:self-start">
-            <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-ink/55">Last updated</p>
+            <p className="text-xs font-bold uppercase tracking-[0.16em] text-ink/55">Last updated</p>
             <p className="mt-1 font-display text-lg italic">{page.updated}</p>
             <nav aria-label="On this page" className="mt-6 hidden border-t border-ink/10 lg:block">
               <ol>
                 {page.sections.map((s, i) => (
                   <li key={s.id}>
-                    <a href={`#${s.id}`} className="group flex items-baseline gap-3 border-b border-ink/10 py-2 text-[13px] text-ink/70 transition-colors hover:text-ink">
-                      <span className="text-[11px] tabular-nums text-pink">{pad(i + 1)}</span>
+                    <a href={`#${s.id}`} className="group flex items-baseline gap-3 border-b border-ink/10 py-2 text-sm text-ink/70 transition-colors hover:text-ink">
+                      <span className="text-xs tabular-nums text-accent">{pad(i + 1)}</span>
                       {s.heading}
                     </a>
                   </li>
@@ -49,7 +49,7 @@ export function LegalPageView({ page }: { page: LegalPage }) {
             <ol className="border-t border-ink/10">
               {page.sections.map((s, i) => (
                 <li key={s.id} id={s.id} className="scroll-mt-28 border-b border-ink/10 py-6 lg:grid lg:grid-cols-[3rem_minmax(0,1fr)] lg:py-7">
-                  <span className="font-display text-sm italic tabular-nums text-pink">{pad(i + 1)}</span>
+                  <span className="font-display text-sm italic tabular-nums text-accent">{pad(i + 1)}</span>
                   <div>
                     <h2 className="mt-1 font-display text-[1.45rem] leading-tight lg:mt-0">{s.heading}</h2>
                     <div className="mt-3 space-y-3 text-sm leading-relaxed text-ink/78 sm:text-[15px]">
@@ -69,12 +69,12 @@ export function LegalPageView({ page }: { page: LegalPage }) {
               className="group mt-8 flex items-center justify-between gap-4 border-b border-ink/15 pb-4"
             >
               <span>
-                <span className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.25em] text-pink-deep">
+                <span className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-accent">
                   <WhatsAppIcon className="size-3.5" /> Still unsure?
                 </span>
                 <span className="mt-1 block font-display text-xl italic">Ask us on WhatsApp</span>
               </span>
-              <ArrowIcon className="w-7 shrink-0 text-pink transition-transform duration-300 group-hover:translate-x-1" />
+              <ArrowIcon className="w-7 shrink-0 text-accent transition-transform duration-300 group-hover:translate-x-1" />
             </a>
           </div>
         </div>
@@ -83,20 +83,20 @@ export function LegalPageView({ page }: { page: LegalPage }) {
       {/* Other policies */}
       <section className="border-t border-ink/10 bg-mist py-8 lg:py-10">
         <div className="mx-auto max-w-6xl px-5 lg:px-8">
-          <p className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.25em] text-ink/55">
-            <Star4 className="size-2.5 text-pink" /> More policies
+          <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-ink/55">
+            <Star4 className="size-2.5 text-accent" /> More policies
           </p>
           <ul className="mt-3 grid border-t border-ink/10 sm:grid-cols-3 sm:border-t-0">
             {others.map((p) => (
               <li key={p.slug} className="border-b border-ink/10 sm:border-b-0 sm:border-l sm:first:border-l-0 sm:first:pl-0 sm:pl-5">
                 <Link href={`/${p.slug}`} className="group flex items-center justify-between gap-3 py-3 sm:py-1">
                   <span>
-                    <span className="block text-[11px] tabular-nums text-pink">N°{p.index}</span>
+                    <span className="block text-xs tabular-nums text-accent">N°{p.index}</span>
                     <span className="font-display text-lg">
                       {p.title} <span className="italic">{p.accent}</span>
                     </span>
                   </span>
-                  <ArrowIcon className="w-6 shrink-0 text-pink transition-transform duration-300 group-hover:translate-x-1" />
+                  <ArrowIcon className="w-6 shrink-0 text-accent transition-transform duration-300 group-hover:translate-x-1" />
                 </Link>
               </li>
             ))}

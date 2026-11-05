@@ -8,7 +8,7 @@ import { whatsappLink } from "@/lib/site";
 import { formatKES } from "@/lib/utils";
 import { useCart } from "../cart/cart-provider";
 import { WhatsAppIcon } from "../ui/icons";
-import { ShimmerButton } from "../ui/shimmer-button";
+import { Button } from "../ui/button";
 
 // Pages that sell the kit. Product pages have their own bar.
 const pages = ["/", "/the-kit", "/ritual", "/stories", "/about"];
@@ -35,9 +35,9 @@ export function MobileBuyBar() {
           transition={{ type: "spring", stiffness: 420, damping: 34 }}
           className="fixed inset-x-3 bottom-[max(0.75rem,env(safe-area-inset-bottom))] z-40 lg:hidden"
         >
-          <div className="flex items-center gap-2 rounded-full bg-sky-light/90 tone-light p-1 pl-4 shadow-[0_20px_50px_-15px_rgba(255,0,144,0.6)] ring-1 ring-white/10 backdrop-blur-xl">
+          <div className="flex items-center gap-2 rounded-[2px] bg-cream tone-light p-1.5 pl-4 shadow-[0_18px_40px_-16px_rgba(51,4,18,0.55)] ring-1 ring-burgundy/20">
             <div className="min-w-0 flex-1">
-              <p className="truncate text-[10px] font-bold uppercase tracking-[0.2em] text-pink-soft">The 7-Day Kit</p>
+              <p className="truncate text-xs font-bold uppercase tracking-[0.16em] text-accent-soft">The 7-Day Kit</p>
               <p className="font-display text-[15px] leading-tight text-white">{formatKES(kit.price!)}</p>
             </div>
             <a
@@ -49,9 +49,9 @@ export function MobileBuyBar() {
             >
               <WhatsAppIcon className="size-4" />
             </a>
-            <ShimmerButton onClick={() => add(kit.id)} className="h-10 px-4">
+            <Button onClick={() => add(kit.id)} className="h-11 px-4">
               Get it now
-            </ShimmerButton>
+            </Button>
           </div>
         </motion.div>
       )}

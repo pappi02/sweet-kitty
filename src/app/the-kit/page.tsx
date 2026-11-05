@@ -7,12 +7,13 @@ import { PageTransition } from "@/components/layout/page-transition";
 import { JsonLd } from "@/components/seo/json-ld";
 import { faqGroups } from "@/lib/content";
 import { kit } from "@/lib/products";
+import { formatKES } from "@/lib/utils";
 import { breadcrumbLd, productLd } from "@/lib/seo";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "The 7-Day Sweet Kitty Kit",
-  description: "The complete glow-up ritual: Sweet Kitty Tight, Slippery Kitty, Magic Juice and Magic Bath with a guided 7-day ritual. KSh 10,000.",
+  description: `The complete glow-up ritual: Sweet Kitty Tight, Slippery Kitty, Magic Kitty Juice and Sweet Kitty Love Bath with a guided 7-day ritual. ${formatKES(kit.price!)}.`,
   alternates: { canonical: "/the-kit" },
   openGraph: {
     title: "The 7-Day Sweet Kitty Kit",
