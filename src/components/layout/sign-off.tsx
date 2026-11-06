@@ -1,4 +1,6 @@
-import styles from "./sign-off.module.css";
+// Plain global classes: this project runs every .css file through Tailwind,
+// which turns CSS modules into global CSS and leaves the module classes empty.
+import "./sign-off.css";
 
 const PORTFOLIO_URL = "https://david-baraka.vercel.app";
 
@@ -14,11 +16,11 @@ export function SignOff({ tone = "dark", className }: { tone?: "dark" | "light";
       target="_blank"
       rel="noopener"
       aria-label="Crafted by Am.nyongesa. Opens the developer's portfolio in a new tab"
-      className={[styles.signOff, tone === "light" ? styles.light : styles.dark, className].filter(Boolean).join(" ")}
+      className={["sign-off", tone === "light" ? "sign-off--light" : "sign-off--dark", className].filter(Boolean).join(" ")}
     >
-      <span aria-hidden className={styles.symbol} />
+      <span aria-hidden className="sign-off__symbol" />
       <span>
-        crafted by <span className={styles.name}>Am.nyongesa</span>
+        crafted by <span className="sign-off__name">Am.nyongesa</span>
       </span>
     </a>
   );

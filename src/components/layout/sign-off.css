@@ -1,5 +1,5 @@
 /* The developer's sign-off, matching the portfolio footer. */
-.signOff {
+.sign-off {
   --sign-off-ease: cubic-bezier(0.22, 1, 0.36, 1);
   display: inline-flex;
   align-items: center;
@@ -14,30 +14,30 @@
   transition: color 0.3s ease;
 }
 
-.dark {
+.sign-off--dark {
   --sign-off-accent: #d4ff24;
   --sign-off-muted: #9aa3b2;
   --sign-off-fg: #f3f5f8;
 }
 
-.light {
+.sign-off--light {
   --sign-off-accent: #1558c9;
   --sign-off-muted: #545b67;
   --sign-off-fg: #030407;
 }
 
-.signOff:hover,
-.signOff:focus-visible {
+.sign-off:hover,
+.sign-off:focus-visible {
   color: var(--sign-off-fg);
 }
 
-.signOff:focus-visible {
+.sign-off:focus-visible {
   outline: 2px solid var(--sign-off-accent);
   outline-offset: 3px;
   border-radius: 2px;
 }
 
-.symbol {
+.sign-off__symbol {
   width: 1.125rem;
   height: 1.125rem;
   flex-shrink: 0;
@@ -47,13 +47,13 @@
   transition: transform 0.5s var(--sign-off-ease);
 }
 
-.signOff:hover .symbol,
-.signOff:focus-visible .symbol {
+.sign-off:hover .sign-off__symbol,
+.sign-off:focus-visible .sign-off__symbol {
   transform: rotate(60deg) scale(1.1);
 }
 
 /* An underline that draws in from the left on hover. */
-.name {
+.sign-off__name {
   font-weight: 500;
   color: var(--sign-off-fg);
   background-image: linear-gradient(currentColor, currentColor);
@@ -63,14 +63,14 @@
   transition: background-size 0.3s var(--sign-off-ease);
 }
 
-.signOff:hover .name,
-.signOff:focus-visible .name {
+.sign-off:hover .sign-off__name,
+.sign-off:focus-visible .sign-off__name {
   background-size: 100% 1px;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .symbol,
-  .name {
+  .sign-off__symbol,
+  .sign-off__name {
     transition: none;
   }
 }
