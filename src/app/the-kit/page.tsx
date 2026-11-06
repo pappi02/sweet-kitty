@@ -13,7 +13,7 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "The 7-Day Sweet Kitty Kit",
-  description: `The complete glow-up ritual: Sweet Kitty Tight, Slippery Kitty, Magic Kitty Juice and Sweet Kitty Love Bath with a guided 7-day ritual. ${formatKES(kit.price!)}.`,
+  description: `The complete glow-up ritual: Sweet Kitty Tight, Slippery Kitty, Kitty Magic Juice and Kitty Love Bath with a guided 7-day ritual. ${formatKES(kit.price!)}.`,
   alternates: { canonical: "/the-kit" },
   openGraph: {
     title: "The 7-Day Sweet Kitty Kit",

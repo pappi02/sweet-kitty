@@ -17,7 +17,7 @@ export type Product = {
   /** Price in KES. null = "price coming soon" */
   price: number | null;
   size?: string;
-  category: "kit" | "body" | "intimate" | "drink" | "bath" | "treats";
+  category: "kit" | "body" | "intimate" | "bath" | "treats";
   badge?: string;
   benefits: string[];
   howToUse: string[];
@@ -53,11 +53,11 @@ export const products: Product[] = [
       "Discreet, gift-ready packaging",
     ],
     howToUse: [
-      "Start every morning with the Magic Kitty Juice.",
-      "Treat yourself to the Love Bath first thing in the morning.",
+      "Treat yourself to the Kitty Love Bath first thing in the morning.",
+      "Then smooth the Kitty Magic Juice over your skin.",
       "Use Sweet Kitty Tight and Slippery Kitty as directed in your kit.",
     ],
-    includes: ["Sweet Kitty Tight", "Slippery Kitty", "Magic Kitty Juice", "Sweet Kitty Love Bath"],
+    includes: ["Sweet Kitty Tight", "Slippery Kitty", "Kitty Magic Juice", "Kitty Love Bath"],
     tone: ["#73062C", "#59162B"],
     icon: "crown",
     image: "/products/sweet-kitty-7-day-kit.jpg",
@@ -116,27 +116,25 @@ export const products: Product[] = [
   {
     id: "magic-juice",
     slug: "magic-kitty-juice",
-    name: "Magic Kitty Juice",
-    shortName: "Kitty Juice",
-    tagline: "Your morning elixir for glow, energy and good fortune.",
+    name: "Kitty Magic Juice",
+    shortName: "Magic Juice",
+    tagline: "Your morning glow, poured straight onto your skin.",
     description:
-      "A natural drinking ritual to start your day glowing. Sip it every morning and step into your higher feminine energy.",
+      "A natural body ritual to start your day glowing. Smooth it over your skin every morning and step into your higher feminine energy. For external use only.",
     price: prices["magic-juice"],
     size: "1 litre",
-    category: "drink",
+    category: "body",
     benefits: [
-      "Cleanse your aura",
-      "Raise your energy",
       "Bring back your natural glow",
+      "Leaves skin soft and refreshed",
       "Embrace your higher feminine energy",
+      "Cleanse your aura",
       "Attract good fortune and abundance",
-      "Soothes period discomfort",
-      "Rich in antioxidants",
     ],
     howToUse: [
-      "Drink first thing in the morning.",
-      "Drink plenty of water through the day.",
-      "Eat fruits and vegetables about 3 hours later.",
+      "After your morning bath, pour a little into your palm.",
+      "Smooth it over your legs, thighs and body until it sinks in.",
+      "For external use only. Do not drink.",
     ],
     tone: ["#9D0842", "#330412"],
     icon: "sparkles",
@@ -148,7 +146,7 @@ export const products: Product[] = [
   {
     id: "magic-bath",
     slug: "sweet-kitty-love-bath",
-    name: "Sweet Kitty Love Bath",
+    name: "Kitty Love Bath",
     shortName: "Love Bath",
     tagline: "A milk and rose soak for body and soul.",
     description: "A luxurious natural bath ritual for soft skin, a calm mind and a feminine glow.",
@@ -171,11 +169,12 @@ export const products: Product[] = [
   {
     id: "body-scrub",
     slug: "magic-kitty-body-scrub",
-    name: "Magic Kitty Body Scrub",
-    shortName: "Body Scrub",
+    name: "Kitty Magic Scrub",
+    shortName: "Magic Scrub",
     tagline: "Buff away the old. Reveal your softest skin.",
     description: "A rich body scrub that polishes and smooths, leaving your skin soft, fresh and ready to glow.",
     price: prices["body-scrub"],
+    size: "500 ml",
     category: "body",
     benefits: ["Polishes and smooths skin", "Leaves skin soft and fresh", "Brings out your natural glow", "A little ritual of self-love"],
     howToUse: ["Massage onto damp skin in gentle circles.", "Give extra love to your legs and thighs.", "Rinse well with warm water."],
@@ -189,11 +188,12 @@ export const products: Product[] = [
   {
     id: "kitty-oil",
     slug: "magic-kitty-oil",
-    name: "Magic Kitty Oil",
+    name: "Kitty Oil",
     shortName: "Kitty Oil",
     tagline: "Silky, glowing skin from head to toe.",
     description: "A silky body oil that melts into your skin, leaving it soft, smooth and beautifully glowing.",
     price: prices["kitty-oil"],
+    size: "15 ml",
     category: "body",
     benefits: ["Leaves skin silky soft", "Gives a healthy-looking glow", "Melts in beautifully", "Makes every day feel special"],
     howToUse: ["Smooth over clean skin.", "Massage into your legs, thighs, arms and back until it melts in."],
@@ -249,7 +249,6 @@ export const categories = [
   { id: "all", label: "All" },
   { id: "kit", label: "The Kit" },
   { id: "body", label: "Body" },
-  { id: "drink", label: "Drinks" },
   { id: "bath", label: "Bath" },
   { id: "treats", label: "Treats" },
   { id: "intimate", label: "Intimate care" },

@@ -10,7 +10,7 @@ import { videos } from "@/lib/videos";
 
 export const metadata: Metadata = {
   title: "Shop the collection",
-  description: "Natural, secret-recipe rituals: the 7-Day Sweet Kitty Kit, Magic Kitty Juice, Magic Kitty Body Scrub, Magic Kitty Oil, Sweet Kitty Candies, Sweet Kitty Love Bath and more.",
+  description: "Natural, secret-recipe rituals: the 7-Day Sweet Kitty Kit, Kitty Magic Juice, Kitty Magic Scrub, Kitty Oil, Sweet Kitty Candies, Kitty Love Bath and more.",
   alternates: { canonical: "/shop" },
 };
 

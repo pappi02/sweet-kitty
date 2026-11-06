@@ -12,7 +12,7 @@ export const nav = [
 ] as const;
 
 export const days = [
-  { name: "Reset", text: "Your first Magic Kitty Juice and Love Bath. Let go of everything heavy.", bg: "linear-gradient(160deg,#FFF1F8,#FDDFF5)" },
+  { name: "Reset", text: "Your first Love Bath and Kitty Magic Juice. Let go of everything heavy.", bg: "linear-gradient(160deg,#FFF1F8,#FDDFF5)" },
   { name: "Energy", text: "You wake up lighter. More water, more fruit, more you.", bg: "linear-gradient(160deg,#FDDFF5,#FDCDE7)" },
   { name: "Glow", text: "Skin softer, eyes brighter. People start to notice.", bg: "linear-gradient(160deg,#FDCDE7,#F4C9DE)" },
   { name: "Confidence", text: "You walk differently. Head up, shoulders back.", bg: "linear-gradient(160deg,#FDCDE7,#E9A9C5)" },
@@ -25,11 +25,11 @@ export const days = [
 export const isDarkDay = (i: number) => i >= 4;
 
 export const morningSteps = [
-  { time: "06:30", title: "Wake & sip", text: "Start every morning with the Magic Kitty Juice, before anything else touches your lips.", product: "magic-kitty-juice" },
-  { time: "06:45", title: "Soak", text: "Run your Love Bath first thing. A few quiet minutes that are only yours.", product: "sweet-kitty-love-bath" },
+  { time: "06:30", title: "Soak", text: "Run your Kitty Love Bath first thing. A few quiet minutes that are only yours.", product: "sweet-kitty-love-bath" },
+  { time: "07:00", title: "Glow", text: "Pour a little Kitty Magic Juice into your palm and smooth it over your legs, thighs and body.", product: "magic-kitty-juice" },
   { time: "07:15", title: "Care", text: "Use Sweet Kitty Tight and Slippery Kitty as directed in your kit.", product: "sweet-kitty-tight" },
   { time: "All day", title: "Hydrate", text: "Drink plenty of water through the day. Your glow loves it.", product: null },
-  { time: "09:30", title: "Nourish", text: "About three hours after your juice, eat fruits and vegetables.", product: null },
+  { time: "Meals", title: "Nourish", text: "Fill your plate with fruits and vegetables. Glow from the inside too.", product: null },
 ];
 
 export const values = [

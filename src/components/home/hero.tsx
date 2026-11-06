@@ -25,7 +25,7 @@ export function Hero() {
       {/* The kit */}
       <div className="relative aspect-4/3 overflow-hidden bg-rose lg:order-2 lg:aspect-auto">
         <div className="absolute inset-0 animate-settle">
-          <Image src="/products/sweet-kitty-7-day-kit.jpg" alt="The 7-Day Sweet Kitty Kit: gift bag, bow box, juice, jar and crown towels" fill preload sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover object-[58%_50%]" />
+          <Image src="/products/sweet-kitty-7-day-kit.jpg" alt="The 7-Day Sweet Kitty Kit: gift bag, bow box, bottle, jar and crown towels" fill preload sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover object-[58%_50%]" />
         </div>
       </div>
 

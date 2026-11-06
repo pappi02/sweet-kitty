@@ -7,9 +7,6 @@ import { site } from "./site";
 export const siteUrl = `https://${site.domain}`;
 export const absUrl = (path: string) => new URL(path, siteUrl).toString();
 
-/** Real profile links only; "#" placeholders are skipped. */
-const profiles = () => Object.values(site.socials).filter((url) => url.startsWith("http"));
-
 export function organizationLd() {
   return {
     "@context": "https://schema.org",
@@ -20,7 +17,6 @@ export function organizationLd() {
     logo: absUrl("/icons/icon-512.png"),
     slogan: site.tagline,
     areaServed: { "@type": "Country", name: "Kenya" },
-    sameAs: profiles(),
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "customer service",

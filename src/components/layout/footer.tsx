@@ -33,13 +33,6 @@ const columns = [
   },
 ];
 
-// Only real profile links are shown; "#" placeholders in site.ts stay hidden.
-const socials = [
-  { label: "Instagram", href: site.socials.instagram },
-  { label: "TikTok", href: site.socials.tiktok },
-  { label: "Facebook", href: site.socials.facebook },
-].filter((s) => s.href.startsWith("http"));
-
 export function Footer() {
   return (
     <footer className="tone-dark bg-burgundy pb-24 pt-14 text-white lg:pb-8">
@@ -60,15 +53,13 @@ export function Footer() {
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/75">
               Natural, secret-recipe rituals that help every woman embrace her feminine power. Glow from the inside out.
             </p>
-            {socials.length > 0 && (
-              <div className="mt-3 flex gap-4 text-xs font-semibold uppercase tracking-[0.16em] text-white/75">
-                {socials.map((s) => (
-                  <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-rose">
-                    {s.label}
-                  </a>
-                ))}
-              </div>
-            )}
+            <ul className="mt-3 space-y-1 text-sm text-white/75">
+              {site.socials.map((s) => (
+                <li key={s.label}>
+                  <span className="text-xs font-semibold uppercase tracking-[0.16em] text-accent-soft">{s.label}</span> {s.handle}
+                </li>
+              ))}
+            </ul>
           </div>
           {columns.map((c) => (
             <div key={c.title}>

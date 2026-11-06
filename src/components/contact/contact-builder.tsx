@@ -130,12 +130,9 @@ export function ContactBuilder() {
             <ul className="border-t border-ink/10">
               {[
                 { label: "WhatsApp", value: "Chat with us", href: whatsappLink("Hi Sweet Kitty!") },
+                { label: "Call", value: site.phone, href: site.phoneHref },
                 { label: "Email", value: site.email, href: `mailto:${site.email}` },
-                { label: "Instagram", value: "Follow the glow", href: site.socials.instagram },
-                { label: "TikTok", value: "Watch more reels", href: site.socials.tiktok },
-              ]
-                .filter((c) => c.href !== "#")
-                .map((c) => (
+              ].map((c) => (
                 <li key={c.label}>
                   <a href={c.href} target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between border-b border-ink/10 py-3">
                     <span>
@@ -144,6 +141,12 @@ export function ContactBuilder() {
                     </span>
                     <ArrowIcon className="w-6 text-accent transition-transform duration-300 group-hover:translate-x-1" />
                   </a>
+                </li>
+              ))}
+              {site.socials.map((s) => (
+                <li key={s.label} className="border-b border-ink/10 py-3">
+                  <span className="block text-xs font-bold uppercase tracking-[0.16em] text-ink/55">{s.label}</span>
+                  <span className="font-display text-lg">{s.handle}</span>
                 </li>
               ))}
             </ul>
