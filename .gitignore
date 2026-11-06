@@ -42,3 +42,4 @@ next-env.d.ts
 
 # local-only media kept out of the site and the repo (unused / third-party clips)
 /assets/unused-media/
+!.env.example

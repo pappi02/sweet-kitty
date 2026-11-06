@@ -3,6 +3,7 @@
 import { MotionConfig } from "motion/react";
 import { createContext, useCallback, useContext, useMemo, useState, useSyncExternalStore, type ReactNode } from "react";
 import { track } from "../analytics/analytics";
+import { MAX_ORDER_QTY } from "@/lib/order";
 import { getProduct, type Product } from "@/lib/products";
 
 type Line = { id: string; qty: number };
@@ -27,7 +28,7 @@ const Ctx = createContext<CartContext | null>(null);
 // Cart lines live in a tiny store backed by this browser's localStorage.
 const KEY = "sweet-kitty-cart";
 /** Most of one item a single order can hold; bigger orders are arranged on WhatsApp. */
-export const MAX_QTY = 20;
+export const MAX_QTY = MAX_ORDER_QTY;
 const clampQty = (n: number) => Math.min(MAX_QTY, Math.max(0, Math.floor(Number(n) || 0)));
 const EMPTY: Line[] = [];
 const listeners = new Set<() => void>();

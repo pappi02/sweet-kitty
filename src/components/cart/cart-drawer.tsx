@@ -8,6 +8,7 @@ import { kit } from "@/lib/products";
 import { site, whatsappLink } from "@/lib/site";
 import { cn, formatKES } from "@/lib/utils";
 import { track } from "../analytics/analytics";
+import { MpesaPay } from "../payments/mpesa-pay";
 import { Star4 } from "../ui/decor";
 import { ArrowIcon, CheckIcon, ChevronIcon, CloseIcon, MinusIcon, PlusIcon, WhatsAppIcon } from "../ui/icons";
 import { ProductVisual } from "../ui/product-visual";
@@ -16,7 +17,7 @@ import { useDialog } from "../ui/use-dialog";
 import { MAX_QTY, useCart } from "./cart-provider";
 
 type Step = "bag" | "details" | "sent";
-type Sent = { ref: string; subtotal: number; message: string; count: number };
+type Sent = { ref: string; subtotal: number; message: string; count: number; phone: string; lines: { id: string; qty: number }[] };
 
 // The order form remembers the customer's details in this browser only.
 const DETAILS_KEY = "sweet-kitty-details";
@@ -34,7 +35,8 @@ function saveDetails(d: OrderDetails) {
   } catch {}
 }
 
-export function CartDrawer() {
+/** `payEnabled` is true once the Daraja (M-Pesa) keys are set on the server. */
+export function CartDrawer({ payEnabled = false }: { payEnabled?: boolean }) {
   const { items, open, setOpen, setQty, remove, clear, subtotal, count, add } = useCart();
   const panel = useRef<HTMLElement>(null);
   const [step, setStep] = useState<Step>("bag");
@@ -81,7 +83,7 @@ export function CartDrawer() {
     window.open(whatsappLink(message), "_blank", "noopener,noreferrer");
     saveDetails(details);
     track("generate_lead", { currency: "KES", value: subtotal, order_ref: ref });
-    setSent({ ref, subtotal, message, count });
+    setSent({ ref, subtotal, message, count, phone: normalizePhone(details.phone) ?? details.phone, lines: items.map((i) => ({ id: i.product.id, qty: i.qty })) });
     clear();
     setStep("sent");
   }
@@ -131,7 +133,7 @@ export function CartDrawer() {
 
             {step === "bag" && <BagStep items={items} hasKit={hasKit} add={add} setQty={setQty} remove={remove} subtotal={subtotal} onCheckout={toDetails} />}
             {step === "details" && <DetailsStep details={details} setDetails={setDetails} errors={errors} subtotal={subtotal} onSubmit={submit} />}
-            {step === "sent" && sent && <SentStep sent={sent} onDone={close} />}
+            {step === "sent" && sent && <SentStep sent={sent} payEnabled={payEnabled} onDone={close} />}
           </motion.aside>
         </div>
       )}
@@ -407,15 +409,21 @@ function DetailsStep({
 
 /* ---------- Step 3: sent, how to pay ---------- */
 
-function SentStep({ sent, onDone }: { sent: Sent; onDone: () => void }) {
+function SentStep({ sent, payEnabled, onDone }: { sent: Sent; payEnabled: boolean; onDone: () => void }) {
   const total = formatKES(sent.subtotal);
-  const pay = mpesaSteps(sent.ref, total);
-  const steps = [
-    { t: "Send the message", d: "Tap send in WhatsApp if you haven't already." },
-    { t: "We confirm your total", d: "Including the delivery fee for your location." },
-    { t: "Pay with M-Pesa", d: pay.join(" ") },
-    { t: "Discreet delivery", d: "We call you when your plain parcel is on its way." },
-  ];
+  const steps = payEnabled
+    ? [
+        { t: "Send the message", d: "Tap send in WhatsApp if you haven't already." },
+        { t: "Pay for your items", d: `Pay ${total} below now, or later once we've confirmed on WhatsApp.` },
+        { t: "Delivery fee", d: "We confirm it on WhatsApp for your location and send you a link to pay it by M-Pesa." },
+        { t: "Discreet delivery", d: "We call you when your plain parcel is on its way." },
+      ]
+    : [
+        { t: "Send the message", d: "Tap send in WhatsApp if you haven't already." },
+        { t: "We confirm your total", d: "Including the delivery fee for your location." },
+        { t: "Pay with M-Pesa", d: mpesaSteps(sent.ref, total).join(" ") },
+        { t: "Discreet delivery", d: "We call you when your plain parcel is on its way." },
+      ];
   return (
     <>
       <div className="flex-1 overflow-y-auto px-6">
@@ -428,6 +436,12 @@ function SentStep({ sent, onDone }: { sent: Sent; onDone: () => void }) {
             Reference <span className="font-semibold tabular-nums text-white">{sent.ref}</span> · {sent.count} {sent.count === 1 ? "item" : "items"} · {total} + delivery
           </p>
         </div>
+
+        {payEnabled && (
+          <div className="mt-4">
+            <MpesaPay reference={sent.ref} amount={sent.subtotal} defaultPhone={sent.phone} payload={{ items: sent.lines }} />
+          </div>
+        )}
 
         <ol className="mt-5 border-t border-ink/10">
           {steps.map((s, i) => (

@@ -4,6 +4,9 @@
 import { site } from "./site";
 import { formatKES } from "./utils";
 
+/** Most of one product a single order can hold (the bag and the payment check both use it). */
+export const MAX_ORDER_QTY = 20;
+
 export const deliveryZones = [
   { id: "nairobi-cbd", label: "Nairobi CBD", short: "Nairobi CBD" },
   { id: "nairobi", label: "Nairobi (outside CBD)", short: "Nairobi" },

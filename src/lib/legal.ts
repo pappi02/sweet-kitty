@@ -63,7 +63,7 @@ export const legalPages: LegalPage[] = [
         heading: "Who sees it",
         body: [
           "Our delivery partners receive only your name, phone number and location. They see a plain parcel, never what is inside.",
-          "Payment providers such as M-Pesa process your payment under their own terms.",
+          "Safaricom M-Pesa processes your payment under its own terms. When you pay on our site, we send Safaricom your phone number, the amount and your order reference so it can show the payment prompt on your phone. We never see or store your M-Pesa PIN.",
           "WhatsApp (Meta) carries our chats. Its own privacy policy applies to how it handles messages.",
           "We may share information if the law requires it.",
         ],
@@ -133,7 +133,7 @@ export const legalPages: LegalPage[] = [
         id: "payment",
         heading: "Payment",
         body: [
-          "We share the payment options with you on WhatsApp. Only pay to the details we give you in our official chat. We will never ask for your M-Pesa PIN.",
+          "We take payment by M-Pesa. When you pay on our site, M-Pesa sends a prompt to your phone and you approve it with your PIN on your phone, never on a website. The delivery fee is confirmed on WhatsApp and paid the same way, through a payment link we send you. If online payment isn't available, we share the payment details in our official WhatsApp chat; only pay to those. We will never ask for your M-Pesa PIN.",
         ],
       },
       {

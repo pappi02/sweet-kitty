@@ -57,7 +57,7 @@ export const faqGroups: { id: string; title: string; items: Faq[] }[] = [
         q: "How do I order?",
         a: "Add your favourites to your bag, tap “Continue to delivery” and fill in your name, phone and delivery area. Then tap “Send order on WhatsApp”: your order arrives in one message with its own reference, and we reply to confirm your total and delivery.",
       },
-      { q: "How do I pay?", a: "With M-Pesa. Once we confirm your total, including delivery, on WhatsApp, we send you the M-Pesa details to pay. We will never ask for your M-Pesa PIN." },
+      { q: "How do I pay?", a: "With M-Pesa. After you send your order, tap Pay and an M-Pesa prompt pops up on your phone. Enter your PIN there and you're done. We confirm the delivery fee on WhatsApp and send you a link to pay it the same way. We will never ask for your M-Pesa PIN." },
       { q: "Can I order for a friend?", a: "Of course. Add what she needs, tell us on WhatsApp that it's a gift, and we'll keep it discreet and beautifully packed." },
     ],
   },
