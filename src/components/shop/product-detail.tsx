@@ -71,7 +71,7 @@ function Gallery({ product }: { product: Product }) {
             key={i}
             onClick={() => setActive(i)}
             className={cn(
-              "relative h-14 w-11 overflow-hidden rounded-lg transition-all duration-200",
+              "relative h-16 w-12 overflow-hidden rounded-sm transition-all duration-200",
               active === i ? "ring-2 ring-accent ring-offset-2 ring-offset-cream" : "opacity-70 ring-1 ring-ink/10 hover:opacity-100",
             )}
             aria-label={m.kind === "art" ? "Show product" : `Play ${m.video.title}`}
@@ -88,7 +88,7 @@ function Gallery({ product }: { product: Product }) {
             )}
           </button>
         ))}
-        <p className="ml-auto self-end text-xs font-bold uppercase tracking-[0.16em] text-ink/50">
+        <p className="ml-auto self-end text-xs font-bold uppercase tracking-[0.16em] text-ink/75">
           {String(active + 1).padStart(2, "0")} / {String(media.length).padStart(2, "0")}
         </p>
       </div>
@@ -171,7 +171,7 @@ export function ProductDetail({ product }: { product: Product }) {
     <>
       <section className="pb-10 pt-24 lg:pb-14 lg:pt-28">
         <div className="mx-auto max-w-6xl px-5 lg:px-8">
-          <nav aria-label="Breadcrumb" className="mb-6 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-ink/55">
+          <nav aria-label="Breadcrumb" className="mb-6 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-ink/75">
             <Link href="/" className="hover:text-accent">Home</Link>
             <span aria-hidden>/</span>
             <Link href="/shop" transitionTypes={["product"]} className="hover:text-accent">Shop</Link>
@@ -184,7 +184,7 @@ export function ProductDetail({ product }: { product: Product }) {
 
             <div>
               <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.45, ease }}>
-                <p className="flex items-center gap-3 text-xs font-bold uppercase tracking-[0.16em] text-ink/60">
+                <p className="flex items-center gap-3 text-xs font-bold uppercase tracking-[0.16em] text-ink/75">
                   <span className="font-display text-base normal-case italic tracking-normal text-accent">N°{String(index + 1).padStart(2, "0")}</span>
                   {category}
                 </p>
@@ -206,7 +206,7 @@ export function ProductDetail({ product }: { product: Product }) {
                   ) : (
                     <p className="text-xs font-bold uppercase tracking-[0.16em] text-accent">Price coming soon</p>
                   )}
-                  {product.size && <p className="text-xs font-bold uppercase tracking-[0.16em] text-ink/60">{product.size}</p>}
+                  {product.size && <p className="text-xs font-bold uppercase tracking-[0.16em] text-ink/75">{product.size}</p>}
                 </div>
 
                 {product.price != null ? (
@@ -248,7 +248,7 @@ export function ProductDetail({ product }: { product: Product }) {
               </motion.div>
 
               <div className="mt-6">
-                <p className="text-xs font-bold uppercase tracking-[0.16em] text-ink/60">What it does</p>
+                <p className="text-xs font-bold uppercase tracking-[0.16em] text-ink/75">What it does</p>
                 <motion.ul initial="hidden" whileInView="show" viewport={stagger.viewport} variants={stagger.parent(0, 0.05)} className="mt-4 grid gap-x-6 sm:grid-cols-2">
                   {product.benefits.map((b) => (
                     <motion.li key={b} variants={stagger.child} className="flex items-start gap-2.5 border-b border-ink/10 py-2.5 text-sm">

@@ -31,7 +31,7 @@ export default function Error({ error, retry }: { error: unknown; retry: () => v
             </Button>
             <ArrowLink href="/">Back home</ArrowLink>
           </div>
-          {digest && <p className="mt-6 text-xs uppercase tracking-[0.16em] text-white/45">Ref {digest}</p>}
+          {digest && <p className="mt-6 text-xs uppercase tracking-[0.16em] text-white/75">Ref {digest}</p>}
         </div>
         <div className="mx-auto w-40 lg:w-64">
           <Image src="/brand/my-sweet-kitty-512.png" alt="" width={510} height={512} className="h-auto w-full rotate-6 " />

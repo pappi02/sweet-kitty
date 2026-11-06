@@ -57,7 +57,7 @@ export function ProductTile({ product, compact = false, className }: { product: 
               soon
             </span>
           )}
-          {product.size && <p className="mt-1 text-xs font-bold uppercase tracking-[0.16em] text-ink/55">{product.size}</p>}
+          {product.size && <p className="mt-1 text-xs font-bold uppercase tracking-[0.16em] text-ink/75">{product.size}</p>}
         </div>
       </div>
     </article>

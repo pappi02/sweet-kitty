@@ -51,7 +51,7 @@ export default function StoriesPage() {
               </p>
               <dl className="mt-6 grid grid-cols-2 border-t border-ink/10">
                 <div className="py-3.5 pr-4">
-                  <dt className="text-xs font-bold uppercase tracking-[0.16em] text-ink/55">Before</dt>
+                  <dt className="text-xs font-bold uppercase tracking-[0.16em] text-ink/75">Before</dt>
                   <dd className="mt-1 font-display text-xl italic">Running on empty</dd>
                 </div>
                 <div className="border-l border-ink/10 py-3.5 pl-5">

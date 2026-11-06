@@ -42,7 +42,7 @@ export function FaqBrowser() {
         <aside className="lg:sticky lg:top-28 lg:self-start">
           <label className="relative block">
             <span className="sr-only">Search questions</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.4} strokeLinecap="round" className="pointer-events-none absolute left-0 top-1/2 size-5 -translate-y-1/2 text-ink/50" aria-hidden>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.4} strokeLinecap="round" className="pointer-events-none absolute left-0 top-1/2 size-5 -translate-y-1/2 text-ink/75" aria-hidden>
               <circle cx="10.5" cy="10.5" r="6" />
               <path d="M15 15l5 5" />
             </svg>
@@ -50,10 +50,10 @@ export function FaqBrowser() {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search questions"
-              className="w-full border-b border-ink/20 bg-transparent py-2.5 pl-8 font-display text-lg outline-none transition-colors placeholder:text-ink/40 focus:border-accent"
+              className="w-full border-b border-ink/20 bg-transparent py-2.5 pl-8 font-display text-lg outline-none transition-colors placeholder:text-ink/50 focus:border-accent"
             />
           </label>
-          <p className="mt-3 text-xs font-bold uppercase tracking-[0.16em] text-ink/50">
+          <p className="mt-3 text-xs font-bold uppercase tracking-[0.16em] text-ink/75">
             {total} {total === 1 ? "answer" : "answers"}
           </p>
 
@@ -64,7 +64,7 @@ export function FaqBrowser() {
                 href={`#${g.id}`}
                 className={cn(
                   "relative isolate flex shrink-0 items-baseline gap-3 rounded-full px-4 py-2 text-sm font-semibold transition-colors lg:rounded-none lg:border-b lg:border-ink/10 lg:px-0 lg:py-2.5",
-                  active === g.id ? "text-ink" : "text-ink/55 hover:text-ink",
+                  active === g.id ? "text-ink" : "text-ink/75 hover:text-ink",
                 )}
               >
                 {active === g.id && (
@@ -72,7 +72,7 @@ export function FaqBrowser() {
                 )}
                 <span className="hidden font-display text-xs italic text-accent lg:inline">0{i + 1}</span>
                 {g.title}
-                <span className="ml-auto hidden text-xs tabular-nums text-ink/45 lg:inline">{g.items.length}</span>
+                <span className="ml-auto hidden text-xs tabular-nums text-ink/75 lg:inline">{g.items.length}</span>
               </a>
             ))}
           </nav>

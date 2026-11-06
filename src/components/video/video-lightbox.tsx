@@ -6,6 +6,7 @@ import { createContext, useCallback, useContext, useEffect, useRef, useState, ty
 import { videoSrc, type Video } from "@/lib/videos";
 import { cn } from "@/lib/utils";
 import { ChevronIcon, CloseIcon, PlayIcon } from "../ui/icons";
+import { useDialog } from "../ui/use-dialog";
 
 type Ctx = { open: (list: Video[], index?: number) => void };
 const LightboxContext = createContext<Ctx | null>(null);
@@ -56,15 +57,9 @@ function Player({ list, index, setIndex, onClose }: { list: Video[]; index: numb
     else el.pause();
   }, []);
 
-  // Lock page scroll while open.
-  useEffect(() => {
-    const html = document.documentElement;
-    const prevOverflow = html.style.overflow;
-    html.style.overflow = "hidden";
-    return () => {
-      html.style.overflow = prevOverflow;
-    };
-  }, []);
+  // Lock scroll, keep focus inside and return it on close (Escape is handled below).
+  const root = useRef<HTMLDivElement>(null);
+  useDialog(root, true);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -115,8 +110,10 @@ function Player({ list, index, setIndex, onClose }: { list: Video[]; index: numb
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.2 }}
+      ref={root}
+      tabIndex={-1}
       role="dialog"
-      aria-modal
+      aria-modal="true"
       aria-label={video.title}
     >
       {/* Ambient wash from the poster */}
@@ -228,7 +225,7 @@ function Player({ list, index, setIndex, onClose }: { list: Video[]; index: numb
       {/* Up next (desktop) */}
       {list.length > 1 && (
         <div className="absolute right-8 top-1/2 z-10 hidden -translate-y-1/2 flex-col gap-3 xl:flex">
-          <p className="text-xs font-bold uppercase tracking-[0.16em] text-white/60">Up next</p>
+          <p className="text-xs font-bold uppercase tracking-[0.16em] text-white/75">Up next</p>
           {list.map((v, i) =>
             i === index ? null : (
               <button

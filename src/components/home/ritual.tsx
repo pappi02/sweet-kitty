@@ -33,7 +33,7 @@ export function MobileRitual() {
             className="relative flex h-[220px] w-[56vw] max-w-[220px] shrink-0 snap-start flex-col overflow-hidden rounded-sm p-5"
           >
             <Star4 className={cn("absolute right-5 top-5 size-5 ", isDark(i) ? "text-white" : "text-accent")} />
-            <span className={cn("font-display text-[3.5rem] italic leading-none", isDark(i) ? "text-white/50" : "text-burgundy/45")}>{i + 1}</span>
+            <span className={cn("font-display text-[3.5rem] italic leading-none", isDark(i) ? "text-white/75" : "text-burgundy/45")}>{i + 1}</span>
             <div className="mt-auto">
               <p className={cn("text-xs font-bold uppercase tracking-[0.16em]", isDark(i) ? "text-white/82" : "text-accent/80")}>Day {i + 1}</p>
               <p className={cn("mt-1 font-display text-2xl", isDark(i) ? "text-white" : "text-ink")}>{d.name}</p>

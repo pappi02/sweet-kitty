@@ -5,6 +5,7 @@ import { CartProvider } from "@/components/cart/cart-provider";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import { MobileBuyBar } from "@/components/layout/mobile-buy-bar";
+import { Analytics } from "@/components/analytics/analytics";
 import { JsonLd } from "@/components/seo/json-ld";
 import { VideoLightboxProvider } from "@/components/video/video-lightbox";
 import { organizationLd, websiteLd } from "@/lib/seo";
@@ -31,7 +32,7 @@ const vibes = Great_Vibes({
 export const metadata: Metadata = {
   metadataBase: new URL(`https://${site.domain}`),
   title: {
-    default: "My Sweet Kitty | Embrace your feminine power",
+    default: "My Sweet Kitty | Your Beauty Besties",
     template: "%s | My Sweet Kitty",
   },
   description:
@@ -39,7 +40,7 @@ export const metadata: Metadata = {
   applicationName: site.name,
   // Icons and the share image come from app/icon.png, apple-icon.png and opengraph-image.png.
   openGraph: {
-    title: "My Sweet Kitty | Embrace your feminine power",
+    title: "My Sweet Kitty | Your Beauty Besties",
     description: "The 7-day glow-up every woman is whispering about.",
     siteName: site.name,
     url: "/",
@@ -69,6 +70,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             <Footer />
             <MobileBuyBar />
             <CartDrawer />
+            <Analytics />
           </VideoLightboxProvider>
         </CartProvider>
       </body>

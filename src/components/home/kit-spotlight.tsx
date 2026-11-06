@@ -4,7 +4,7 @@ import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 import { kit, kitSaving, kitWorth } from "@/lib/products";
-import { site, whatsappLink } from "@/lib/site";
+import { whatsappLink } from "@/lib/site";
 import { formatKES } from "@/lib/utils";
 import { useCart } from "../cart/cart-provider";
 import { Eyebrow } from "../ui/decor";
@@ -14,8 +14,6 @@ import { Button } from "../ui/button";
 
 export function KitSpotlight() {
   const { add } = useCart();
-  const sold = site.kitsBatch - site.kitsLeft;
-  const pct = Math.round((sold / site.kitsBatch) * 100);
 
   return (
     <section id="kit" className="relative isolate overflow-hidden bg-rose tone-light py-12 text-white lg:py-16">
@@ -56,27 +54,7 @@ export function KitSpotlight() {
                 </p>
                 <p className="font-display text-3xl tabular-nums sm:text-4xl">{formatKES(kit.price!)}</p>
               </div>
-              <div className="min-w-[12rem] flex-1 sm:max-w-[15rem]">
-                <div className="flex items-center justify-between text-xs">
-                  <span className="inline-flex items-center gap-2 font-semibold">
-                    <span className="relative flex size-2">
-                      <span className="absolute inline-flex h-full w-full rounded-full bg-burgundy opacity-75" />
-                      <span className="relative inline-flex size-2 rounded-full bg-burgundy" />
-                    </span>
-                    Only {site.kitsLeft} left
-                  </span>
-                  <span className="tabular-nums text-white/65">{pct}% claimed</span>
-                </div>
-                <div className="mt-2 h-[3px] overflow-hidden rounded-full bg-white/10">
-                  <motion.div
-                    className="h-full rounded-full bg-linear-to-r from-rose to-burgundy"
-                    initial={{ width: 0 }}
-                    whileInView={{ width: `${pct}%` }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-                  />
-                </div>
-              </div>
+              <p className="pb-1 text-xs font-semibold uppercase tracking-[0.16em] text-white/75">Discreet delivery across Kenya</p>
             </div>
 
             <div className="mt-5 flex gap-2.5 sm:gap-3">

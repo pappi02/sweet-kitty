@@ -55,9 +55,9 @@ export const faqGroups: { id: string; title: string; items: Faq[] }[] = [
     items: [
       {
         q: "How do I order?",
-        a: "Add your favourites to your bag and tap “Checkout on WhatsApp”. Your order is sent to us in one message and we confirm payment and delivery with you directly.",
+        a: "Add your favourites to your bag, tap “Continue to delivery” and fill in your name, phone and delivery area. Then tap “Send order on WhatsApp”: your order arrives in one message with its own reference, and we reply to confirm your total and delivery.",
       },
-      { q: "How do I pay?", a: "Once your order arrives on WhatsApp, we confirm your total and share the payment options with you personally." },
+      { q: "How do I pay?", a: "With M-Pesa. Once we confirm your total, including delivery, on WhatsApp, we send you the M-Pesa details to pay. We will never ask for your M-Pesa PIN." },
       { q: "Can I order for a friend?", a: "Of course. Add what she needs, tell us on WhatsApp that it's a gift, and we'll keep it discreet and beautifully packed." },
     ],
   },
@@ -66,7 +66,7 @@ export const faqGroups: { id: string; title: string; items: Faq[] }[] = [
     title: "Delivery",
     items: [
       { q: "Is the packaging discreet?", a: "Always. Every order is packed plainly, with nothing on the outside that says what's inside." },
-      { q: "How long does delivery take?", a: "It depends on where you are. We confirm the delivery time and cost on WhatsApp when you order." },
+      { q: "How much is delivery, and how long does it take?", a: "Both depend on exactly where you are. We deliver in Nairobi and its surroundings, and by courier to the rest of Kenya. We tell you the delivery fee and time on WhatsApp before you pay." },
     ],
   },
   {

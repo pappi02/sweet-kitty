@@ -30,7 +30,7 @@ export function ContactBuilder() {
     .filter(Boolean)
     .join(" ");
 
-  const field = "w-full border-b border-ink/20 bg-transparent py-2 text-base outline-none transition-colors placeholder:text-ink/40 focus:border-accent";
+  const field = "w-full border-b border-ink/20 bg-transparent py-2 text-base outline-none transition-colors placeholder:text-ink/50 focus:border-accent";
 
   return (
     <section className="py-10 lg:py-14">
@@ -48,12 +48,12 @@ export function ContactBuilder() {
             }}
           >
             <label className="block">
-              <span className="text-xs font-bold uppercase tracking-[0.16em] text-ink/60">Your name (optional)</span>
+              <span className="text-xs font-bold uppercase tracking-[0.16em] text-ink/75">Your name (optional)</span>
               <input value={name} onChange={(e) => setName(e.target.value)} placeholder="e.g. Wanjiru" className={field} autoComplete="given-name" />
             </label>
 
             <fieldset>
-              <legend className="text-xs font-bold uppercase tracking-[0.16em] text-ink/60">I&apos;d like to…</legend>
+              <legend className="text-xs font-bold uppercase tracking-[0.16em] text-ink/75">I&apos;d like to…</legend>
               <div className="mt-2.5 flex flex-wrap gap-1.5">
                 {topics.map((t) => (
                   <button
@@ -74,7 +74,7 @@ export function ContactBuilder() {
             </fieldset>
 
             <label className="block">
-              <span className="text-xs font-bold uppercase tracking-[0.16em] text-ink/60">Product (optional)</span>
+              <span className="text-xs font-bold uppercase tracking-[0.16em] text-ink/75">Product (optional)</span>
               <select value={product} onChange={(e) => setProduct(e.target.value)} className={cn(field, "cursor-pointer appearance-none")}>
                 <option value="">Not sure yet</option>
                 {activeProducts.map((p) => (
@@ -86,7 +86,7 @@ export function ContactBuilder() {
             </label>
 
             <label className="block">
-              <span className="text-xs font-bold uppercase tracking-[0.16em] text-ink/60">Anything else?</span>
+              <span className="text-xs font-bold uppercase tracking-[0.16em] text-ink/75">Anything else?</span>
               <textarea value={note} onChange={(e) => setNote(e.target.value)} rows={3} placeholder="Ask away. It stays between us." className={cn(field, "resize-none")} />
             </label>
 
@@ -121,7 +121,7 @@ export function ContactBuilder() {
                     {message}
                   </motion.p>
                 </AnimatePresence>
-                <p className="text-right text-xs text-white/50">Preview of your message</p>
+                <p className="text-right text-xs text-white/75">Preview of your message</p>
               </div>
             </div>
           </Reveal>
@@ -132,20 +132,21 @@ export function ContactBuilder() {
                 { label: "WhatsApp", value: "Chat with us", href: whatsappLink("Hi Sweet Kitty!") },
                 { label: "Call", value: site.phone, href: site.phoneHref },
                 { label: "Email", value: site.email, href: `mailto:${site.email}` },
+                ...site.socials.filter((s) => s.url).map((s) => ({ label: s.label, value: s.handle, href: s.url })),
               ].map((c) => (
                 <li key={c.label}>
                   <a href={c.href} target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between border-b border-ink/10 py-3">
                     <span>
-                      <span className="block text-xs font-bold uppercase tracking-[0.16em] text-ink/55">{c.label}</span>
+                      <span className="block text-xs font-bold uppercase tracking-[0.16em] text-ink/75">{c.label}</span>
                       <span className="font-display text-lg">{c.value}</span>
                     </span>
                     <ArrowIcon className="w-6 text-accent transition-transform duration-300 group-hover:translate-x-1" />
                   </a>
                 </li>
               ))}
-              {site.socials.map((s) => (
+              {site.socials.filter((s) => !s.url).map((s) => (
                 <li key={s.label} className="border-b border-ink/10 py-3">
-                  <span className="block text-xs font-bold uppercase tracking-[0.16em] text-ink/55">{s.label}</span>
+                  <span className="block text-xs font-bold uppercase tracking-[0.16em] text-ink/75">{s.label}</span>
                   <span className="font-display text-lg">{s.handle}</span>
                 </li>
               ))}

@@ -3,8 +3,8 @@
 import { motion, useScroll, useTransform, type MotionValue } from "motion/react";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { getProductBySlug, kit, productHref, singles, type Product } from "@/lib/products";
-import { site, whatsappLink } from "@/lib/site";
+import { getProductBySlug, kit, kitSaving, kitWorth, productHref, singles, type Product } from "@/lib/products";
+import { whatsappLink } from "@/lib/site";
 import { getVideo, videos } from "@/lib/videos";
 import { cn, formatKES } from "@/lib/utils";
 import { useCart } from "../cart/cart-provider";
@@ -24,8 +24,6 @@ const fade = (delay: number) => ({ initial: { opacity: 0, y: 14 }, animate: { op
 export function KitHero() {
   const { add } = useCart();
   const { open } = useVideoLightbox();
-  const sold = site.kitsBatch - site.kitsLeft;
-  const pct = Math.round((sold / site.kitsBatch) * 100);
 
   return (
     <section className="tone-light relative isolate overflow-hidden bg-blush pb-9 pt-24 text-white lg:pb-10 lg:pt-28">
@@ -45,23 +43,14 @@ export function KitHero() {
 
           <motion.div {...fade(0.3)} className="mt-6 flex flex-wrap items-end gap-x-10 gap-y-4 border-t border-white/15 pt-5">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-white/65">Full kit</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-white/75">Full kit</p>
               <p className="font-display text-3xl tabular-nums sm:text-4xl">{formatKES(kit.price!)}</p>
             </div>
-            <div className="min-w-[12rem] flex-1">
-              <div className="flex items-center justify-between text-xs">
-                <span className="inline-flex items-center gap-2 font-semibold">
-                  <span className="relative flex size-2">
-                    <span className="absolute inline-flex h-full w-full rounded-full bg-burgundy opacity-75" />
-                    <span className="relative inline-flex size-2 rounded-full bg-burgundy" />
-                  </span>
-                  Only {site.kitsLeft} left
-                </span>
-                <span className="tabular-nums text-white/65">{pct}% claimed</span>
-              </div>
-              <div className="mt-2 h-[3px] overflow-hidden rounded-full bg-white/10">
-                <motion.div className="h-full rounded-full bg-linear-to-r from-rose to-burgundy" initial={{ width: 0 }} animate={{ width: `${pct}%` }} transition={{ duration: 0.9, delay: 0.4, ease }} />
-              </div>
+            <div className="pb-1">
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-white/75">Bought separately</p>
+              <p className="text-sm text-white/80">
+                <s>{formatKES(kitWorth)}</s> <span className="font-semibold text-accent">You save {formatKES(kitSaving)}</span>
+              </p>
             </div>
           </motion.div>
 
@@ -228,7 +217,7 @@ export function KitCompare() {
               ["Putting herself last", "Choosing herself"],
             ].map(([a, b]) => (
               <motion.li key={a} variants={stagger.child} className="grid grid-cols-[1fr_auto_1fr] items-center gap-4 border-b border-ink/10 py-4 text-base">
-                <span className="text-ink/55 line-through decoration-ink/25">{a}</span>
+                <span className="text-ink/75 line-through decoration-ink/25">{a}</span>
                 <ArrowIcon className="w-6 text-accent" />
                 <span className="flex items-center gap-2 font-semibold">
                   <CheckIcon className="size-4 text-accent" />
@@ -239,7 +228,7 @@ export function KitCompare() {
           </motion.ul>
           {juice && (
             <Reveal delay={0.1}>
-              <p className="mt-6 text-sm text-ink/65">
+              <p className="mt-6 text-sm text-ink/75">
                 It starts each morning with the{" "}
                 <Link href={productHref(juice)} className="font-semibold text-ink underline decoration-accent decoration-2 underline-offset-4">
                   Kitty Magic Juice

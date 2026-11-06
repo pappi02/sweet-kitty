@@ -4,13 +4,14 @@ import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useRef, useState } from "react";
 import { nav } from "@/lib/content";
 import { whatsappLink } from "@/lib/site";
 import { cn } from "@/lib/utils";
 import { useCart } from "../cart/cart-provider";
 import { BagIcon, CloseIcon, MenuIcon, WhatsAppIcon } from "../ui/icons";
 import { Button } from "../ui/button";
+import { useDialog } from "../ui/use-dialog";
 
 const menuLinks = [...nav, { href: "/contact", label: "Contact" }];
 
@@ -25,9 +26,8 @@ export function Header() {
 
   useMotionValueEvent(scrollY, "change", (v) => setScrolled(v > 24));
 
-  useEffect(() => {
-    document.documentElement.style.overflow = menu ? "hidden" : "";
-  }, [menu]);
+  const menuRef = useRef<HTMLDivElement>(null);
+  useDialog(menuRef, menu, () => setMenu(false));
 
   // Close the menu whenever the route changes.
   const [lastPath, setLastPath] = useState(pathname);
@@ -95,7 +95,7 @@ export function Header() {
                   )}
                 </AnimatePresence>
               </motion.button>
-              <button onClick={() => setMenu(true)} className="grid size-10 place-items-center rounded-full text-white transition-colors hover:bg-white/10 lg:hidden" aria-label="Open menu">
+              <button onClick={() => setMenu(true)} className="grid size-10 place-items-center rounded-full text-white transition-colors hover:bg-white/10 lg:hidden" aria-label="Open menu" aria-expanded={menu} aria-controls="site-menu">
                 <MenuIcon className="size-6" />
               </button>
               <Button href="/the-kit" className="ml-2 hidden lg:inline-flex">
@@ -109,7 +109,13 @@ export function Header() {
       <AnimatePresence>
         {menu && (
           <motion.div
-            className="tone-light fixed inset-0 z-60 flex flex-col overflow-hidden bg-rose text-white"
+            ref={menuRef}
+            id="site-menu"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Menu"
+            tabIndex={-1}
+            className="tone-light fixed inset-0 z-60 flex flex-col overflow-hidden bg-rose text-white outline-none"
             initial={{ clipPath: "circle(0% at calc(100% - 2.5rem) 3.5rem)" }}
             animate={{ clipPath: "circle(150% at calc(100% - 2.5rem) 3.5rem)" }}
             exit={{ clipPath: "circle(0% at calc(100% - 2.5rem) 3.5rem)" }}

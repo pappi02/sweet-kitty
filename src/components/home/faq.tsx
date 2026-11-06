@@ -20,7 +20,7 @@ export function FaqAccordion({ items, startOpen = 0, numberFrom = 1 }: { items: 
         return (
           <motion.li key={f.q} variants={stagger.child} className="border-b border-ink/10">
             <button onClick={() => setOpen(isOpen ? null : i)} className="group flex w-full items-center gap-4 py-3.5 text-left" aria-expanded={isOpen}>
-              <span className={cn("w-6 shrink-0 font-display text-sm italic transition-colors", isOpen ? "text-accent" : "text-ink/50")}>
+              <span className={cn("w-6 shrink-0 font-display text-sm italic transition-colors", isOpen ? "text-accent" : "text-ink/75")}>
                 {String(i + numberFrom).padStart(2, "0")}
               </span>
               <span className={cn("flex-1 font-display text-lg transition-colors sm:text-xl", isOpen ? "text-ink" : "text-ink/80 group-hover:text-ink")}>{f.q}</span>

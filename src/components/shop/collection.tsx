@@ -4,8 +4,7 @@ import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { activeProducts, categories, kit, singles } from "@/lib/products";
-import { site } from "@/lib/site";
+import { activeProducts, categories, kit, kitSaving, singles } from "@/lib/products";
 import { cn, formatKES } from "@/lib/utils";
 import { useCart } from "../cart/cart-provider";
 import { BagIcon } from "../ui/icons";
@@ -40,7 +39,7 @@ function KitFeature({ className }: { className?: string }) {
           </ul>
           <div className="mt-6 flex items-end justify-between gap-3 border-t border-white/15 pt-5">
             <span className="font-display text-2xl tabular-nums">{formatKES(kit.price!)}</span>
-            <span className="pb-1 text-xs font-semibold text-accent-soft">Only {site.kitsLeft} left in this batch</span>
+            <span className="pb-1 text-xs font-semibold text-accent-soft">You save {formatKES(kitSaving)}</span>
           </div>
           <div className="mt-4 flex gap-3">
             <Button href="/the-kit" variant="ghost" className="flex-1">
@@ -81,13 +80,13 @@ export function Collection() {
                   {active && <motion.span layoutId="cat-pill" transition={{ type: "spring", stiffness: 500, damping: 38 }} className="absolute inset-0 -z-0 rounded-full bg-ink" />}
                   <span className="relative">
                     {c.label}
-                    <sup className={cn("ml-1 text-xs tabular-nums", active ? "text-accent-soft" : "text-ink/45")}>{count(c.id)}</sup>
+                    <sup className={cn("ml-1 text-xs tabular-nums", active ? "text-accent-soft" : "text-ink/75")}>{count(c.id)}</sup>
                   </span>
                 </button>
               );
             })}
           </div>
-          <p className="text-xs font-bold uppercase tracking-[0.16em] text-ink/55">Natural · Discreet · Secret recipe</p>
+          <p className="text-xs font-bold uppercase tracking-[0.16em] text-ink/75">Natural · Discreet · Secret recipe</p>
         </div>
 
         {/* Grid */}
@@ -148,9 +147,9 @@ export function Collection() {
           </AnimatePresence>
         </motion.div>
 
-        {shown.length === 0 && !showKit && <p className="py-12 text-center text-ink/60">Nothing here yet.</p>}
+        {shown.length === 0 && !showKit && <p className="py-12 text-center text-ink/75">Nothing here yet.</p>}
 
-        <p className="mt-8 text-center text-sm text-ink/65">
+        <p className="mt-8 text-center text-sm text-ink/75">
           Can&apos;t decide?{" "}
           <Link href="/contact" className="font-semibold text-ink underline decoration-accent decoration-2 underline-offset-4">
             Ask us on WhatsApp

@@ -213,7 +213,7 @@ export function DaysTrack() {
             </div>
           </motion.div>
           <div className="mx-auto mt-7 w-full max-w-6xl px-8">
-            <div className="flex items-center gap-4 text-xs font-bold uppercase tracking-[0.16em] text-ink/55">
+            <div className="flex items-center gap-4 text-xs font-bold uppercase tracking-[0.16em] text-ink/75">
               Day 1
               <span className="h-px flex-1 overflow-hidden bg-ink/10">
                 <motion.span style={{ scaleX: bar }} className="block h-full origin-left bg-burgundy" />

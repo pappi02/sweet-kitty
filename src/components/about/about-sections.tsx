@@ -98,7 +98,7 @@ export function BrandNote() {
           </Reveal>
           <Reveal delay={0.1}>
             <p className="mt-4 font-script text-3xl text-accent">My Sweet Kitty</p>
-            <p className="text-xs font-bold uppercase tracking-[0.16em] text-white/65">With love, from Kenya</p>
+            <p className="text-xs font-bold uppercase tracking-[0.16em] text-white/75">With love, from Kenya</p>
           </Reveal>
         </div>
       </div>

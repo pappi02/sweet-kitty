@@ -69,7 +69,7 @@ function MobileStep({ step, index }: { step: Step; index: number }) {
         {index + 1}
       </span>
       <Reveal>
-        <span className={cn("text-xs font-bold uppercase tracking-[0.16em]", index === steps.length - 1 ? "text-accent" : "text-ink/60")}>{step.tag}</span>
+        <span className={cn("text-xs font-bold uppercase tracking-[0.16em]", index === steps.length - 1 ? "text-accent" : "text-ink/75")}>{step.tag}</span>
         <h3 className="mt-1.5 font-display text-2xl leading-tight">{step.title}</h3>
         <p className="mt-3 text-base leading-relaxed text-ink/78">{step.body}</p>
       </Reveal>
@@ -105,8 +105,8 @@ function StepRow({ step, index, progress, active, onSelect }: { step: Step; inde
         <motion.span style={{ scaleX: fill }} className="absolute inset-0 origin-left bg-burgundy" />
       </span>
       <span className="mt-3 flex items-baseline gap-2 whitespace-nowrap">
-        <span className={cn("font-display text-sm italic transition-colors duration-200", active ? "text-accent" : "text-ink/50")}>0{index + 1}</span>
-        <span className={cn("text-xs font-bold uppercase tracking-[0.16em] transition-colors duration-200", active ? "text-ink" : "text-ink/55 group-hover:text-ink/75")}>
+        <span className={cn("font-display text-sm italic transition-colors duration-200", active ? "text-accent" : "text-ink/75")}>0{index + 1}</span>
+        <span className={cn("text-xs font-bold uppercase tracking-[0.16em] transition-colors duration-200", active ? "text-ink" : "text-ink/75 group-hover:text-ink/75")}>
           {step.tag}
         </span>
       </span>
@@ -148,7 +148,7 @@ function DesktopStory() {
                   exit={{ opacity: 0, y: -12 }}
                   transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
                 >
-                  <span className={cn("text-xs font-bold uppercase tracking-[0.16em]", active === n - 1 ? "text-accent" : "text-ink/60")}>
+                  <span className={cn("text-xs font-bold uppercase tracking-[0.16em]", active === n - 1 ? "text-accent" : "text-ink/75")}>
                     Chapter {active + 1} · {steps[active].tag}
                   </span>
                   <h3 className="mt-3 font-display text-[2.5rem] leading-[1.04]">{steps[active].title}</h3>

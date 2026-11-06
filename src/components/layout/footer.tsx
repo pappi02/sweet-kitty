@@ -3,6 +3,7 @@ import Link from "next/link";
 import { healthNote, legalPages } from "@/lib/legal";
 import { singles } from "@/lib/products";
 import { site, whatsappLink } from "@/lib/site";
+import { CookieSettingsButton } from "../analytics/analytics";
 import { ArrowIcon } from "../ui/icons";
 
 const columns = [
@@ -28,6 +29,7 @@ const columns = [
       { href: "/faq", label: "FAQ" },
       { href: "/contact", label: "Contact" },
       { href: whatsappLink("Hi Sweet Kitty!"), label: "WhatsApp", external: true },
+      { href: site.phoneHref, label: `Call ${site.phone}`, external: true },
       { href: `mailto:${site.email}`, label: "Email us", external: true },
     ],
   },
@@ -56,7 +58,14 @@ export function Footer() {
             <ul className="mt-3 space-y-1 text-sm text-white/75">
               {site.socials.map((s) => (
                 <li key={s.label}>
-                  <span className="text-xs font-semibold uppercase tracking-[0.16em] text-accent-soft">{s.label}</span> {s.handle}
+                  <span className="text-xs font-semibold uppercase tracking-[0.16em] text-accent-soft">{s.label}</span>{" "}
+                  {s.url ? (
+                    <a href={s.url} target="_blank" rel="noopener noreferrer" className="underline-offset-4 transition-colors hover:text-rose hover:underline">
+                      {s.handle}
+                    </a>
+                  ) : (
+                    s.handle
+                  )}
                 </li>
               ))}
             </ul>
@@ -83,7 +92,7 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="mt-8 border-t border-white/10 pt-6 text-xs text-white/60">
+        <div className="mt-8 border-t border-white/10 pt-6 text-xs text-white/75">
           <nav aria-label="Policies">
             <ul className="flex flex-wrap gap-x-5 gap-y-2 font-semibold uppercase tracking-[0.16em] text-white/75">
               {legalPages.map((p) => (
@@ -93,11 +102,16 @@ export function Footer() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <CookieSettingsButton className="uppercase tracking-[0.16em] transition-colors hover:text-rose" />
+              </li>
             </ul>
           </nav>
-          <p className="mt-4 max-w-3xl leading-relaxed text-white/55">{healthNote}</p>
+          <p className="mt-4 max-w-3xl leading-relaxed text-white/75">{healthNote}</p>
           <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:justify-between">
-            <p>© 2026 My Sweet Kitty · {site.domain}</p>
+            <p>
+              © 2026 {site.business.legalName || site.business.tradingName} · {site.domain}
+            </p>
             <p>Made with love for every woman.</p>
           </div>
         </div>

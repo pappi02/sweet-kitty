@@ -16,6 +16,8 @@ export function organizationLd() {
     url: siteUrl,
     logo: absUrl("/icons/icon-512.png"),
     slogan: site.tagline,
+    ...(site.business.legalName && { legalName: site.business.legalName }),
+    sameAs: site.socials.map((s) => s.url).filter(Boolean),
     areaServed: { "@type": "Country", name: "Kenya" },
     contactPoint: {
       "@type": "ContactPoint",

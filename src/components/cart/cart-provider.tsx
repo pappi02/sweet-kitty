@@ -1,7 +1,8 @@
 "use client";
 
 import { MotionConfig } from "motion/react";
-import { createContext, useCallback, useContext, useEffect, useMemo, useState, useSyncExternalStore, type ReactNode } from "react";
+import { createContext, useCallback, useContext, useMemo, useState, useSyncExternalStore, type ReactNode } from "react";
+import { track } from "../analytics/analytics";
 import { getProduct, type Product } from "@/lib/products";
 
 type Line = { id: string; qty: number };
@@ -25,6 +26,9 @@ const Ctx = createContext<CartContext | null>(null);
 
 // Cart lines live in a tiny store backed by this browser's localStorage.
 const KEY = "sweet-kitty-cart";
+/** Most of one item a single order can hold; bigger orders are arranged on WhatsApp. */
+export const MAX_QTY = 20;
+const clampQty = (n: number) => Math.min(MAX_QTY, Math.max(0, Math.floor(Number(n) || 0)));
 const EMPTY: Line[] = [];
 const listeners = new Set<() => void>();
 let cache: Line[] | null = null;
@@ -33,7 +37,12 @@ function readLines(): Line[] {
   if (cache) return cache;
   try {
     const saved = JSON.parse(localStorage.getItem(KEY) ?? "[]");
-    cache = Array.isArray(saved) ? saved.filter((l: Line) => getProduct(l.id)?.price != null && l.qty > 0) : [];
+    cache = Array.isArray(saved)
+      ? saved
+          .filter((l: Line) => l && typeof l.id === "string" && getProduct(l.id)?.price != null)
+          .map((l: Line) => ({ id: l.id, qty: clampQty(l.qty) }))
+          .filter((l: Line) => l.qty > 0)
+      : [];
   } catch {
     cache = [];
   }
@@ -50,7 +59,17 @@ function setLines(update: (lines: Line[]) => Line[]) {
 
 function subscribe(listener: () => void) {
   listeners.add(listener);
-  return () => listeners.delete(listener);
+  // Keep the bag in step when it changes in another tab.
+  const onStorage = (e: StorageEvent) => {
+    if (e.key !== KEY) return;
+    cache = null;
+    listener();
+  };
+  window.addEventListener("storage", onStorage);
+  return () => {
+    listeners.delete(listener);
+    window.removeEventListener("storage", onStorage);
+  };
 }
 
 export function CartProvider({ children }: { children: ReactNode }) {
@@ -58,23 +77,21 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false);
   const [pulse, setPulse] = useState(0);
 
-  // Lock page scroll while the drawer is open.
-  useEffect(() => {
-    document.documentElement.style.overflow = open ? "hidden" : "";
-  }, [open]);
-
   const add = useCallback((id: string, qty = 1) => {
-    if (getProduct(id)?.price == null) return;
+    const product = getProduct(id);
+    if (product?.price == null) return;
     setLines((ls) => {
       const found = ls.find((l) => l.id === id);
-      return found ? ls.map((l) => (l.id === id ? { ...l, qty: l.qty + qty } : l)) : [...ls, { id, qty }];
+      return found ? ls.map((l) => (l.id === id ? { ...l, qty: clampQty(l.qty + qty) } : l)) : [...ls, { id, qty: clampQty(qty) }];
     });
+    track("add_to_cart", { currency: "KES", value: product.price * qty, items: [{ item_id: product.id, item_name: product.name, price: product.price, quantity: qty }] });
     setPulse((p) => p + 1);
     setOpen(true);
   }, []);
 
   const setQty = useCallback((id: string, qty: number) => {
-    setLines((ls) => (qty <= 0 ? ls.filter((l) => l.id !== id) : ls.map((l) => (l.id === id ? { ...l, qty } : l))));
+    const q = clampQty(qty);
+    setLines((ls) => (q <= 0 ? ls.filter((l) => l.id !== id) : ls.map((l) => (l.id === id ? { ...l, qty: q } : l))));
   }, []);
 
   const remove = useCallback((id: string) => setLines((ls) => ls.filter((l) => l.id !== id)), []);

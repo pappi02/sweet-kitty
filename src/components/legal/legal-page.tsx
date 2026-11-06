@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { legalPages, type LegalPage } from "@/lib/legal";
 import { breadcrumbLd } from "@/lib/seo";
-import { whatsappLink } from "@/lib/site";
+import { site, whatsappLink } from "@/lib/site";
 import { PageHero } from "../layout/page-hero";
 import { PageTransition } from "../layout/page-transition";
 import { JsonLd } from "../seo/json-ld";
@@ -14,6 +14,35 @@ export function legalMetadata(page: LegalPage): Metadata {
 }
 
 const pad = (n: number) => String(n).padStart(2, "0");
+
+/** Who runs the shop. Only fields filled in site.ts are shown. */
+function BusinessCard() {
+  const b = site.business;
+  const rows = [
+    ["Trading as", b.tradingName],
+    ["Registered name", b.legalName],
+    ["Registration no.", b.registrationNo],
+    ["KRA PIN", b.kraPin],
+    ["Address", b.address],
+    ["Country", b.country],
+    ["Phone", site.phone],
+    ["Email", site.email],
+    ["Website", site.domain],
+  ].filter(([, v]) => v);
+  return (
+    <div className="mt-6 rounded-sm bg-mist p-4 ring-1 ring-ink/10">
+      <p className="text-xs font-bold uppercase tracking-[0.16em] text-ink/70">Who we are</p>
+      <dl className="mt-2 space-y-1.5 text-sm">
+        {rows.map(([k, v]) => (
+          <div key={k} className="grid grid-cols-[7.5rem_minmax(0,1fr)] gap-2">
+            <dt className="text-ink/70">{k}</dt>
+            <dd className="break-words text-ink">{v}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  );
+}
 
 /** Shared layout for the policy pages: numbered index on the left, the clauses on the right. */
 export function LegalPageView({ page }: { page: LegalPage }) {
@@ -28,8 +57,9 @@ export function LegalPageView({ page }: { page: LegalPage }) {
         <div className="mx-auto grid max-w-6xl gap-8 px-5 lg:grid-cols-[minmax(0,15rem)_minmax(0,1fr)] lg:gap-16 lg:px-8">
           {/* Index */}
           <aside className="lg:sticky lg:top-28 lg:self-start">
-            <p className="text-xs font-bold uppercase tracking-[0.16em] text-ink/55">Last updated</p>
+            <p className="text-xs font-bold uppercase tracking-[0.16em] text-ink/75">Last updated</p>
             <p className="mt-1 font-display text-lg italic">{page.updated}</p>
+            <BusinessCard />
             <nav aria-label="On this page" className="mt-6 hidden border-t border-ink/10 lg:block">
               <ol>
                 {page.sections.map((s, i) => (
@@ -83,7 +113,7 @@ export function LegalPageView({ page }: { page: LegalPage }) {
       {/* Other policies */}
       <section className="border-t border-ink/10 bg-mist py-8 lg:py-10">
         <div className="mx-auto max-w-6xl px-5 lg:px-8">
-          <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-ink/55">
+          <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-ink/75">
             <Star4 className="size-2.5 text-accent" /> More policies
           </p>
           <ul className="mt-3 grid border-t border-ink/10 sm:grid-cols-3 sm:border-t-0">

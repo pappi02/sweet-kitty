@@ -44,8 +44,8 @@ export const legalPages: LegalPage[] = [
         heading: "What we collect",
         body: [
           "When you order or message us: your name, phone number, delivery location, what you ordered and anything you choose to tell us in the chat.",
-          "On this website: your bag is saved only in your own browser so it is still there when you come back. It is not sent to us until you tap “Checkout on WhatsApp”.",
-          "We do not use advertising or tracking cookies at the moment. If that changes, we will update this page and ask for your consent where the law requires it.",
+          "On this website: your bag, and the delivery details you type into the order form, are saved only in your own browser so you don't have to type them again. Nothing is sent to us until you tap “Send order on WhatsApp”.",
+          "We do not use advertising cookies. If you choose “Accept” on the cookie notice, we use Google Analytics to count visits and see which pages and products people look at. It sets cookies and Google processes that data for us. If you choose “No thanks”, nothing is loaded. You can change your mind at any time from the “Cookie settings” link at the bottom of every page.",
           "Our hosting provider keeps standard technical logs (such as IP address and browser type) to keep the site secure and working.",
         ],
       },
