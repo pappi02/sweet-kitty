@@ -5,6 +5,7 @@ import { singles } from "@/lib/products";
 import { site, whatsappLink } from "@/lib/site";
 import { CookieSettingsButton } from "../analytics/analytics";
 import { ArrowIcon } from "../ui/icons";
+import { SignOff } from "./sign-off";
 
 const columns = [
   {
@@ -113,6 +114,7 @@ export function Footer() {
               © 2026 {site.business.legalName || site.business.tradingName} · {site.domain}
             </p>
             <p>Made with love for every woman.</p>
+            <SignOff />
           </div>
         </div>
       </div>
