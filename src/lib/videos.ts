@@ -26,14 +26,14 @@ export const videos: Video[] = [
   { id: "delivery", ...clip("kitty-delivery"), tag: "Story", title: "Discreetly delivered", caption: "A plain parcel. Nobody needs to know." },
   { id: "reveal", ...clip("kitty-reveal"), tag: "Story", title: "The moment she opened it", caption: "Pink tissue, a gift bag, and a feeling." },
   { id: "crown", ...clip("kitty-crown"), tag: "Story", title: "Her crown is back", caption: "The 7-Day Kit, and the start of a new her." },
-  { id: "morning", ...clip("kitty-juice"), tag: "Ritual", title: "The morning ritual", caption: "The Love Bath first, then the Kitty Magic Juice." },
+  { id: "morning", ...clip("kitty-juice"), tag: "Ritual", title: "The morning ritual", caption: "Kitty Magic Juice first, then the Love Bath." },
   { id: "reset", ...clip("kitty-bath"), tag: "Ritual", title: "Day one: reset", caption: "Let go of everything heavy." },
   { id: "glow", ...clip("kitty-glow"), tag: "Glow", title: "Day three glow", caption: "Softer skin, brighter eyes. People notice." },
   { id: "after", ...clip("kitty-after"), tag: "After", title: "Main-character energy", caption: "Seven days later, she's glowing." },
   { id: "holiday", ...clip("kitty-booked"), tag: "After", title: "Booked and glowing", caption: "Business class, sunglasses on." },
   { id: "call", ...clip("kitty-call"), tag: "After", title: "“You still don't have it?”", caption: "Now she's the one telling her bestie." },
   { id: "kit", ...clip("kit-reveal"), tag: "Kit", title: "The 7-Day Kit", caption: "Everything she needs, in one pink bag." },
-  { id: "juice", ...clip("magic-juice"), tag: "Kit", title: "Kitty Magic Juice", caption: "Her morning glow." },
+  { id: "juice", ...clip("magic-juice"), tag: "Kit", title: "Kitty Magic Juice", caption: "Her morning elixir." },
   { id: "bath", ...clip("magic-bath"), tag: "Kit", title: "Kitty Love Bath", caption: "A rose soak for body and soul." },
   { id: "tight", ...clip("tight-box"), tag: "Kit", title: "Sweet Kitty Tight", caption: "Feel snug, youthful and unstoppable." },
 ];
@@ -43,6 +43,9 @@ export const films: Video[] = [
   { id: "film-scrub", ...clip("film-scrub"), tag: "Ritual", title: "Kitty Magic Scrub", caption: "Soft, polished skin, one slow stroke at a time." },
   { id: "film-oil", ...clip("film-oil"), tag: "Ritual", title: "Kitty Oil", caption: "A silky glow, wherever you need it." },
   { id: "film-bath", ...clip("film-bath"), tag: "Ritual", title: "Kitty Love Bath", caption: "A few quiet minutes that are only yours." },
+  { id: "film-juice", ...clip("film-juice"), tag: "Ritual", title: "Kitty Magic Juice", caption: "One glass, every morning. Glow from within." },
+  { id: "film-candies", ...clip("film-candies"), tag: "Glow", title: "Sweet Kitty Candies", caption: "Poolside, sun on your skin, something sweet." },
+  { id: "film-kit", ...clip("film-kit"), tag: "Kit", title: "The 7-Day Sweet Kitty Kit", caption: "Untie the bow. Your seven days start now." },
 ];
 videos.push(...films);
 

@@ -17,7 +17,7 @@ export type Product = {
   /** Price in KES. null = "price coming soon" */
   price: number | null;
   size?: string;
-  category: "kit" | "body" | "intimate" | "bath" | "treats";
+  category: "kit" | "body" | "intimate" | "drink" | "bath" | "treats";
   badge?: string;
   benefits: string[];
   howToUse: string[];
@@ -53,8 +53,8 @@ export const products: Product[] = [
       "Discreet, gift-ready packaging",
     ],
     howToUse: [
+      "Start every morning with the Kitty Magic Juice.",
       "Treat yourself to the Kitty Love Bath first thing in the morning.",
-      "Then smooth the Kitty Magic Juice over your skin.",
       "Use Sweet Kitty Tight and Slippery Kitty as directed in your kit.",
     ],
     includes: ["Sweet Kitty Tight", "Slippery Kitty", "Kitty Magic Juice", "Kitty Love Bath"],
@@ -62,6 +62,7 @@ export const products: Product[] = [
     icon: "crown",
     image: "/products/sweet-kitty-7-day-kit.jpg",
     imageFit: "contain",
+    videos: ["film-kit", "kit"],
     active: true,
     order: 0,
   },
@@ -118,28 +119,30 @@ export const products: Product[] = [
     slug: "magic-kitty-juice",
     name: "Kitty Magic Juice",
     shortName: "Magic Juice",
-    tagline: "Your morning glow, poured straight onto your skin.",
+    tagline: "Your morning elixir for glow, energy and good fortune.",
     description:
-      "A natural body ritual to start your day glowing. Smooth it over your skin every morning and step into your higher feminine energy. For external use only.",
+      "A natural drinking ritual to start your day glowing. Sip it every morning and step into your higher feminine energy.",
     price: prices["magic-juice"],
     size: "1 litre",
-    category: "body",
+    category: "drink",
     benefits: [
-      "Bring back your natural glow",
-      "Leaves skin soft and refreshed",
-      "Embrace your higher feminine energy",
       "Cleanse your aura",
+      "Raise your energy",
+      "Bring back your natural glow",
+      "Embrace your higher feminine energy",
       "Attract good fortune and abundance",
+      "Soothes period discomfort",
+      "Rich in antioxidants",
     ],
     howToUse: [
-      "After your morning bath, pour a little into your palm.",
-      "Smooth it over your legs, thighs and body until it sinks in.",
-      "For external use only. Do not drink.",
+      "Drink first thing in the morning.",
+      "Drink plenty of water through the day.",
+      "Eat fruits and vegetables about 3 hours later.",
     ],
     tone: ["#9D0842", "#330412"],
     icon: "sparkles",
     image: "/products/magic-kitty-juice.jpg",
-    videos: ["juice", "morning"],
+    videos: ["film-juice", "juice", "morning"],
     active: true,
     order: 1,
   },
@@ -218,6 +221,7 @@ export const products: Product[] = [
     tone: ["#9D0842", "#73062C"],
     icon: "gem",
     image: "/products/sweet-kitty-candies.jpg",
+    videos: ["film-candies"],
     active: true,
     order: 4,
   },
@@ -249,6 +253,7 @@ export const categories = [
   { id: "all", label: "All" },
   { id: "kit", label: "The Kit" },
   { id: "body", label: "Body" },
+  { id: "drink", label: "Drinks" },
   { id: "bath", label: "Bath" },
   { id: "treats", label: "Treats" },
   { id: "intimate", label: "Intimate care" },

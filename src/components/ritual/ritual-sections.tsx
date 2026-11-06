@@ -232,7 +232,7 @@ export function DaysTrack() {
 const rules = [
   { t: "Follow all seven days", d: "The more of the ritual you follow, the bigger the transformation." },
   { t: "Water, water, water", d: "Drink plenty through the day. It carries your glow." },
-  { t: "Juice goes on, not in", d: "Kitty Magic Juice is for your skin only. Never drink it." },
+  { t: "Fruit after three hours", d: "Eat fruits and vegetables about three hours after your Kitty Magic Juice." },
   { t: "Make the morning yours", d: "Your bath is your time. Phone down, door closed." },
   { t: "Listen to your body", d: "If anything irritates you, stop and message us. We'll help personally." },
   { t: "Tell your bestie", d: "Glowing is better together. She'll thank you later." },

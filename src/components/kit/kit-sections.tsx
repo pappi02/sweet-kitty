@@ -240,7 +240,7 @@ export function KitCompare() {
           {juice && (
             <Reveal delay={0.1}>
               <p className="mt-6 text-sm text-ink/65">
-                It starts each morning with a glow of{" "}
+                It starts each morning with the{" "}
                 <Link href={productHref(juice)} className="font-semibold text-ink underline decoration-accent decoration-2 underline-offset-4">
                   Kitty Magic Juice
                 </Link>

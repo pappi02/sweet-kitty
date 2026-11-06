@@ -15,7 +15,7 @@ import { getVideo } from "@/lib/videos";
 
 export const metadata: Metadata = { alternates: { canonical: "/" } };
 
-const featured = ["film-scrub", "film-oil", "film-bath", "after", "kit", "drama-who-is-she"].map(getVideo);
+const featured = ["film-juice", "film-candies", "film-kit", "film-scrub", "film-oil", "film-bath", "after", "drama-who-is-she"].map(getVideo);
 
 export default function Home() {
   return (
