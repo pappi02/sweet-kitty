@@ -105,6 +105,12 @@
   }
 }
 
+/* The admin dashboard brings its own chrome: hide the shop's header, footer,
+   buy bar and overlays while an admin page is showing. */
+body:has(> [data-admin]) > :not([data-admin]):not(script):not(nextjs-portal) {
+  display: none !important;
+}
+
 /* ---------- Page transitions (React <ViewTransition>) ---------- */
 
 ::view-transition {

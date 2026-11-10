@@ -6,6 +6,10 @@ const ga = process.env.NEXT_PUBLIC_GA_ID
   ? { script: " https://www.googletagmanager.com", connect: " https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com", img: " https://*.google-analytics.com https://*.googletagmanager.com" }
   : { script: "", connect: "", img: "" };
 
+// Videos and posters uploaded in the admin dashboard live in our Vercel Blob store.
+// The dashboard uploads straight from the browser to Vercel's Blob API.
+const blobHost = "https://*.public.blob.vercel-storage.com";
+
 // Content Security Policy: the site only loads its own scripts, styles, fonts,
 // images and videos. When a video CDN, analytics or payments are added, list
 // their domains here (media-src, script-src, connect-src, frame-src).
@@ -13,10 +17,10 @@ const csp = [
   "default-src 'self'",
   `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""}${ga.script}`,
   "style-src 'self' 'unsafe-inline'",
-  `img-src 'self' data: blob:${ga.img}`,
-  "media-src 'self' blob:",
+  `img-src 'self' data: blob: ${blobHost}${ga.img}`,
+  `media-src 'self' blob: ${blobHost}`,
   "font-src 'self'",
-  `connect-src 'self'${isDev ? " ws: wss:" : ""}${ga.connect}`,
+  `connect-src 'self' https://vercel.com ${blobHost}${isDev ? " ws: wss:" : ""}${ga.connect}`,
   "object-src 'none'",
   "base-uri 'self'",
   "form-action 'self'",
@@ -40,6 +44,8 @@ const nextConfig: NextConfig = {
   cacheComponents: true,
   partialPrefetching: true,
   poweredByHeader: false,
+  // Posters uploaded in the admin (shown blurred behind the full-screen player).
+  images: { remotePatterns: [{ protocol: "https", hostname: "*.public.blob.vercel-storage.com" }] },
   // Old product links keep working after the 2026-11 renames.
   redirects() {
     return [
@@ -52,6 +58,8 @@ const nextConfig: NextConfig = {
       { source: "/:path*", headers: securityHeaders },
       // Videos are big: let browsers reuse them for a day instead of re-downloading.
       { source: "/videos/:file*", headers: [{ key: "Cache-Control", value: "public, max-age=86400, stale-while-revalidate=604800" }] },
+      // The admin dashboard is private: never cached, never indexed.
+      { source: "/admin/:path*", headers: [{ key: "Cache-Control", value: "private, no-store" }, { key: "X-Robots-Tag", value: "noindex, nofollow" }] },
     ];
   },
   turbopack: {

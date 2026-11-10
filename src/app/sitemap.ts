@@ -10,6 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/shop", priority: 0.9 },
     { path: "/ritual", priority: 0.7 },
     { path: "/stories", priority: 0.7 },
+    { path: "/mentorship", priority: 0.85 },
     { path: "/about", priority: 0.6 },
     { path: "/faq", priority: 0.6 },
     { path: "/contact", priority: 0.5 },

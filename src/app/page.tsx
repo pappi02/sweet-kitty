@@ -11,9 +11,20 @@ import { TrustStrip } from "@/components/home/trust-strip";
 import { PageTransition } from "@/components/layout/page-transition";
 import { ArrowLink, SectionHeading } from "@/components/ui/section-heading";
 import { ReelRail } from "@/components/video/reel-rail";
+import { MentorshipTeaser } from "@/components/home/mentorship-teaser";
+import { getMentorship } from "@/lib/mentorship/data";
+import { toMentorshipView } from "@/lib/mentorship/view";
 import { getVideo } from "@/lib/videos";
 
 export const metadata: Metadata = { alternates: { canonical: "/" } };
+
+/** The mentorship band, from the same content the admin edits (cached). */
+async function Mentorship() {
+  const doc = await getMentorship();
+  if (!doc.home.show) return null;
+  const view = toMentorshipView(doc, false);
+  return <MentorshipTeaser home={view.home} topics={doc.manifesto.topics} playable={view.playable} />;
+}
 
 const featured = ["film-juice", "film-candies", "film-kit", "film-scrub", "film-oil", "film-bath", "after", "drama-who-is-she"].map(getVideo);
 
@@ -26,6 +37,7 @@ export default function Home() {
       <Shop />
       <Ritual />
       <Story />
+      <Mentorship />
       <section className="py-16 lg:py-24">
         <ReelRail
           list={featured}

@@ -21,6 +21,7 @@ const columns = [
     links: [
       { href: "/ritual", label: "The ritual" },
       { href: "/stories", label: "Stories & videos" },
+      { href: "/mentorship", label: "Mentorship" },
       { href: "/about", label: "Our secret" },
     ],
   },

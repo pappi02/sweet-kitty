@@ -42,4 +42,8 @@ next-env.d.ts
 
 # local-only media kept out of the site and the repo (unused / third-party clips)
 /assets/unused-media/
+
+# admin dashboard content and uploads saved locally in development (production uses Vercel Blob)
+/.data/
+/public/uploads/
 !.env.example

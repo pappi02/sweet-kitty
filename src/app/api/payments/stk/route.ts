@@ -3,13 +3,14 @@
 // except for a payment link (/pay) where the shop has set the amount itself.
 import { isDarajaReady, stkPush, toMsisdn } from "@/lib/payments/daraja";
 import { allow, clientIp } from "@/lib/payments/rate-limit";
+import { programmePrice } from "@/lib/mentorship/data";
 import { MAX_ORDER_QTY } from "@/lib/order";
 import { getProduct } from "@/lib/products";
 
 const REF = /^SK-[A-Z0-9]{4,10}$/;
 const MAX_AMOUNT = 250_000; // M-Pesa's per-transaction limit
 
-type Body = { phone?: unknown; reference?: unknown; items?: unknown; amount?: unknown };
+type Body = { phone?: unknown; reference?: unknown; items?: unknown; amount?: unknown; programme?: unknown };
 
 function priceItems(items: unknown): number | null {
   if (!Array.isArray(items) || items.length === 0 || items.length > 20) return null;
@@ -39,6 +40,8 @@ export async function POST(req: Request) {
 
   let amount: number | null;
   if (body.items !== undefined) amount = priceItems(body.items);
+  // A mentorship booking: the price comes from the saved programme, never the browser.
+  else if (body.programme !== undefined) amount = typeof body.programme === "string" && /^[a-z0-9-]{1,40}$/.test(body.programme) ? await programmePrice(body.programme) : null;
   else {
     const n = Number(body.amount);
     amount = Number.isInteger(n) && n >= 1 && n <= MAX_AMOUNT ? n : null;

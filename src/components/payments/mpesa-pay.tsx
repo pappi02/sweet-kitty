@@ -27,14 +27,24 @@ export function MpesaPay({
   defaultPhone = "",
   payload,
   tone = "light",
+  onPaid,
+  paidNote,
 }: {
   reference: string;
   amount: number;
   defaultPhone?: string;
-  /** Bag lines (priced on the server) or, for a payment link, a fixed amount. */
-  payload: { items: { id: string; qty: number }[] } | { amount: number };
+  /** Bag lines (priced on the server), a mentorship programme (priced on the server) or, for a payment link, a fixed amount. */
+  payload: { items: { id: string; qty: number }[] } | { amount: number } | { programme: string };
   tone?: "light" | "dark";
+  /** Called once when M-Pesa confirms the payment. */
+  onPaid?: (receipt?: string) => void;
+  /** Replaces "We'll confirm on WhatsApp." in the paid message. */
+  paidNote?: string;
 }) {
+  const onPaidRef = useRef(onPaid);
+  useEffect(() => {
+    onPaidRef.current = onPaid;
+  });
   const uid = useId();
   const [phone, setPhone] = useState(defaultPhone);
   const [phase, setPhase] = useState<Phase>({ at: "form" });
@@ -59,6 +69,7 @@ export function MpesaPay({
         if (stop) return;
         if (r.status === "paid") {
           track("purchase", { currency: "KES", value: amount, transaction_id: reference });
+          onPaidRef.current?.(r.receipt);
           return setPhase({ at: "paid", receipt: r.receipt });
         }
         if (r.status === "cancelled" || r.status === "failed") return setPhase({ at: "form", error: r.message });
@@ -113,7 +124,7 @@ export function MpesaPay({
                     M-Pesa receipt <span className="font-semibold tabular-nums">{phase.receipt}</span>.{" "}
                   </>
                 ) : null}
-                Your reference is <span className="font-semibold tabular-nums">{reference}</span>. We&apos;ll confirm on WhatsApp.
+                Your reference is <span className="font-semibold tabular-nums">{reference}</span>. {paidNote ?? "We'll confirm on WhatsApp."}
               </p>
             </div>
           </div>

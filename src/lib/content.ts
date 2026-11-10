@@ -7,6 +7,7 @@ export const nav = [
   { href: "/the-kit", label: "The Kit" },
   { href: "/ritual", label: "Ritual" },
   { href: "/stories", label: "Stories" },
+  { href: "/mentorship", label: "Mentorship" },
   { href: "/about", label: "About" },
   { href: "/faq", label: "FAQ" },
 ] as const;
