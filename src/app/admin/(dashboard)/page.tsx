@@ -5,6 +5,8 @@ import { requireAdmin } from "@/lib/admin/auth";
 import { storageMode } from "@/lib/cms/store";
 import { readMentorshipForAdmin } from "@/lib/mentorship/data";
 import { isDarajaReady } from "@/lib/payments/daraja";
+import { readPostersForAdmin } from "@/lib/posters/data";
+import { posterStatus } from "@/lib/posters/schema";
 
 export const metadata: Metadata = { title: "Overview" };
 
@@ -22,7 +24,9 @@ export default function OverviewPage() {
 
 async function Overview() {
   await requireAdmin();
-  const { doc, version } = await readMentorshipForAdmin();
+  const [{ doc, version }, { doc: posterDoc }] = await Promise.all([readMentorshipForAdmin(), readPostersForAdmin()]);
+  const liveCount = posterDoc.posters.filter((p) => posterStatus(p) === "live").length;
+  const upcoming = posterDoc.posters.filter((p) => posterStatus(p) === "scheduled").length;
   const films = doc.films.length;
   const ready = doc.films.filter((f) => f.src).length;
   const storage = storageMode();
@@ -51,6 +55,26 @@ async function Overview() {
           </div>
         </dl>
         <p className="mt-6 text-sm font-semibold text-burgundy">Edit mentorship →</p>
+      </Link>
+
+      <Link href="/admin/posters" className="group rounded-xl bg-white p-6 ring-1 ring-ink/8 transition hover:ring-burgundy/40 lg:order-3">
+        <p className="text-xs font-bold uppercase tracking-[0.16em] text-burgundy">Posters</p>
+        <p className="mt-2 font-display text-2xl">Pop-up posters and offers</p>
+        <dl className="mt-5 grid grid-cols-3 gap-4 text-sm">
+          <div>
+            <dt className="text-ink/55">Live now</dt>
+            <dd className="mt-0.5 font-display text-2xl tabular-nums">{liveCount}</dd>
+          </div>
+          <div>
+            <dt className="text-ink/55">Scheduled</dt>
+            <dd className="mt-0.5 font-display text-2xl tabular-nums">{upcoming}</dd>
+          </div>
+          <div>
+            <dt className="text-ink/55">All</dt>
+            <dd className="mt-0.5 font-display text-2xl tabular-nums">{posterDoc.posters.length}</dd>
+          </div>
+        </dl>
+        <p className="mt-6 text-sm font-semibold text-burgundy">Manage posters →</p>
       </Link>
 
       <div className="rounded-xl bg-white p-6 ring-1 ring-ink/8">

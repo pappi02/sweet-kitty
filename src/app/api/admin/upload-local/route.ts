@@ -23,13 +23,14 @@ export async function POST(request: Request) {
   const form = await request.formData().catch(() => null);
   const file = form?.get("file");
   const folder = String(form?.get("folder") ?? "");
-  if (!(file instanceof File) || !EXT[file.type] || !/^[a-z]{1,20}$/.test(folder)) {
+  const scope = String(form?.get("scope") ?? "mentorship");
+  if (!(file instanceof File) || !EXT[file.type] || !/^[a-z]{1,20}$/.test(folder) || !["mentorship", "posters"].includes(scope)) {
     return Response.json({ error: "Choose an MP4, WebM, MOV, JPEG, PNG or WebP file." }, { status: 400 });
   }
 
-  const dir = path.join(process.cwd(), "public", "uploads", "mentorship", folder);
+  const dir = path.join(process.cwd(), "public", "uploads", scope, folder);
   await mkdir(dir, { recursive: true });
   const name = `${Date.now().toString(36)}-${randomBytes(4).toString("hex")}.${EXT[file.type]}`;
   await writeFile(path.join(dir, name), Buffer.from(await file.arrayBuffer()));
-  return Response.json({ url: `/uploads/mentorship/${folder}/${name}` });
+  return Response.json({ url: `/uploads/${scope}/${folder}/${name}` });
 }

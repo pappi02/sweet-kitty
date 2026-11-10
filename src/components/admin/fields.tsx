@@ -3,7 +3,7 @@
 import { useId, useRef, useState, type ReactNode } from "react";
 import type { StorageMode } from "@/lib/cms/store";
 import { cn } from "@/lib/utils";
-import { capturePoster, uploadFile, type UploadFolder } from "./upload";
+import { capturePoster, uploadFile, type UploadFolder, type UploadScope } from "./upload";
 
 // Small form kit for the admin dashboard.
 
@@ -266,6 +266,7 @@ export function MediaField({
   hint,
   autoPoster = false,
   poster,
+  scope = "mentorship",
 }: {
   label: string;
   kind: "video" | "image";
@@ -277,6 +278,7 @@ export function MediaField({
   hint?: ReactNode;
   autoPoster?: boolean;
   poster?: string;
+  scope?: UploadScope;
 }) {
   const input = useRef<HTMLInputElement>(null);
   const [progress, setProgress] = useState<number | null>(null);
@@ -289,12 +291,12 @@ export function MediaField({
     setProgress(0);
     setStatus("Uploading…");
     try {
-      const url = await uploadFile(file, folder, storage, setProgress);
+      const url = await uploadFile(file, folder, storage, setProgress, scope);
       let posterUrl: string | undefined;
       if (kind === "video" && autoPoster) {
         setStatus("Making the poster…");
         const still = await capturePoster(file);
-        if (still) posterUrl = await uploadFile(still, "posters", storage).catch(() => undefined);
+        if (still) posterUrl = await uploadFile(still, "posters", storage, undefined, scope).catch(() => undefined);
       }
       onChange(url, posterUrl);
       setStatus("Uploaded. Save to publish.");

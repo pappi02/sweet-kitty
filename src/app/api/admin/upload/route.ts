@@ -16,7 +16,7 @@ export async function POST(request: Request) {
       request,
       onBeforeGenerateToken: async (pathname) => {
         if (!(await isAdmin())) throw new Error("Please sign in again.");
-        if (!/^mentorship\/[a-z]+\/[A-Za-z0-9._-]{1,120}$/.test(pathname)) throw new Error("Bad file name.");
+        if (!/^(mentorship|posters)\/[a-z]+\/[A-Za-z0-9._-]{1,120}$/.test(pathname)) throw new Error("Bad file name.");
         return {
           allowedContentTypes: TYPES,
           maximumSizeInBytes: 500 * 1024 * 1024,

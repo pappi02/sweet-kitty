@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
+import { PosterOffers } from "@/components/posters/poster-offers";
 import { FinalCta } from "@/components/home/final-cta";
 import { PageHero } from "@/components/layout/page-hero";
 import { PageTransition } from "@/components/layout/page-transition";
@@ -28,6 +30,10 @@ export default function ShopPage() {
           </>
         }
       />
+      {/* Live posters ("Special offers"): request-time, so it streams in without holding the page. */}
+      <Suspense fallback={null}>
+        <PosterOffers />
+      </Suspense>
       <Collection />
       <section className="bg-white/50 py-9 lg:py-12">
         <ReelRail

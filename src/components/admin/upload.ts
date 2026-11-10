@@ -5,18 +5,20 @@
 // to public/uploads through /api/admin/upload-local.
 import type { StorageMode } from "@/lib/cms/store";
 
-export type UploadFolder = "films" | "posters" | "photos";
+export type UploadFolder = "films" | "posters" | "photos" | "images";
+/** Which part of the dashboard the file belongs to (top-level folder). */
+export type UploadScope = "mentorship" | "posters";
 
 const EXT: Record<string, string> = { "video/mp4": "mp4", "video/webm": "webm", "video/quicktime": "mov", "image/jpeg": "jpg", "image/png": "png", "image/webp": "webp" };
 
-export async function uploadFile(file: File, folder: UploadFolder, mode: StorageMode, onProgress?: (percent: number) => void): Promise<string> {
+export async function uploadFile(file: File, folder: UploadFolder, mode: StorageMode, onProgress?: (percent: number) => void, scope: UploadScope = "mentorship"): Promise<string> {
   const ext = EXT[file.type];
   if (!ext) throw new Error("Use an MP4, WebM or MOV video, or a JPEG, PNG or WebP image.");
   const name = `${folder.slice(0, -1)}-${Date.now().toString(36)}.${ext}`;
 
   if (mode === "blob") {
     const { upload } = await import("@vercel/blob/client");
-    const blob = await upload(`mentorship/${folder}/${name}`, file, {
+    const blob = await upload(`${scope}/${folder}/${name}`, file, {
       access: "public",
       handleUploadUrl: "/api/admin/upload",
       contentType: file.type,
@@ -31,6 +33,7 @@ export async function uploadFile(file: File, folder: UploadFolder, mode: Storage
       const form = new FormData();
       form.append("file", file);
       form.append("folder", folder);
+      form.append("scope", scope);
       const xhr = new XMLHttpRequest();
       xhr.open("POST", "/api/admin/upload-local");
       xhr.upload.onprogress = (e) => e.lengthComputable && onProgress?.(Math.round((e.loaded / e.total) * 100));

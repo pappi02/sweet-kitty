@@ -7,6 +7,7 @@ import { Header } from "@/components/layout/header";
 import { MobileBuyBar } from "@/components/layout/mobile-buy-bar";
 import { Analytics } from "@/components/analytics/analytics";
 import { JsonLd } from "@/components/seo/json-ld";
+import { PosterPopup } from "@/components/posters/poster-popup";
 import { SupportChatProvider } from "@/components/support/support-chat";
 import { VideoLightboxProvider } from "@/components/video/video-lightbox";
 import { isDarajaReady } from "@/lib/payments/daraja";
@@ -74,6 +75,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               <MobileBuyBar />
               <CartDrawer payEnabled={isDarajaReady()} />
               <Analytics />
+              <PosterPopup />
             </SupportChatProvider>
           </VideoLightboxProvider>
         </CartProvider>
