@@ -16,8 +16,8 @@ export function KitSpotlight() {
   const { add } = useCart();
 
   return (
-    <section id="kit" className="relative isolate overflow-hidden bg-rose tone-light py-12 text-white lg:py-16">
-      <div className="relative mx-auto grid max-w-6xl items-center gap-8 px-5 lg:grid-cols-[1.15fr_1fr] lg:gap-12 lg:px-8">
+    <section id="kit" className="relative isolate overflow-hidden bg-rose tone-light py-9 text-white lg:py-12">
+      <div className="relative mx-auto grid max-w-6xl items-center gap-8 px-5 lg:grid-cols-[1.15fr_1fr] lg:gap-9 lg:px-8">
         {/* Visual */}
         <Reveal className="order-2 mx-auto w-full max-w-[560px] lg:order-1">
           <div className="relative aspect-16/10 overflow-hidden rounded-sm bg-blush">
@@ -30,7 +30,7 @@ export function KitSpotlight() {
           <Reveal>
             <Eyebrow dark>The signature</Eyebrow>
           </Reveal>
-          <h2 className="mt-3 font-display text-[clamp(2.1rem,6.4vw,3.6rem)] leading-[1.02]">
+          <h2 className="mt-3 font-display text-[clamp(1.89rem,5.44vw,3.02rem)] leading-[1.02]">
             <WordReveal text="The 7-Day" /> <span className="text-accent italic">Sweet Kitty Kit</span>
           </h2>
           <Reveal delay={0.05}>

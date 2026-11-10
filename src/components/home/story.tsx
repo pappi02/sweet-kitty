@@ -48,7 +48,7 @@ function Heading() {
       <Reveal>
         <Eyebrow>Her story</Eyebrow>
       </Reveal>
-      <h2 className="mt-3 font-display text-[clamp(2.1rem,6.4vw,3.6rem)] leading-[1.02]">
+      <h2 className="mt-3 font-display text-[clamp(1.89rem,5.44vw,3.02rem)] leading-[1.02]">
         <WordReveal text="From running on empty to" /> <span className="text-accent italic">unforgettable.</span>
       </h2>
       <Reveal delay={0.1}>
@@ -64,17 +64,20 @@ function MobileStep({ step, index }: { step: Step; index: number }) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { margin: "-20% 0px -20% 0px" });
   return (
-    <div className="relative pl-12">
+    <div className="relative grid grid-cols-[minmax(0,1fr)_7.5rem] items-start gap-4 pl-12 sm:grid-cols-[minmax(0,1fr)_9rem]">
       <span className="absolute left-0 top-0 grid size-8 place-items-center rounded-full bg-white font-display text-sm italic text-accent shadow-md ring-1 ring-accent/20">
         {index + 1}
       </span>
       <Reveal>
         <span className={cn("text-xs font-bold uppercase tracking-[0.16em]", index === steps.length - 1 ? "text-accent" : "text-ink/75")}>{step.tag}</span>
-        <h3 className="mt-1.5 font-display text-2xl leading-tight">{step.title}</h3>
-        <p className="mt-3 text-base leading-relaxed text-ink/78">{step.body}</p>
+        <h3 className="mt-1 font-display text-xl leading-tight">{step.title}</h3>
+        <p className="mt-2 text-[15px] leading-relaxed text-ink/78">{step.body}</p>
       </Reveal>
-      <div ref={ref} className="mt-6">
-        <PhoneFrame className="w-[min(200px,100%)]">{step.scene(inView)}</PhoneFrame>
+      {/* The 200px phone, shown as a scaled thumbnail beside the text. */}
+      <div ref={ref} className="relative h-[233px] w-[7.5rem] sm:h-[280px] sm:w-[9rem]">
+        <div className="absolute left-0 top-0 w-[200px] origin-top-left scale-[0.6] sm:scale-[0.72]">
+          <PhoneFrame className="w-[200px]">{step.scene(inView)}</PhoneFrame>
+        </div>
       </div>
     </div>
   );
@@ -84,7 +87,7 @@ function MobileStory() {
   const listRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: listRef, offset: ["start 60%", "end 60%"] });
   return (
-    <div ref={listRef} className="relative mt-8 space-y-10 lg:hidden">
+    <div ref={listRef} className="relative mt-6 space-y-7 lg:hidden">
       <div className="absolute bottom-0 left-[17px] top-0 w-px bg-ink/10" />
       <motion.div style={{ scaleY: scrollYProgress }} className="absolute bottom-0 left-[17px] top-0 w-px origin-top bg-linear-to-b from-rose via-burgundy to-burgundy" />
       {steps.map((s, i) => (
@@ -135,8 +138,8 @@ function DesktopStory() {
   };
 
   return (
-    <div ref={ref} className="relative hidden lg:block" style={{ height: `${n * 30 + 60}vh` }}>
-      <div className="sticky top-0 flex h-svh items-center pt-16">
+    <div ref={ref} className="relative hidden lg:block" style={{ height: `${n * 20 + 50}vh` }}>
+      <div className="sticky top-0 flex h-svh items-center pt-12">
         <div className="mx-auto grid w-full max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-20 px-8">
           <div className="max-w-xl">
             <div className="relative min-h-[12rem]">

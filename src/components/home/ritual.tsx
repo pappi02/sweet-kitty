@@ -56,7 +56,7 @@ export function MobileRitual() {
 export function DesktopRitual() {
   const [open, setOpen] = useState(0);
   return (
-    <Reveal className="mt-8 hidden lg:block">
+    <Reveal className="mt-6 hidden lg:block">
       <div className="flex h-[320px] gap-2">
         {days.map((d, i) => {
           const active = open === i;
@@ -110,14 +110,14 @@ export function DesktopRitual() {
 
 export function Ritual({ guideLink = true }: { guideLink?: boolean }) {
   return (
-    <section id="ritual" className="relative overflow-hidden bg-linear-to-b from-cream to-blush/60 py-12 lg:py-16">
+    <section id="ritual" className="relative overflow-hidden bg-linear-to-b from-cream to-blush/60 py-9 lg:py-12">
       <div className="mx-auto max-w-6xl px-5 lg:px-8">
         <div className="flex flex-col items-center text-center lg:flex-row lg:items-end lg:justify-between lg:text-left">
           <div>
             <Reveal>
               <Eyebrow>The ritual</Eyebrow>
             </Reveal>
-            <h2 className="mt-3 font-display text-[clamp(2.1rem,6.4vw,3.6rem)] leading-[1.02]">
+            <h2 className="mt-3 font-display text-[clamp(1.89rem,5.44vw,3.02rem)] leading-[1.02]">
               <WordReveal text="Seven days." /> <span className="text-accent italic">A whole new her.</span>
             </h2>
           </div>

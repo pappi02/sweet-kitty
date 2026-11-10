@@ -9,9 +9,9 @@ import { Reveal, WordReveal } from "../ui/reveal";
 export function FinalCta({ href = "/the-kit", label = "Get the 7-Day Kit" }: { href?: string; label?: string }) {
   return (
     <section className="bg-rose tone-light text-white">
-      <div className="mx-auto grid max-w-6xl items-center gap-8 px-5 py-16 text-center lg:grid-cols-[1fr_auto] lg:px-8 lg:py-20 lg:text-left">
+      <div className="mx-auto grid max-w-6xl items-center gap-8 px-5 py-11 text-center lg:grid-cols-[1fr_auto] lg:px-8 lg:py-14 lg:text-left">
         <div>
-          <h2 className="mx-auto max-w-2xl font-display text-[clamp(2.1rem,6.4vw,3.6rem)] leading-[1.02] lg:mx-0">
+          <h2 className="mx-auto max-w-2xl font-display text-[clamp(1.89rem,5.44vw,3.02rem)] leading-[1.02] lg:mx-0">
             <WordReveal text="Your main-character era is" /> <span className="italic text-accent">7 days away.</span>
           </h2>
           <Reveal delay={0.1}>

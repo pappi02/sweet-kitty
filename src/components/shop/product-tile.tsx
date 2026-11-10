@@ -40,7 +40,7 @@ export function ProductTile({ product, compact = false, className }: { product: 
 
       <div className="mt-3 flex items-start justify-between gap-2 border-t border-ink/10 pt-2.5">
         <div className="min-w-0">
-          <h3 className={cn("mt-0.5 font-display text-base leading-tight", compact ? "sm:text-lg" : "sm:text-xl")}>
+          <h3 className={cn("mt-0.5 font-display text-base leading-tight", compact ? "sm:text-[17px]" : "sm:text-xl")}>
             <Link href={href} transitionTypes={["product"]} className="transition-colors hover:text-accent">
               {product.name}
             </Link>
@@ -49,7 +49,7 @@ export function ProductTile({ product, compact = false, className }: { product: 
         </div>
         <div className="shrink-0 text-right">
           {product.price != null ? (
-            <span className={cn("font-display text-sm tabular-nums", compact ? "sm:text-base" : "sm:text-lg")}>{formatKES(product.price)}</span>
+            <span className={cn("font-display text-sm tabular-nums", compact ? "sm:text-base" : "sm:text-[17px]")}>{formatKES(product.price)}</span>
           ) : (
             <span className="text-xs font-bold uppercase leading-snug tracking-[0.16em] text-accent sm:text-xs">
               Price

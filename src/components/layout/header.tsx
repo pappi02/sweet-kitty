@@ -48,9 +48,9 @@ export function Header() {
         </motion.div>
 
         <div className={cn("bg-cream transition-shadow duration-300", scrolled && "shadow-[0_8px_30px_-18px_rgba(51,4,18,0.45)]")}>
-          <nav className="mx-auto flex h-[68px] max-w-6xl items-center justify-between px-3 sm:px-5 lg:px-8">
+          <nav className="mx-auto flex h-[60px] max-w-6xl items-center justify-between px-3 sm:px-5 lg:px-8">
             <Link href="/" className="flex items-center gap-2.5" aria-label="My Sweet Kitty home">
-              <Image src="/brand/my-sweet-kitty-512.png" alt="My Sweet Kitty" width={510} height={512} preload className="h-14 w-auto" />
+              <Image src="/brand/my-sweet-kitty-512.png" alt="My Sweet Kitty" width={510} height={512} preload className="h-12 w-auto" />
               </Link>
 
             <ul className="hidden items-center lg:flex">

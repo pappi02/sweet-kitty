@@ -27,7 +27,7 @@ function Heading({ eyebrow, title, accent, intro, dark = false, center = false, 
           <Eyebrow dark={dark}>{eyebrow}</Eyebrow>
         </Reveal>
       )}
-      <h2 className="mt-3 font-display text-[clamp(2.2rem,6.2vw,4rem)] leading-[1.02]">
+      <h2 className="mt-3 font-display text-[clamp(1.98rem,5.27vw,3.36rem)] leading-[1.02]">
         <WordReveal text={title} /> <span className="italic text-accent">{accent}</span>
       </h2>
       {intro && (
@@ -66,20 +66,20 @@ function Hero({ view }: { view: View }) {
   const ready = Boolean(hero.film?.src);
 
   return (
-    <section className="tone-dark relative isolate overflow-hidden bg-ink pt-28 text-white lg:pt-32">
+    <section className="tone-dark relative isolate overflow-hidden bg-ink pt-24 text-white lg:pt-28">
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(70%_60%_at_85%_20%,rgba(157,8,66,0.55),transparent_65%),radial-gradient(60%_50%_at_10%_90%,rgba(115,6,44,0.6),transparent_70%)]" />
-      <div className="mx-auto grid max-w-6xl items-center gap-10 px-5 pb-14 lg:grid-cols-[1.08fr_0.92fr] lg:gap-14 lg:px-8 lg:pb-20">
+      <div className="mx-auto grid max-w-6xl items-center gap-8 px-5 pb-10 lg:grid-cols-[1.08fr_0.92fr] lg:gap-10 lg:px-8 lg:pb-14">
         <div>
           <motion.div {...rise(0.05)}>
             <Eyebrow dark>{hero.eyebrow}</Eyebrow>
           </motion.div>
-          <motion.h1 {...rise(0.12)} className="mt-4 font-display text-[clamp(3.2rem,8.4vw,6.6rem)] font-normal leading-[0.95]">
+          <motion.h1 {...rise(0.12)} className="mt-4 font-display text-[clamp(2.88rem,7.14vw,5.54rem)] font-normal leading-[0.95]">
             {hero.title} <em className="text-accent">{hero.accent}</em>
           </motion.h1>
-          <motion.p {...rise(0.22)} className="mt-6 max-w-xl text-base leading-relaxed text-white/80 sm:text-lg">
+          <motion.p {...rise(0.22)} className="mt-6 max-w-xl text-base leading-relaxed text-white/80 sm:text-[17px]">
             {hero.intro}
           </motion.p>
-          <motion.div {...rise(0.3)} className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <motion.div {...rise(0.3)} className="mt-6 flex flex-col gap-3 sm:flex-row">
             <Button onClick={() => book()} variant="light" size="lg">
               Book your session
             </Button>
@@ -95,7 +95,7 @@ function Hero({ view }: { view: View }) {
             )}
           </motion.div>
           {hero.facts.length > 0 && (
-            <motion.ul {...rise(0.38)} className="mt-9 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-white/75">
+            <motion.ul {...rise(0.38)} className="mt-7 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-white/75">
               {hero.facts.map((f, i) => (
                 <Fragment key={f}>
                   {i > 0 && <Star4 className="size-2.5 text-accent" />}
@@ -106,7 +106,7 @@ function Hero({ view }: { view: View }) {
           )}
         </div>
 
-        <motion.div initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1, delay: 0.15, ease }} className="relative mx-auto w-full max-w-[400px] lg:max-w-none">
+        <motion.div initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1, delay: 0.15, ease }} className="relative mx-auto w-full max-w-[280px] sm:max-w-[360px] lg:ml-auto lg:mr-0 lg:max-w-[420px]">
           <button
             onClick={() => play(hero.film)}
             disabled={!ready}
@@ -134,13 +134,13 @@ function Hero({ view }: { view: View }) {
 function Manifesto({ view }: { view: View }) {
   const { manifesto } = view;
   return (
-    <section className="bg-cream py-16 lg:py-24">
+    <section className="bg-cream py-11 lg:py-16">
       <Reveal className="mx-auto max-w-4xl px-5 text-center lg:px-8">
         <Star4 className="mx-auto size-5 text-accent" />
-        <p className="mt-6 font-display text-[clamp(1.8rem,4.6vw,3.2rem)] italic leading-[1.12] text-ink">“{manifesto.quote}”</p>
+        <p className="mt-6 font-display text-[clamp(1.62rem,3.91vw,2.69rem)] italic leading-[1.12] text-ink">“{manifesto.quote}”</p>
       </Reveal>
       {manifesto.topics.length > 0 && (
-        <Marquee duration={48} className="mt-12 border-y border-ink/10 py-5">
+        <Marquee duration={48} className="mt-8 border-y border-ink/10 py-5">
           {manifesto.topics.map((t) => (
             <span key={t} className="flex items-center">
               <span className="px-6 font-display text-2xl italic text-ink/80 sm:text-3xl">{t}</span>
@@ -164,7 +164,7 @@ function Gallery({ view }: { view: View }) {
   if (films.length === 0) return null;
 
   return (
-    <section id="films" className="bg-linear-to-b from-cream to-mist py-16 lg:py-24">
+    <section id="films" className="bg-linear-to-b from-cream to-mist py-11 lg:py-16">
       <div className="mx-auto max-w-6xl px-5 lg:px-8">
         <div className="flex flex-col gap-7">
           <Heading eyebrow={view.gallery.eyebrow} title={view.gallery.title} accent={view.gallery.accent} intro={view.gallery.intro} />
@@ -185,7 +185,8 @@ function Gallery({ view }: { view: View }) {
           )}
         </div>
 
-        <motion.ul layout className="mt-10 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
+        {/* Phones: a swipeable row. Larger screens: a grid led by one big film. */}
+        <motion.ul layout className="no-scrollbar -mx-5 mt-6 flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-px-5 px-5 pb-1 sm:mx-0 sm:grid sm:grid-cols-2 sm:gap-4 sm:overflow-visible sm:px-0 lg:grid-cols-4">
           <AnimatePresence mode="popLayout">
             {shown.map((f, i) => (
               <motion.li
@@ -195,7 +196,7 @@ function Gallery({ view }: { view: View }) {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.96 }}
                 transition={{ duration: 0.4, ease }}
-                className={cn(i === 0 && "col-span-2 row-span-2")}
+                className={cn("w-[62%] shrink-0 snap-start sm:w-auto", i === 0 && "sm:col-span-2 sm:row-span-2")}
               >
                 <FilmCard film={f} big={i === 0} onPlay={() => play(f)} />
               </motion.li>
@@ -224,7 +225,7 @@ function FilmCard({ film, big = false, onPlay }: { film: PublicFilm; big?: boole
         <span className="rounded-full bg-white/15 px-2.5 py-1 text-[11px] font-bold uppercase tracking-[0.16em] ring-1 ring-white/25 backdrop-blur-md">{film.label}</span>
       </span>
       <span className="absolute inset-x-3 bottom-3 block sm:inset-x-4 sm:bottom-4">
-        <span className={cn("block font-display italic leading-tight", big ? "text-2xl sm:text-3xl" : "text-base sm:text-lg")}>{film.title}</span>
+        <span className={cn("block font-display italic leading-tight", big ? "text-2xl sm:text-3xl" : "text-base sm:text-[17px]")}>{film.title}</span>
         {film.caption && <span className={cn("mt-1 line-clamp-2 text-white/75", big ? "block max-w-md text-sm" : "hidden text-xs sm:block")}>{film.caption}</span>}
         <PlayBadge ready={ready} className="mt-3" />
       </span>
@@ -242,11 +243,11 @@ function Pillars({ view }: { view: View }) {
   if (items.length === 0) return null;
 
   return (
-    <section id="focus" className="tone-dark bg-burgundy py-16 text-white lg:py-24">
-      <div className="mx-auto grid max-w-6xl gap-10 px-5 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16 lg:px-8">
+    <section id="focus" className="tone-dark bg-burgundy py-11 text-white lg:py-16">
+      <div className="mx-auto grid max-w-6xl gap-8 px-5 lg:grid-cols-[0.85fr_1.15fr] lg:gap-12 lg:px-8">
         <div className="lg:sticky lg:top-28 lg:self-start">
           <Heading eyebrow={view.pillars.eyebrow} title={view.pillars.title} accent={view.pillars.accent} intro={view.pillars.intro} dark />
-          <div className="mt-8 hidden lg:block">
+          <div className="mt-6 hidden lg:block">
             <button
               onClick={() => play(current?.film)}
               disabled={!current?.film?.src}
@@ -275,7 +276,7 @@ function Pillars({ view }: { view: View }) {
                 <button onClick={() => setActive(i)} onMouseEnter={() => setActive(i)} className="group flex w-full items-baseline gap-5 py-5 text-left" aria-expanded={open}>
                   <span className={cn("w-7 shrink-0 font-display text-sm italic transition-colors", open ? "text-accent" : "text-white/55")}>{String(i + 1).padStart(2, "0")}</span>
                   <span className="flex-1">
-                    <span className={cn("block font-display text-[clamp(1.5rem,3.4vw,2.25rem)] leading-tight transition-colors", open ? "text-white" : "text-white/70 group-hover:text-white")}>{p.title}</span>
+                    <span className={cn("block font-display text-[clamp(1.35rem,2.89vw,1.89rem)] leading-tight transition-colors", open ? "text-white" : "text-white/70 group-hover:text-white")}>{p.title}</span>
                     <span className="mt-1 block text-sm text-white/60">{p.kicker}</span>
                   </span>
                 </button>
@@ -320,16 +321,16 @@ function Programmes({ view }: { view: View }) {
   const cols = programmes.items.length >= 4 ? "lg:grid-cols-4" : programmes.items.length === 3 ? "lg:grid-cols-3" : "lg:grid-cols-2";
 
   return (
-    <section id="programmes" className="bg-cream py-16 lg:py-24">
+    <section id="programmes" className="bg-cream py-11 lg:py-16">
       <div className="mx-auto max-w-6xl px-5 lg:px-8">
         <Heading eyebrow={programmes.eyebrow} title={programmes.title} accent={programmes.accent} intro={programmes.intro} center className="max-w-3xl" />
 
-        <motion.ul initial="hidden" whileInView="show" viewport={stagger.viewport} variants={stagger.parent(0, 0.07)} className={cn("mt-12 grid gap-4 sm:grid-cols-2", cols)}>
+        <motion.ul initial="hidden" whileInView="show" viewport={stagger.viewport} variants={stagger.parent(0, 0.07)} className={cn("no-scrollbar -mx-5 mt-7 flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-px-5 px-5 pb-2 sm:mx-0 sm:grid sm:gap-4 sm:overflow-visible sm:px-0 sm:grid-cols-2", cols)}>
           {programmes.items.map((p) => (
-            <motion.li key={p.id} variants={stagger.child} className="h-full">
+            <motion.li key={p.id} variants={stagger.child} className="h-auto w-[84%] shrink-0 snap-center sm:h-full sm:w-auto">
               <SpotlightCard className={cn("flex h-full flex-col rounded-sm bg-white ring-1", p.badge ? "ring-2 ring-burgundy" : "ring-ink/10")}>
                 <div className="flex h-full flex-col">
-                  <button onClick={() => play(p.film)} disabled={!p.film?.src} className="group relative block aspect-16/10 w-full overflow-hidden bg-ink" aria-label={p.film?.src ? `Watch: ${p.film.title}` : `${p.name}: film coming soon`}>
+                  <button onClick={() => play(p.film)} disabled={!p.film?.src} className="group relative block aspect-[16/8] w-full overflow-hidden bg-ink" aria-label={p.film?.src ? `Watch: ${p.film.title}` : `${p.name}: film coming soon`}>
                     <FilmFrame film={p.film ?? { id: p.id, title: p.name, caption: "", kind: "mentor", label: "", src: "", poster: "" }} quiet className="transition-transform duration-700 group-hover:scale-[1.04]" />
                     <span className="pointer-events-none absolute inset-0 bg-linear-to-t from-ink/70 to-transparent" />
                     {p.badge && <span className="absolute left-3 top-3 rounded-full bg-rose px-2.5 py-1 text-[11px] font-bold uppercase tracking-[0.14em] text-burgundy">{p.badge}</span>}
@@ -378,7 +379,7 @@ function Programmes({ view }: { view: View }) {
 
         {programmes.note && (
           <Reveal>
-            <p className="mx-auto mt-8 max-w-2xl text-center text-sm leading-relaxed text-ink/65">{programmes.note}</p>
+            <p className="mx-auto mt-6 max-w-2xl text-center text-sm leading-relaxed text-ink/65">{programmes.note}</p>
           </Reveal>
         )}
       </div>
@@ -392,7 +393,7 @@ function Steps({ view }: { view: View }) {
   const { steps } = view;
   if (steps.items.length === 0) return null;
   return (
-    <section className="bg-mist py-16 lg:py-24">
+    <section className="bg-mist py-11 lg:py-16">
       <div className="mx-auto max-w-6xl px-5 lg:px-8">
         <Heading eyebrow={steps.eyebrow} title={steps.title} accent={steps.accent} />
         <motion.ol
@@ -400,14 +401,16 @@ function Steps({ view }: { view: View }) {
           whileInView="show"
           viewport={stagger.viewport}
           variants={stagger.parent(0, 0.08)}
-          className={cn("relative mt-12 grid gap-8 sm:grid-cols-2", steps.items.length >= 5 ? "lg:grid-cols-5" : steps.items.length === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3", "lg:gap-6")}
+          className={cn("relative mt-7 grid gap-5 sm:grid-cols-2 sm:gap-6", steps.items.length >= 5 ? "lg:grid-cols-5" : steps.items.length === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3")}
         >
           {steps.items.map((s, i) => (
-            <motion.li key={s.title + i} variants={stagger.child} className="relative">
+            <motion.li key={s.title + i} variants={stagger.child} className="relative flex gap-4 lg:block">
               {i < steps.items.length - 1 && <span className="absolute left-14 -right-2 top-5 hidden h-px bg-ink/15 lg:block" aria-hidden />}
-              <span className="relative grid size-10 place-items-center rounded-full bg-burgundy font-display text-base italic text-white">{i + 1}</span>
-              <p className="mt-5 font-display text-xl leading-tight text-ink">{s.title}</p>
-              <p className="mt-2 text-sm leading-relaxed text-ink/70">{s.text}</p>
+              <span className="relative grid size-9 shrink-0 place-items-center rounded-full bg-burgundy font-display text-base italic text-white lg:size-10">{i + 1}</span>
+              <div>
+                <p className="font-display text-lg leading-tight text-ink lg:mt-4 lg:text-xl">{s.title}</p>
+                <p className="mt-1.5 text-sm leading-relaxed text-ink/70">{s.text}</p>
+              </div>
             </motion.li>
           ))}
         </motion.ol>
@@ -423,9 +426,9 @@ function Mentor({ view }: { view: View }) {
   const { mentor } = view;
   const ready = Boolean(mentor.film?.src);
   return (
-    <section className="bg-cream py-16 lg:py-24">
-      <div className="mx-auto grid max-w-6xl items-center gap-10 px-5 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16 lg:px-8">
-        <Reveal className="relative mx-auto w-full max-w-[380px]">
+    <section className="bg-cream py-11 lg:py-16">
+      <div className="mx-auto grid max-w-6xl items-center gap-8 px-5 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12 lg:px-8">
+        <Reveal className="relative mx-auto w-full max-w-[260px] sm:max-w-[320px] lg:max-w-[360px]">
           <button onClick={() => play(mentor.film)} disabled={!ready} className="group relative block aspect-4/5 w-full overflow-hidden rounded-t-full rounded-b-sm bg-ink shadow-[0_50px_100px_-40px_rgba(51,4,18,0.55)]" aria-label={ready ? `Watch: ${mentor.film?.title}` : "Film coming soon"}>
             {mentor.photo ? (
               // eslint-disable-next-line @next/next/no-img-element -- uploaded photo may live on Blob or /uploads
@@ -444,7 +447,7 @@ function Mentor({ view }: { view: View }) {
           <Reveal>
             <Eyebrow>{mentor.eyebrow}</Eyebrow>
           </Reveal>
-          <h2 className="mt-3 font-display text-[clamp(2.2rem,5.6vw,3.6rem)] leading-[1.02]">
+          <h2 className="mt-3 font-display text-[clamp(1.98rem,4.76vw,3.02rem)] leading-[1.02]">
             <WordReveal text={mentor.name} />
           </h2>
           <Reveal delay={0.05}>
@@ -455,7 +458,7 @@ function Mentor({ view }: { view: View }) {
               ))}
             </div>
             {mentor.quote && (
-              <blockquote className="mt-8 border-l-2 border-burgundy pl-5 font-display text-2xl italic leading-snug text-ink">“{mentor.quote}”</blockquote>
+              <blockquote className="mt-6 border-l-2 border-burgundy pl-5 font-display text-2xl italic leading-snug text-ink">“{mentor.quote}”</blockquote>
             )}
           </Reveal>
         </div>
@@ -470,10 +473,10 @@ function Voices({ view }: { view: View }) {
   const play = usePlayFilm(view.playable);
   const { voices } = view;
   return (
-    <section className="bg-white/60 py-16 lg:py-24">
+    <section className="bg-white/60 py-11 lg:py-16">
       <div className="mx-auto max-w-6xl px-5 lg:px-8">
         <Heading eyebrow={voices.eyebrow} title={voices.title} accent={voices.accent} />
-        <motion.ul initial="hidden" whileInView="show" viewport={stagger.viewport} variants={stagger.parent(0, 0.06)} className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <motion.ul initial="hidden" whileInView="show" viewport={stagger.viewport} variants={stagger.parent(0, 0.06)} className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {voices.items.map((v) => (
             <motion.li key={v.id} variants={stagger.child} className="flex flex-col rounded-sm bg-cream p-6 ring-1 ring-ink/10">
               <Star4 className="size-4 text-accent" />
@@ -503,8 +506,8 @@ function Questions({ view }: { view: View }) {
   const { faq } = view;
   if (faq.items.length === 0) return null;
   return (
-    <section id="questions" className="bg-white/50 py-16 lg:py-20">
-      <div className="mx-auto grid max-w-6xl gap-8 px-5 lg:grid-cols-[0.8fr_1.2fr] lg:gap-12 lg:px-8">
+    <section id="questions" className="bg-white/50 py-11 lg:py-14">
+      <div className="mx-auto grid max-w-6xl gap-8 px-5 lg:grid-cols-[0.8fr_1.2fr] lg:gap-9 lg:px-8">
         <div className="lg:sticky lg:top-28 lg:self-start">
           <Heading eyebrow={faq.eyebrow} title={faq.title} accent={faq.accent} />
           <Reveal delay={0.05}>
@@ -525,16 +528,16 @@ function Closing({ view }: { view: View }) {
   const { book } = useBooking();
   return (
     <>
-      <section className="tone-dark relative isolate overflow-hidden bg-ink py-20 text-center text-white lg:py-28">
+      <section className="tone-dark relative isolate overflow-hidden bg-ink py-14 text-center text-white lg:py-20">
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(60%_80%_at_50%_120%,rgba(157,8,66,0.65),transparent_70%)]" />
         <div className="mx-auto max-w-3xl px-5">
           <Star4 className="mx-auto size-5 text-accent" />
-          <h2 className="mt-6 font-display text-[clamp(2.4rem,7vw,4.6rem)] leading-[1]">
+          <h2 className="mt-6 font-display text-[clamp(2.16rem,5.95vw,3.86rem)] leading-[1]">
             <WordReveal text={view.closing.title} /> <span className="italic text-accent">{view.closing.accent}</span>
           </h2>
           <Reveal delay={0.1}>
-            <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-white/75 sm:text-lg">{view.closing.text}</p>
-            <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+            <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-white/75 sm:text-[17px]">{view.closing.text}</p>
+            <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
               <Button onClick={() => book()} variant="light" size="lg">
                 Book your session
               </Button>

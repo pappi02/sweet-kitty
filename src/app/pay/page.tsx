@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function PayPage() {
   return (
-    <main className="tone-light min-h-svh bg-cream px-5 pb-16 pt-28 text-white lg:pt-36">
+    <main className="tone-light min-h-svh bg-cream px-5 pb-16 pt-24 text-white lg:pt-32">
       <div className="mx-auto max-w-md">
         <Suspense fallback={<div className="h-80" />}>
           <PayLink enabled={isDarajaReady()} />

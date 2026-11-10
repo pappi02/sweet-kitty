@@ -18,7 +18,7 @@ export function PayLink({ enabled }: { enabled: boolean }) {
   return (
     <>
       <p className="font-display text-sm italic text-accent">Secure M-Pesa payment</p>
-      <h1 className="mt-2 font-display text-[clamp(2rem,8vw,3rem)] leading-[1]">
+      <h1 className="mt-2 font-display text-[clamp(1.8rem,6.8vw,2.52rem)] leading-[1]">
         {valid ? (
           <>
             {what}, <span className="italic text-accent">{formatKES(amount)}</span>

@@ -54,13 +54,13 @@ export function FaqAccordion({ items, startOpen = 0, numberFrom = 1 }: { items: 
 
 export function Faq({ items = allFaqs.slice(0, 5), title = "Everything you're", accent = "wondering." }: { items?: FaqItem[]; title?: string; accent?: string }) {
   return (
-    <section id="faq" className="bg-white/50 py-12 lg:py-16">
-      <div className="mx-auto grid max-w-6xl gap-7 px-5 lg:grid-cols-[0.8fr_1.2fr] lg:gap-12 lg:px-8">
+    <section id="faq" className="bg-white/50 py-9 lg:py-12">
+      <div className="mx-auto grid max-w-6xl gap-7 px-5 lg:grid-cols-[0.8fr_1.2fr] lg:gap-9 lg:px-8">
         <div className="text-center lg:sticky lg:top-28 lg:self-start lg:text-left">
           <Reveal>
             <Eyebrow>Questions</Eyebrow>
           </Reveal>
-          <h2 className="mt-3 font-display text-[clamp(2.1rem,6.4vw,3.6rem)] leading-[1.02]">
+          <h2 className="mt-3 font-display text-[clamp(1.89rem,5.44vw,3.02rem)] leading-[1.02]">
             <WordReveal text={title} /> <span className="text-accent italic">{accent}</span>
           </h2>
           <Reveal delay={0.05}>

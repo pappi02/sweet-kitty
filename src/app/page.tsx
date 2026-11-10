@@ -38,7 +38,7 @@ export default function Home() {
       <Ritual />
       <Story />
       <Mentorship />
-      <section className="py-16 lg:py-24">
+      <section className="py-11 lg:py-16">
         <ReelRail
           list={featured}
           heading={<SectionHeading eyebrow="Stories" title="See the" accent="glow." />}

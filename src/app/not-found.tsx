@@ -5,11 +5,11 @@ import { Button } from "@/components/ui/button";
 
 export default function NotFound() {
   return (
-    <main className="tone-light relative isolate flex min-h-svh items-center overflow-hidden bg-blush pb-10 pt-28 text-white">
+    <main className="tone-light relative isolate flex min-h-svh items-center overflow-hidden bg-blush pb-10 pt-24 text-white">
       <div className="relative mx-auto grid w-full max-w-6xl items-center gap-7 px-5 lg:grid-cols-[1.2fr_1fr] lg:px-8">
         <div className="text-center lg:text-left">
           <p className="font-display text-lg italic text-accent">N°404</p>
-          <h1 className="mt-4 font-display text-[clamp(2.4rem,9vw,5rem)] leading-[0.92]">
+          <h1 className="mt-4 font-display text-[clamp(2.16rem,7.65vw,4.2rem)] leading-[0.92]">
             This kitty <span className="text-accent italic">wandered off.</span>
           </h1>
           <p className="mx-auto mt-3 max-w-md text-base text-white/80 lg:mx-0">The page you&apos;re looking for isn&apos;t here. Let&apos;s get you back to your glow-up.</p>

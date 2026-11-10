@@ -26,7 +26,7 @@ function KitFeature({ className }: { className?: string }) {
 
       <div className="flex flex-1 flex-col p-5 sm:p-6">
         <div className="mt-auto">
-          <h3 className="font-display text-[clamp(1.9rem,4vw,3rem)] leading-[0.95]">
+          <h3 className="font-display text-[clamp(1.71rem,3.4vw,2.52rem)] leading-[0.95]">
             The 7-Day <span className="italic">Sweet Kitty</span> Kit
           </h3>
           <p className="mt-3 max-w-sm text-sm leading-relaxed text-white/80">{kit.tagline}</p>
@@ -62,7 +62,7 @@ export function Collection() {
   const showKit = cat === "all" || cat === "kit";
 
   return (
-    <section className="py-10 lg:py-14">
+    <section className="py-8 lg:py-10">
       <div className="mx-auto max-w-6xl px-5 lg:px-8">
         {/* Filters */}
         <div className="flex flex-col gap-4 border-b border-ink/10 pb-5 sm:flex-row sm:items-center sm:justify-between">
@@ -147,9 +147,9 @@ export function Collection() {
           </AnimatePresence>
         </motion.div>
 
-        {shown.length === 0 && !showKit && <p className="py-12 text-center text-ink/75">Nothing here yet.</p>}
+        {shown.length === 0 && !showKit && <p className="py-9 text-center text-ink/75">Nothing here yet.</p>}
 
-        <p className="mt-8 text-center text-sm text-ink/75">
+        <p className="mt-6 text-center text-sm text-ink/75">
           Can&apos;t decide?{" "}
           <Link href="/contact" className="font-semibold text-ink underline decoration-accent decoration-2 underline-offset-4">
             Ask us on WhatsApp

@@ -53,8 +53,8 @@ export function LegalPageView({ page }: { page: LegalPage }) {
       <JsonLd data={breadcrumbLd([{ name: "Home", path: "/" }, { name: page.label, path: `/${page.slug}` }])} />
       <PageHero index={page.index} label={page.label} title={page.title} accent={page.accent} intro={page.intro} />
 
-      <section className="py-10 lg:py-14">
-        <div className="mx-auto grid max-w-6xl gap-8 px-5 lg:grid-cols-[minmax(0,15rem)_minmax(0,1fr)] lg:gap-16 lg:px-8">
+      <section className="py-8 lg:py-10">
+        <div className="mx-auto grid max-w-6xl gap-8 px-5 lg:grid-cols-[minmax(0,15rem)_minmax(0,1fr)] lg:gap-12 lg:px-8">
           {/* Index */}
           <aside className="lg:sticky lg:top-28 lg:self-start">
             <p className="text-xs font-bold uppercase tracking-[0.16em] text-ink/75">Last updated</p>
@@ -96,7 +96,7 @@ export function LegalPageView({ page }: { page: LegalPage }) {
               href={whatsappLink(`Hi Sweet Kitty! I have a question about your ${page.label.toLowerCase()} policy.`)}
               target="_blank"
               rel="noopener noreferrer"
-              className="group mt-8 flex items-center justify-between gap-4 border-b border-ink/15 pb-4"
+              className="group mt-6 flex items-center justify-between gap-4 border-b border-ink/15 pb-4"
             >
               <span>
                 <span className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-accent">

@@ -14,14 +14,14 @@ const facts = [
 
 export function WhyUs() {
   return (
-    <section className="relative isolate overflow-hidden bg-blush tone-light py-12 text-white lg:py-16">
+    <section className="relative isolate overflow-hidden bg-blush tone-light py-9 text-white lg:py-12">
       <div className="relative mx-auto max-w-6xl px-5 lg:px-8">
-        <div className="grid gap-6 lg:grid-cols-[1.2fr_1fr] lg:items-end lg:gap-12">
+        <div className="grid gap-6 lg:grid-cols-[1.2fr_1fr] lg:items-end lg:gap-9">
           <div>
             <Reveal>
               <Eyebrow dark>Why My Sweet Kitty</Eyebrow>
             </Reveal>
-            <h2 className="mt-3 font-display text-[clamp(2.1rem,6.4vw,3.6rem)] leading-[1.02]">
+            <h2 className="mt-3 font-display text-[clamp(1.89rem,5.44vw,3.02rem)] leading-[1.02]">
               <WordReveal text="Made with nature." /> <span className="text-accent italic">Kept a secret.</span>
             </h2>
           </div>
@@ -38,7 +38,7 @@ export function WhyUs() {
           whileInView="show"
           viewport={stagger.viewport}
           variants={stagger.parent(0.05, 0.06)}
-          className="mt-8 grid grid-cols-2 border-t border-white/10 lg:grid-cols-4"
+          className="mt-6 grid grid-cols-2 border-t border-white/10 lg:grid-cols-4"
         >
           {facts.map((f, i) => (
             <motion.div

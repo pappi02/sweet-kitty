@@ -37,8 +37,8 @@ export function FaqBrowser() {
   let counter = 0;
 
   return (
-    <section className="py-10 lg:py-14">
-      <div className="mx-auto grid max-w-6xl gap-7 px-5 lg:grid-cols-[16rem_minmax(0,1fr)] lg:gap-12 lg:px-8">
+    <section className="py-8 lg:py-10">
+      <div className="mx-auto grid max-w-6xl gap-7 px-5 lg:grid-cols-[16rem_minmax(0,1fr)] lg:gap-9 lg:px-8">
         <aside className="lg:sticky lg:top-28 lg:self-start">
           <label className="relative block">
             <span className="sr-only">Search questions</span>
@@ -81,7 +81,7 @@ export function FaqBrowser() {
         <div>
           <AnimatePresence mode="popLayout">
             {groups.length === 0 ? (
-              <motion.div key="empty" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="border-t border-ink/10 py-10">
+              <motion.div key="empty" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="border-t border-ink/10 py-8">
                 <p className="font-display text-3xl">Nothing matches “{query}”.</p>
                 <p className="mt-2 text-ink/70">Ask us directly and we&apos;ll answer personally.</p>
               </motion.div>
@@ -90,7 +90,7 @@ export function FaqBrowser() {
                 const from = counter + 1;
                 counter += g.items.length;
                 return (
-                  <motion.div key={g.id + query} id={g.id} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.25 }} className="scroll-mt-28 pb-14 last:pb-0">
+                  <motion.div key={g.id + query} id={g.id} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.25 }} className="scroll-mt-28 pb-10 last:pb-0">
                     <h2 className="mb-2 font-display text-2xl italic text-accent">{g.title}</h2>
                     <FaqAccordion items={g.items} startOpen={query ? 0 : null} numberFrom={from} />
                   </motion.div>

@@ -15,11 +15,11 @@ export function MentorshipTeaser({ home, topics, playable }: { home: MentorshipV
   const layout = ["col-start-1 row-span-2 row-start-1", "col-start-2 row-start-1 translate-y-8", "col-start-2 row-start-2 translate-y-8"];
 
   return (
-    <section className="tone-dark relative isolate overflow-hidden bg-ink py-16 text-white lg:py-24">
+    <section className="tone-dark relative isolate overflow-hidden bg-ink py-11 text-white lg:py-16">
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(60%_70%_at_0%_100%,rgba(157,8,66,0.5),transparent_70%),radial-gradient(50%_60%_at_100%_0%,rgba(115,6,44,0.55),transparent_70%)]" />
-      <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 lg:grid-cols-2 lg:gap-16 lg:px-8">
+      <div className="mx-auto grid max-w-6xl items-center gap-9 px-5 lg:grid-cols-2 lg:gap-12 lg:px-8">
         <div className="order-2 lg:order-1">
-          <div className="grid grid-cols-2 grid-rows-2 gap-3 sm:gap-4">
+          <div className="mx-auto grid max-w-[340px] grid-cols-2 grid-rows-2 gap-3 sm:max-w-[420px] sm:gap-4 lg:max-w-[480px]">
             {films.map((f, i) => (
               <motion.button
                 key={f.id}
@@ -47,11 +47,11 @@ export function MentorshipTeaser({ home, topics, playable }: { home: MentorshipV
           <Reveal>
             <Eyebrow dark>{home.eyebrow}</Eyebrow>
           </Reveal>
-          <h2 className="mt-3 font-display text-[clamp(2.3rem,6vw,4rem)] leading-[1.02]">
+          <h2 className="mt-3 font-display text-[clamp(2.07rem,5.1vw,3.36rem)] leading-[1.02]">
             <WordReveal text={home.title} /> <span className="italic text-accent">{home.accent}</span>
           </h2>
           <Reveal delay={0.05}>
-            <p className="mt-5 max-w-lg text-base leading-relaxed text-white/75 sm:text-lg">{home.text}</p>
+            <p className="mt-5 max-w-lg text-base leading-relaxed text-white/75 sm:text-[17px]">{home.text}</p>
             {topics.length > 0 && (
               <ul className="mt-6 flex max-w-lg flex-wrap gap-2">
                 {topics.slice(0, 8).map((t) => (
@@ -62,7 +62,7 @@ export function MentorshipTeaser({ home, topics, playable }: { home: MentorshipV
                 ))}
               </ul>
             )}
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
               <Button href="/mentorship" variant="light" size="lg">
                 Explore the mentorship
               </Button>

@@ -25,7 +25,7 @@ export function SectionHeading({
       <Reveal>
         <Eyebrow dark={dark}>{eyebrow}</Eyebrow>
       </Reveal>
-      <h2 className="mt-3 font-display text-[clamp(2.1rem,6.4vw,3.6rem)] leading-[1.02]">
+      <h2 className="mt-3 font-display text-[clamp(1.89rem,5.44vw,3.02rem)] leading-[1.02]">
         <WordReveal text={title} /> <span className="text-accent italic">{accent}</span>
       </h2>
     </div>

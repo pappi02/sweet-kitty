@@ -42,8 +42,8 @@ export function Footer() {
     <footer className="tone-dark bg-burgundy pb-24 pt-14 text-white lg:pb-8">
 
       <div className="mx-auto max-w-6xl px-5 lg:px-8">
-        <Link href="/the-kit" className="group mt-8 flex items-end justify-between gap-6 border-b border-white/15 pb-10">
-          <span className="font-display text-[clamp(1.75rem,5vw,3.25rem)] leading-[0.98]">
+        <Link href="/the-kit" className="group mt-6 flex items-end justify-between gap-6 border-b border-white/15 pb-10">
+          <span className="font-display text-[clamp(1.58rem,4.25vw,2.73rem)] leading-[0.98]">
             Ready for your <span className="text-accent italic">glow-up?</span>
           </span>
           <span className="grid size-11 shrink-0 place-items-center rounded-full bg-rose text-burgundy transition-transform duration-300 group-hover:translate-x-1 sm:size-14">
@@ -51,7 +51,7 @@ export function Footer() {
           </span>
         </Link>
 
-        <div className="mt-8 grid grid-cols-2 gap-x-6 gap-y-7 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
+        <div className="mt-6 grid grid-cols-2 gap-x-6 gap-y-7 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div className="col-span-2 lg:col-span-1">
             <Image src="/brand/my-sweet-kitty-512.png" alt="My Sweet Kitty" width={510} height={512} className="h-28 w-auto" />
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/75">
@@ -94,7 +94,7 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="mt-8 border-t border-white/10 pt-6 text-xs text-white/75">
+        <div className="mt-6 border-t border-white/10 pt-6 text-xs text-white/75">
           <nav aria-label="Policies">
             <ul className="flex flex-wrap gap-x-5 gap-y-2 font-semibold uppercase tracking-[0.16em] text-white/75">
               {legalPages.map((p) => (

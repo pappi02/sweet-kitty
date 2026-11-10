@@ -9,15 +9,15 @@ const steps = [
 
 export function HowToOrder() {
   return (
-    <section className="py-16 lg:py-24">
+    <section className="py-11 lg:py-16">
       <div className="mx-auto max-w-6xl px-5 lg:px-8">
         <Reveal>
           <Eyebrow>How it works</Eyebrow>
         </Reveal>
-        <h2 className="mt-3 font-display text-[clamp(2.1rem,6.4vw,3.6rem)] leading-[1.02]">
+        <h2 className="mt-3 font-display text-[clamp(1.89rem,5.44vw,3.02rem)] leading-[1.02]">
           <WordReveal text="Private, from" /> <span className="italic text-accent">start to finish.</span>
         </h2>
-        <ol className="mt-10 grid border-t border-burgundy/20 lg:grid-cols-3">
+        <ol className="mt-7 grid border-t border-burgundy/20 lg:grid-cols-3">
           {steps.map((s, i) => (
             <Reveal as="li" key={s.title} delay={i * 0.08} className={`border-b border-burgundy/20 py-7 lg:border-b-0 lg:px-8 ${i === 0 ? "lg:pl-0" : "lg:border-l"}`}>
               <span className="font-display text-3xl italic text-accent">{i + 1}</span>

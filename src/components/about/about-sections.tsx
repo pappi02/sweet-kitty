@@ -28,12 +28,12 @@ export function Manifesto() {
   const words = manifesto.split(" ");
 
   return (
-    <section className="py-14 lg:py-20">
+    <section className="py-14 lg:py-14">
       <div className="mx-auto max-w-5xl px-5 lg:px-8">
         <Reveal>
           <Eyebrow>Manifesto</Eyebrow>
         </Reveal>
-        <p ref={ref} className="mt-5 font-display text-[clamp(1.5rem,4.2vw,2.8rem)] leading-[1.15] tracking-tight">
+        <p ref={ref} className="mt-5 font-display text-[clamp(1.35rem,3.57vw,2.35rem)] leading-[1.15] tracking-tight">
           {words.map((w, i) => (
             <Word key={i} word={w} progress={scrollYProgress} range={[i / words.length, (i + 1) / words.length]} accent={accentWords.has(w)} />
           ))}
@@ -47,25 +47,25 @@ export function Manifesto() {
 
 export function Values() {
   return (
-    <section className="py-12 lg:py-16">
+    <section className="py-9 lg:py-12">
       <div className="mx-auto max-w-6xl px-5 lg:px-8">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
           <div>
             <Reveal>
               <Eyebrow>What we stand for</Eyebrow>
             </Reveal>
-            <h2 className="mt-3 font-display text-[clamp(2.1rem,6.4vw,3.6rem)] leading-[1.02]">
+            <h2 className="mt-3 font-display text-[clamp(1.89rem,5.44vw,3.02rem)] leading-[1.02]">
               <WordReveal text="Four promises," /> <span className="text-accent italic">kept.</span>
             </h2>
           </div>
         </div>
 
-        <motion.ol initial="hidden" whileInView="show" viewport={stagger.viewport} variants={stagger.parent(0, 0.07)} className="mt-8 border-t border-ink/10">
+        <motion.ol initial="hidden" whileInView="show" viewport={stagger.viewport} variants={stagger.parent(0, 0.07)} className="mt-6 border-t border-ink/10">
           {values.map((v, i) => (
             <motion.li key={v.title} variants={stagger.child} className="group relative isolate grid gap-2 border-b border-ink/10 py-4 lg:grid-cols-[3rem_minmax(0,1.2fr)_minmax(0,0.8fr)] lg:items-center lg:gap-8 lg:py-5">
               <span className="pointer-events-none absolute inset-0 -z-10 origin-left scale-x-0 bg-linear-to-r from-blush via-blush/60 to-transparent transition-transform duration-500 ease-out group-hover:scale-x-100" />
               <span className="font-display text-lg italic text-accent">0{i + 1}</span>
-              <h3 className="flex items-center gap-4 font-display text-[clamp(1.7rem,4vw,2.6rem)] leading-none transition-transform duration-300 group-hover:translate-x-2">
+              <h3 className="flex items-center gap-4 font-display text-[clamp(1.53rem,3.4vw,2.18rem)] leading-none transition-transform duration-300 group-hover:translate-x-2">
                 {v.title}
                 <Star4 className="size-4 text-accent opacity-0 transition-all duration-300 group-hover:rotate-90 group-hover:opacity-100" />
               </h3>
@@ -92,7 +92,7 @@ export function BrandNote() {
             <p className="text-xs font-bold uppercase tracking-[0.16em] text-accent">A note from us</p>
           </Reveal>
           <Reveal delay={0.05}>
-            <blockquote className="mt-3 font-display text-[clamp(1.25rem,2.8vw,1.8rem)] italic leading-snug">
+            <blockquote className="mt-3 font-display text-[clamp(1.13rem,2.38vw,1.51rem)] italic leading-snug">
               “Sweet Kitty started with a simple wish: that no woman should feel invisible in her own life. We made the rituals we wished we had, and we packed every one with love.”
             </blockquote>
           </Reveal>

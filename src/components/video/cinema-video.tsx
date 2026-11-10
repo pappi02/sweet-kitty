@@ -40,21 +40,21 @@ export function CinemaVideo({
   const list = playlist ?? [video];
 
   return (
-    <section ref={ref} className="relative h-[180vh] bg-linear-to-b from-cream via-mist to-cream">
+    <section ref={ref} className="relative h-[150vh] bg-linear-to-b from-cream via-mist to-cream">
       <div className="sticky top-0 flex h-svh items-center justify-center overflow-hidden">
         {/* Giant words behind the frame */}
         <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center font-display italic leading-[0.85] text-ink">
-          <motion.span style={{ y: topY, opacity: wordsOpacity }} className="text-[clamp(4rem,18vw,12.5rem)]">
+          <motion.span style={{ y: topY, opacity: wordsOpacity }} className="text-[clamp(3.6rem,15.3vw,10.5rem)]">
             {words[0]}
           </motion.span>
-          <motion.span style={{ y: bottomY, opacity: wordsOpacity }} className="text-accent text-[clamp(4rem,18vw,12.5rem)]">
+          <motion.span style={{ y: bottomY, opacity: wordsOpacity }} className="text-accent text-[clamp(3.6rem,15.3vw,10.5rem)]">
             {words[1]}
           </motion.span>
         </div>
 
         <motion.div
           style={{ scale, borderRadius: radius }}
-          className="tone-dark relative aspect-9/16 h-[64svh] max-h-[620px] overflow-hidden bg-ink shadow-[0_50px_100px_-40px_rgba(51,4,18,0.55)]"
+          className="tone-dark relative aspect-9/16 h-[56svh] max-h-[540px] overflow-hidden bg-ink shadow-[0_50px_100px_-40px_rgba(51,4,18,0.55)]"
         >
           <AmbientVideo video={video} />
           <span className="pointer-events-none absolute inset-0 bg-linear-to-t from-ink/70 via-transparent to-transparent" />

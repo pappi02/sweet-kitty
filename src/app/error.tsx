@@ -15,11 +15,11 @@ export default function Error({ error, retry }: { error: unknown; retry: () => v
   const digest = error instanceof Error && "digest" in error ? String(error.digest) : null;
 
   return (
-    <main className="tone-light relative isolate flex min-h-svh items-center overflow-hidden bg-blush pb-10 pt-28 text-white">
+    <main className="tone-light relative isolate flex min-h-svh items-center overflow-hidden bg-blush pb-10 pt-24 text-white">
       <div className="relative mx-auto grid w-full max-w-6xl items-center gap-7 px-5 lg:grid-cols-[1.2fr_1fr] lg:px-8">
         <div className="text-center lg:text-left">
           <p className="font-display text-lg italic text-accent">Oops</p>
-          <h1 className="mt-4 font-display text-[clamp(2.4rem,9vw,5rem)] leading-[0.92]">
+          <h1 className="mt-4 font-display text-[clamp(2.16rem,7.65vw,4.2rem)] leading-[0.92]">
             Something <span className="text-accent italic">slipped.</span>
           </h1>
           <p className="mx-auto mt-3 max-w-md text-sm text-white/80 sm:text-[15px] lg:mx-0">

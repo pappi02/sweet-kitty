@@ -21,7 +21,7 @@ export function PageHero({
   children?: ReactNode;
 }) {
   return (
-    <section className="bg-rose tone-light pb-8 pt-32 text-white lg:pb-12 lg:pt-36">
+    <section className="bg-rose tone-light pb-8 pt-28 text-white lg:pb-12 lg:pt-32">
       <div className="mx-auto max-w-6xl px-5 lg:px-8">
         <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-white/70">
           <Link href="/" className="transition-colors hover:text-accent">
@@ -32,7 +32,7 @@ export function PageHero({
         </nav>
 
         <div className="mt-5 grid gap-5 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] lg:items-end lg:gap-10">
-          <h1 className="font-display text-[clamp(2.6rem,9vw,5rem)] font-normal leading-[0.98]">
+          <h1 className="font-display text-[clamp(2.34rem,7.65vw,4.2rem)] font-normal leading-[0.98]">
             <WordReveal text={title} onLoad />{" "}
             <motion.span initial={{ opacity: 0, y: "0.3em" }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.15, ease }} className="inline-block italic text-accent">
               {accent}

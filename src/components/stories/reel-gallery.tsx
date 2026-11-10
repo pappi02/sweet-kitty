@@ -45,12 +45,12 @@ export function ReelGallery() {
   );
 
   return (
-    <section className="py-12 lg:py-16">
+    <section className="py-9 lg:py-12">
       <div className="mx-auto max-w-6xl px-5 lg:px-8">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div>
             <p className="font-display text-sm italic text-accent">The reel wall</p>
-            <h2 className="mt-2 font-display text-[clamp(2.1rem,6.4vw,3.6rem)] leading-[1.02]">
+            <h2 className="mt-2 font-display text-[clamp(1.89rem,5.44vw,3.02rem)] leading-[1.02]">
               Every glow, <span className="text-accent italic">on camera.</span>
             </h2>
           </div>
@@ -79,11 +79,11 @@ export function ReelGallery() {
         </div>
 
         {/* Desktop: three drifting columns */}
-        <div ref={ref} className="mx-auto mt-8 hidden max-w-[44rem] grid-cols-3 gap-4 lg:grid">
+        <div ref={ref} className="mx-auto mt-6 hidden max-w-[44rem] grid-cols-3 gap-4 lg:grid">
           <Column y={counter}>
             <AnimatePresence mode="popLayout">{cols[0].map(card)}</AnimatePresence>
           </Column>
-          <Column y={drift} className="pt-16">
+          <Column y={drift} className="pt-12">
             <AnimatePresence mode="popLayout">{cols[1].map(card)}</AnimatePresence>
           </Column>
           <Column y={counter}>

@@ -21,7 +21,7 @@ export function Hero() {
   const { open } = useVideoLightbox();
 
   return (
-    <section id="top" className="grid bg-burgundy pt-24 lg:min-h-svh lg:grid-cols-2">
+    <section id="top" className="grid bg-burgundy pt-24 lg:min-h-[86svh] lg:grid-cols-2">
       {/* The kit */}
       <div className="relative aspect-4/3 overflow-hidden bg-rose lg:order-2 lg:aspect-auto">
         <div className="absolute inset-0 animate-settle">
@@ -35,15 +35,15 @@ export function Hero() {
           <Eyebrow dark>The secret glowing women know</Eyebrow>
         </motion.div>
 
-        <motion.h1 {...rise(0.12)} className="mt-4 font-display text-[clamp(3rem,6.6vw,6rem)] font-normal leading-[0.98]">
+        <motion.h1 {...rise(0.12)} className="mt-4 font-display text-[clamp(2.7rem,5.61vw,5.04rem)] font-normal leading-[0.98]">
           Feel <em className="font-normal">irresistible</em> again.
         </motion.h1>
 
-        <motion.p {...rise(0.22)} className="mt-5 max-w-md text-base leading-relaxed text-rose/90 sm:text-lg">
+        <motion.p {...rise(0.22)} className="mt-5 max-w-md text-base leading-relaxed text-rose/90 sm:text-[17px]">
           Natural, secret-recipe rituals that help you embrace your feminine power, one morning at a time.
         </motion.p>
 
-        <motion.div {...rise(0.3)} className="mt-8 flex flex-col gap-3 sm:flex-row">
+        <motion.div {...rise(0.3)} className="mt-6 flex flex-col gap-3 sm:flex-row">
           <Button href="/the-kit" variant="light" size="lg">
             Shop the 7-Day Kit
           </Button>

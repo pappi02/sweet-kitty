@@ -10,14 +10,14 @@ import { ProductTile } from "../shop/product-tile";
 
 export function Shop() {
   return (
-    <section id="shop" className="py-16 lg:py-24">
+    <section id="shop" className="py-11 lg:py-16">
       <div className="mx-auto max-w-6xl px-5 lg:px-8">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
           <div>
             <Reveal>
               <Eyebrow>The collection</Eyebrow>
             </Reveal>
-            <h2 className="mt-3 font-display text-[clamp(2.1rem,6.4vw,3.6rem)] leading-[1.02]">
+            <h2 className="mt-3 font-display text-[clamp(1.89rem,5.44vw,3.02rem)] leading-[1.02]">
               <WordReveal text="Pick your" /> <span className="italic text-accent">magic.</span>
             </h2>
           </div>
@@ -29,7 +29,7 @@ export function Shop() {
           </Reveal>
         </div>
 
-        <div className="mt-10 grid grid-cols-2 gap-x-3 gap-y-8 sm:gap-x-5 lg:grid-cols-4">
+        <div className="mt-7 grid grid-cols-2 gap-x-3 gap-y-6 sm:gap-x-5 lg:grid-cols-4">
           {singles.map((p, i) => (
             <Reveal key={p.id} delay={(i % 4) * 0.06}>
               <ProductTile product={p} compact />

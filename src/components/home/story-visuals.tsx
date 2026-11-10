@@ -37,7 +37,7 @@ export function VideoScene({ src, label, mood, play }: SceneProps & { src: strin
   return (
     <div className="relative h-full w-full">
       <video ref={ref} src={src} poster={src.replace(".mp4", "-poster.jpg")} muted loop playsInline preload="auto" className="h-full w-full object-cover" />
-      <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-ink via-ink/60 to-transparent p-4 pt-16">
+      <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-ink via-ink/60 to-transparent p-4 pt-12">
         <span className={cn("inline-flex rounded-full px-3 py-1 text-xs font-bold uppercase tracking-[0.16em]", mood === "before" ? "bg-white/15 text-white/80" : "bg-burgundy text-white")}>
           {mood === "before" ? "Before" : "After"}
         </span>

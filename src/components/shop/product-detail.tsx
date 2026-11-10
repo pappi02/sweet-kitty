@@ -188,7 +188,7 @@ export function ProductDetail({ product }: { product: Product }) {
                   <span className="font-display text-base normal-case italic tracking-normal text-accent">N°{String(index + 1).padStart(2, "0")}</span>
                   {category}
                 </p>
-                <h1 className="mt-4 font-display text-[clamp(2.1rem,5.5vw,3.4rem)] leading-[0.98]">{product.name}</h1>
+                <h1 className="mt-4 font-display text-[clamp(1.89rem,4.68vw,2.86rem)] leading-[0.98]">{product.name}</h1>
                 <p className="mt-2.5 font-display text-lg italic text-ink/80">{product.tagline}</p>
                 <p className="mt-3 max-w-md text-sm leading-relaxed text-ink/75">{product.description}</p>
               </motion.div>
@@ -269,13 +269,13 @@ export function ProductDetail({ product }: { product: Product }) {
 
       {/* Better together */}
       <section className="px-3 sm:px-5">
-        <Reveal className="tone-light relative isolate mx-auto grid max-w-6xl items-center gap-8 overflow-hidden rounded-sm bg-rose px-6 py-9 text-white sm:px-12 lg:grid-cols-[auto_1fr_auto] lg:gap-12 lg:py-10">
+        <Reveal className="tone-light relative isolate mx-auto grid max-w-6xl items-center gap-8 overflow-hidden rounded-sm bg-rose px-6 py-9 text-white sm:px-12 lg:grid-cols-[auto_1fr_auto] lg:gap-9 lg:py-10">
           <div className="relative mx-auto aspect-square w-32 overflow-hidden rounded-sm shadow-[0_20px_40px_-15px_rgba(115,6,44,0.5)] ring-4 ring-white/70 lg:w-40">
             <Image src="/products/sweet-kitty-7-day-kit.jpg" alt="The 7-Day Sweet Kitty Kit" fill sizes="160px" className="object-cover object-[55%_50%]" />
           </div>
           <div className="relative text-center lg:text-left">
             <p className="text-xs font-bold uppercase tracking-[0.16em] text-accent">Better together</p>
-            <h2 className="mt-3 font-display text-[clamp(2rem,5vw,3rem)] leading-[1.02]">
+            <h2 className="mt-3 font-display text-[clamp(1.8rem,4.25vw,2.52rem)] leading-[1.02]">
               {inKit ? `Get ${product.shortName}` : "Go further"} <span className="text-accent italic">{inKit ? "in" : "with"} the 7-Day Kit.</span>
             </h2>
             <p className="mx-auto mt-3 max-w-md text-base text-white/80 lg:mx-0">Four signature rituals, one guided week, the biggest transformation. {formatKES(kit.price!)} for everything.</p>
@@ -292,7 +292,7 @@ export function ProductDetail({ product }: { product: Product }) {
       </section>
 
       {/* Related */}
-      <section className="py-12 lg:py-16">
+      <section className="py-9 lg:py-12">
         <div className="mx-auto max-w-6xl px-5 lg:px-8">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <SectionHeading eyebrow="Complete the ritual" title="You might" accent="also love." />

@@ -33,12 +33,12 @@ export function ContactBuilder() {
   const field = "w-full border-b border-ink/20 bg-transparent py-2 text-base outline-none transition-colors placeholder:text-ink/50 focus:border-accent";
 
   return (
-    <section className="py-10 lg:py-14">
-      <div className="mx-auto grid max-w-6xl gap-9 px-5 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:gap-12 lg:px-8">
+    <section className="py-8 lg:py-10">
+      <div className="mx-auto grid max-w-6xl gap-9 px-5 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:gap-9 lg:px-8">
         {/* Builder */}
         <Reveal>
           <p className="font-display text-sm italic text-accent">Write to us</p>
-          <h2 className="mt-2 font-display text-[clamp(1.6rem,5vw,2.3rem)] leading-[1.06]">Tell us what you need.</h2>
+          <h2 className="mt-2 font-display text-[clamp(1.44rem,4.25vw,1.93rem)] leading-[1.06]">Tell us what you need.</h2>
 
           <form
             className="mt-6 space-y-6"

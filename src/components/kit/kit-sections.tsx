@@ -27,14 +27,14 @@ export function KitHero() {
 
   return (
     <section className="tone-light relative isolate overflow-hidden bg-blush pb-9 pt-24 text-white lg:pb-10 lg:pt-28">
-      <div className="relative mx-auto grid max-w-6xl items-center gap-7 px-5 lg:grid-cols-[1.1fr_1fr] lg:gap-12 lg:px-8">
+      <div className="relative mx-auto grid max-w-6xl items-center gap-7 px-5 lg:grid-cols-[1.1fr_1fr] lg:gap-9 lg:px-8">
         <div>
           <motion.div {...fade(0)} className="flex items-center gap-4">
             <span className="font-display text-lg italic text-accent">N°02</span>
             <span className="h-px w-16 bg-ink/30" />
             <span className="text-xs font-bold uppercase tracking-[0.16em] text-white/75">The signature</span>
           </motion.div>
-          <h1 className="mt-3 font-display text-[clamp(2.3rem,8.5vw,4.25rem)] font-medium leading-[0.92] tracking-tight">
+          <h1 className="mt-3 font-display text-[clamp(2.07rem,7.23vw,3.57rem)] font-medium leading-[0.92] tracking-tight">
             <WordReveal text="The 7-Day" onLoad /> <span className="text-accent italic">Sweet Kitty</span> <WordReveal text="Kit" onLoad delay={0.1} />
           </h1>
           <motion.p {...fade(0.2)} className="mt-4 max-w-md text-base leading-relaxed text-white/82">
@@ -150,13 +150,13 @@ export function InsideTheBox() {
   }, []);
 
   return (
-    <section className="overflow-hidden py-12 lg:py-20">
+    <section className="overflow-hidden py-9 lg:py-14">
       <div className="mx-auto max-w-6xl px-5 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <Reveal>
             <Eyebrow>Inside the box</Eyebrow>
           </Reveal>
-          <h2 className="mt-3 font-display text-[clamp(2.1rem,6.4vw,3.6rem)] leading-[1.02]">
+          <h2 className="mt-3 font-display text-[clamp(1.89rem,5.44vw,3.02rem)] leading-[1.02]">
             <WordReveal text="Four rituals." /> <span className="text-accent italic">One week.</span>
           </h2>
           <Reveal delay={0.05}>
@@ -164,7 +164,7 @@ export function InsideTheBox() {
           </Reveal>
         </div>
 
-        <div ref={ref} className="relative mx-auto mt-8 h-[180px] [--card-half:50px] sm:h-[240px] sm:[--card-half:68px] lg:mt-12 lg:h-[290px] lg:[--card-half:88px]">
+        <div ref={ref} className="relative mx-auto mt-6 h-[180px] [--card-half:50px] sm:h-[240px] sm:[--card-half:68px] lg:mt-12 lg:h-[290px] lg:[--card-half:88px]">
           {items.map((p, i) => (
             <FanCard key={p.id} product={p} i={i} progress={scrollYProgress} spread={spread} />
           ))}
@@ -175,7 +175,7 @@ export function InsideTheBox() {
           whileInView="show"
           viewport={stagger.viewport}
           variants={stagger.parent(0, 0.06)}
-          className="mt-8 grid grid-cols-2 border-t border-ink/10 lg:mt-7 lg:grid-cols-4"
+          className="mt-6 grid grid-cols-2 border-t border-ink/10 lg:mt-7 lg:grid-cols-4"
         >
           {items.map((p, i) => (
             <motion.li key={p.id} variants={stagger.child} className={cn("border-b border-ink/10 py-4 pr-4 lg:border-b-0 lg:pr-6", i % 2 === 1 && "border-l pl-4 lg:pl-6", i > 0 && "lg:border-l lg:pl-6")}>
@@ -198,13 +198,13 @@ export function InsideTheBox() {
 export function KitCompare() {
   const juice = getProductBySlug("magic-kitty-juice");
   return (
-    <section className="bg-white/50 py-12 lg:py-20">
-      <div className="mx-auto grid max-w-6xl items-center gap-8 px-5 lg:grid-cols-[1fr_1fr] lg:gap-12 lg:px-8">
+    <section className="bg-white/50 py-9 lg:py-14">
+      <div className="mx-auto grid max-w-6xl items-center gap-8 px-5 lg:grid-cols-[1fr_1fr] lg:gap-9 lg:px-8">
         <div>
           <Reveal>
             <Eyebrow>See the difference</Eyebrow>
           </Reveal>
-          <h2 className="mt-3 font-display text-[clamp(2.1rem,6.4vw,3.6rem)] leading-[1.02]">
+          <h2 className="mt-3 font-display text-[clamp(1.89rem,5.44vw,3.02rem)] leading-[1.02]">
             <WordReveal text="Day one." /> <span className="text-accent italic">Day seven.</span>
           </h2>
           <Reveal delay={0.05}>

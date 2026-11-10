@@ -37,7 +37,7 @@ function Step({ step, index, onActive }: { step: (typeof morningSteps)[number]; 
       </span>
       <Reveal>
         <p className="font-display text-sm italic text-accent">{step.time}</p>
-        <h3 className="mt-1 font-display text-[clamp(1.6rem,4vw,2.4rem)] leading-none">{step.title}</h3>
+        <h3 className="mt-1 font-display text-[clamp(1.44rem,3.4vw,2.02rem)] leading-none">{step.title}</h3>
         <p className="mt-2.5 max-w-md text-sm leading-relaxed text-ink/75">{step.text}</p>
         {product && (
           <Link href={productHref(product)} className="group mt-3 inline-flex items-center gap-2 text-sm font-semibold text-ink">
@@ -58,18 +58,18 @@ export function MorningRitual() {
   const video = getVideo("morning");
 
   return (
-    <section className="py-12 lg:py-16">
+    <section className="py-9 lg:py-12">
       <div className="mx-auto max-w-6xl px-5 lg:px-8">
         <div className="max-w-2xl">
           <Reveal>
             <Eyebrow>Every morning</Eyebrow>
           </Reveal>
-          <h2 className="mt-3 font-display text-[clamp(2.1rem,6.4vw,3.6rem)] leading-[1.02]">
+          <h2 className="mt-3 font-display text-[clamp(1.89rem,5.44vw,3.02rem)] leading-[1.02]">
             <WordReveal text="Your morning," /> <span className="text-accent italic">step by step.</span>
           </h2>
         </div>
 
-        <div className="mt-8 grid gap-8 lg:mt-10 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1fr)] lg:gap-12">
+        <div className="mt-6 grid gap-8 lg:mt-10 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1fr)] lg:gap-9">
           {/* Sticky video panel */}
           <div className="lg:sticky lg:top-24 lg:h-[min(calc(100svh-8rem),520px)] lg:self-start">
             <div className="tone-dark relative mx-auto aspect-4/5 w-full max-w-[300px] overflow-hidden rounded-sm bg-ink lg:aspect-auto lg:h-full lg:max-w-[340px]">
@@ -180,7 +180,7 @@ export function DaysTrack() {
             <Reveal>
               <Eyebrow>The week</Eyebrow>
             </Reveal>
-            <h2 className="mt-3 font-display text-[clamp(2.1rem,6.4vw,3.6rem)] leading-[1.02]">
+            <h2 className="mt-3 font-display text-[clamp(1.89rem,5.44vw,3.02rem)] leading-[1.02]">
               <WordReveal text="Seven days." /> <span className="text-accent italic">A whole new her.</span>
             </h2>
           </div>
@@ -196,7 +196,7 @@ export function DaysTrack() {
       </div>
 
       {/* Desktop: vertical scroll drives the track sideways */}
-      <div ref={ref} className="relative hidden h-[250vh] lg:block">
+      <div ref={ref} className="relative hidden h-[200vh] lg:block">
         <div className="sticky top-0 flex h-svh flex-col justify-center overflow-hidden">
           <motion.div ref={track} style={{ x }} className="flex gap-4 pl-[max(2rem,calc((100vw-72rem)/2+2rem))] pr-[10vw]">
             {days.map((d, i) => (
@@ -240,13 +240,13 @@ const rules = [
 
 export function RitualRules() {
   return (
-    <section className="py-12 lg:py-16">
-      <div className="mx-auto grid max-w-6xl gap-7 px-5 lg:grid-cols-[0.8fr_1.2fr] lg:gap-12 lg:px-8">
+    <section className="py-9 lg:py-12">
+      <div className="mx-auto grid max-w-6xl gap-7 px-5 lg:grid-cols-[0.8fr_1.2fr] lg:gap-9 lg:px-8">
         <div className="lg:sticky lg:top-28 lg:self-start">
           <Reveal>
             <Eyebrow>Little rules</Eyebrow>
           </Reveal>
-          <h2 className="mt-3 font-display text-[clamp(2.1rem,6.4vw,3.6rem)] leading-[1.02]">
+          <h2 className="mt-3 font-display text-[clamp(1.89rem,5.44vw,3.02rem)] leading-[1.02]">
             <WordReveal text="For a" /> <span className="text-accent italic">bigger glow.</span>
           </h2>
         </div>

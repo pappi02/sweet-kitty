@@ -29,7 +29,7 @@ export default function ShopPage() {
         }
       />
       <Collection />
-      <section className="bg-white/50 py-12 lg:py-16">
+      <section className="bg-white/50 py-9 lg:py-12">
         <ReelRail
           list={videos.filter((v) => v.tag !== "Before")}
           heading={<SectionHeading eyebrow="In motion" title="See the ritual" accent="come alive." />}

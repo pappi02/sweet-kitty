@@ -35,7 +35,7 @@ export default function AboutPage() {
       />
       <Values />
       <WhyUs />
-      <div className="py-12 lg:py-16">
+      <div className="py-9 lg:py-12">
         <BrandNote />
       </div>
       <FinalCta />

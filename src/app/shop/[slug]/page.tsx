@@ -55,7 +55,7 @@ async function ProductContent({ params }: { params: PageProps<"/shop/[slug]">["p
 /** Shown for a moment while the product loads: same layout, soft placeholders. */
 function ProductSkeleton() {
   return (
-    <section className="pb-10 pt-28 sm:pt-32 lg:pt-36" aria-busy>
+    <section className="pb-10 pt-24 sm:pt-32 lg:pt-32" aria-busy>
       <div className="mx-auto grid max-w-6xl gap-7 px-5 lg:grid-cols-[1.05fr_1fr] lg:gap-10 lg:px-8">
         <div className="aspect-4/5 animate-pulse rounded-sm bg-blush" />
         <div className="space-y-5 pt-6">

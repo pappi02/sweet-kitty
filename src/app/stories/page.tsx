@@ -33,8 +33,8 @@ export default function StoriesPage() {
       />
 
       {/* Featured: before / after */}
-      <section className="py-12 lg:py-16">
-        <div className="mx-auto grid max-w-6xl items-center gap-8 px-5 lg:grid-cols-[1.1fr_1fr] lg:gap-12 lg:px-8">
+      <section className="py-9 lg:py-12">
+        <div className="mx-auto grid max-w-6xl items-center gap-8 px-5 lg:grid-cols-[1.1fr_1fr] lg:gap-9 lg:px-8">
           <Reveal className="order-2 lg:order-1">
             <CompareVideos className="mx-auto aspect-4/5 w-full max-w-[320px] rounded-sm lg:max-w-[370px]" />
           </Reveal>
@@ -42,7 +42,7 @@ export default function StoriesPage() {
             <Reveal>
               <Eyebrow>Featured</Eyebrow>
             </Reveal>
-            <h2 className="mt-3 font-display text-[clamp(2.1rem,6.4vw,3.6rem)] leading-[1.02]">
+            <h2 className="mt-3 font-display text-[clamp(1.89rem,5.44vw,3.02rem)] leading-[1.02]">
               <WordReveal text="Her whole week," /> <span className="text-accent italic">in one slide.</span>
             </h2>
             <Reveal delay={0.05}>
@@ -72,9 +72,9 @@ export default function StoriesPage() {
 
       {/* Send us your video */}
       <section className="px-3 pt-6 sm:px-5">
-        <Reveal className="tone-light relative isolate mx-auto max-w-6xl overflow-hidden rounded-sm bg-rose px-6 py-10 text-center text-white sm:px-12 lg:py-14">
+        <Reveal className="tone-light relative isolate mx-auto max-w-6xl overflow-hidden rounded-sm bg-rose px-6 py-8 text-center text-white sm:px-12 lg:py-10">
           <p className="relative font-display text-sm italic text-accent">Your turn</p>
-          <h2 className="relative mx-auto mt-3 max-w-3xl font-display text-[clamp(1.75rem,5vw,2.9rem)] leading-[1.04]">
+          <h2 className="relative mx-auto mt-3 max-w-3xl font-display text-[clamp(1.58rem,4.25vw,2.44rem)] leading-[1.04]">
             Your glow-up could be <span className="text-accent italic">next on this wall.</span>
           </h2>
           <p className="relative mx-auto mt-4 max-w-md text-base text-white/80">
