@@ -54,13 +54,13 @@ export function Header() {
               </Link>
 
             <ul className="hidden items-center lg:flex">
-              {nav.map((l) => {
-                const active = isActive(pathname, l.href);
+              {[{ href: "/", label: "Home" }, ...nav].map((l) => {
+                const active = l.href === "/" ? pathname === "/" : isActive(pathname, l.href);
                 return (
                   <li key={l.href} className="relative">
                     <Link
                       href={l.href}
-                      className={cn("relative block px-3 py-2 text-sm font-medium tracking-wide transition-colors xl:px-3.5", active ? "text-white" : "text-white/72 hover:text-white")}
+                      className={cn("relative block px-2.5 py-2 text-sm font-medium tracking-wide transition-colors xl:px-3.5", active ? "text-white" : "text-white/72 hover:text-white")}
                     >
                       {l.label}
                     </Link>
